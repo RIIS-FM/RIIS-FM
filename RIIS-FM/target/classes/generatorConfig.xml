@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE generatorConfiguration    
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"    
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">    
+<generatorConfiguration>    
+<!-- 数据库驱动-->    
+    <classPathEntry  location="E:\repo\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar"/>    
+    <context id="DB2Tables"  targetRuntime="MyBatis3" defaultModelType="flat">   
+        <commentGenerator>    
+            <property name="suppressDate" value="true"/>    
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->    
+            <property name="suppressAllComments" value="true"/>    
+        </commentGenerator>    
+        <!--数据库链接URL，用户名、密码 -->    
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.2.150:3306/riis" userId="root" password="1234">    
+        </jdbcConnection>    
+        <javaTypeResolver>    
+            <property name="forceBigDecimals" value="false"/>    
+        </javaTypeResolver>    
+        <!-- 生成模型的包名和位置-->    
+        <javaModelGenerator targetPackage="com.crscd.riis.freightmarket.authority.entity" targetProject="RIIS-FM\src\main\java">    
+            <property name="enableSubPackages" value="true"/>    
+            <property name="trimStrings" value="true"/>    
+        </javaModelGenerator>    
+        <!-- 生成映射文件的包名和位置--> 
+        <!--   
+        <sqlMapGenerator targetPackage="com.crscd.riis.freightmarket.authority.mapping" targetProject="RIIS-FM\src\main\java">    
+            <property name="enableSubPackages" value="true"/>    
+        </sqlMapGenerator>  
+         -->   
+        <!-- 生成DAO的包名和位置-->    
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.crscd.riis.freightmarket.authority.dao" targetProject="RIIS-FM\src\main\java">    
+            <property name="enableSubPackages" value="true"/>    
+        </javaClientGenerator>    
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->    
+        <table tableName="fm_authority_account" domainObjectName="FmAccountEntity"
+               enableCountByExample="true" enableUpdateByExample="true" 
+               enableDeleteByExample="true" enableSelectByExample="true" 
+               selectByExampleQueryId="true"></table>
+        <table tableName="fm_authority_user" domainObjectName="FmUserEntity"
+		       enableCountByExample="true" enableUpdateByExample="true" 
+		       enableDeleteByExample="true" enableSelectByExample="true" 
+		       selectByExampleQueryId="true"></table>
+        <table tableName="fm_authority_role" domainObjectName="FmRoleEntity"
+		       enableCountByExample="true" enableUpdateByExample="true" 
+		       enableDeleteByExample="true" enableSelectByExample="true" 
+		       selectByExampleQueryId="true"></table>
+		<table tableName="fm_authority_group" domainObjectName="FmGroupEntity"
+               enableCountByExample="true" enableUpdateByExample="true" 
+               enableDeleteByExample="true" enableSelectByExample="true" 
+               selectByExampleQueryId="true"></table>
+        <table tableName="fm_authority_permission" domainObjectName="FmPermissionEntity"
+		       enableCountByExample="true" enableUpdateByExample="true" 
+		       enableDeleteByExample="true" enableSelectByExample="true" 
+		       selectByExampleQueryId="true"></table>
+        <table tableName="fm_authority_operation" domainObjectName="FmOperationEntity"
+		       enableCountByExample="true" enableUpdateByExample="true" 
+		       enableDeleteByExample="true" enableSelectByExample="true" 
+		       selectByExampleQueryId="true"></table>
+		<table tableName="fm_authority_account_role" domainObjectName="FmAccountRoleEntity"
+               enableCountByExample="true" enableUpdateByExample="true" 
+               enableDeleteByExample="true" enableSelectByExample="true" 
+               selectByExampleQueryId="true"></table>
+        <table tableName="fm_authority_account_group" domainObjectName="FmAccountGroupEntity"
+		       enableCountByExample="true" enableUpdateByExample="true" 
+		       enableDeleteByExample="true" enableSelectByExample="true" 
+		       selectByExampleQueryId="true"></table>
+        <table tableName="fm_authority_per_role" domainObjectName="FmPerRoleEntity"
+		       enableCountByExample="true" enableUpdateByExample="true" 
+		       enableDeleteByExample="true" enableSelectByExample="true" 
+		       selectByExampleQueryId="true"></table>
+		<table tableName="fm_authority_group_role" domainObjectName="FmGroupRoleEntity"
+		       enableCountByExample="true" enableUpdateByExample="true" 
+		       enableDeleteByExample="true" enableSelectByExample="true" 
+		       selectByExampleQueryId="true"></table>
+    </context>    
+</generatorConfiguration>    
