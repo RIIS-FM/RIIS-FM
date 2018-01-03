@@ -25,7 +25,10 @@
             <scope>test</scope>  
         </dependency>  
 
+<<<<<<< HEAD
          
+=======
+>>>>>>> 7cd6df020f55f499a5c91e0222628f4c3fc32e57
          <!-- json -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
