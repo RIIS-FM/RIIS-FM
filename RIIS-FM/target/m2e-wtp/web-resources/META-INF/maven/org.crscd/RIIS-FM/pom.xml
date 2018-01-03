@@ -24,11 +24,7 @@
             <!-- 表示开发的时候引入，发布的时候不会加载此包 -->  
             <scope>test</scope>  
         </dependency>  
-<!--     <dependency>
-             <groupId>com.oracle</groupId>
-             <artifactId>ojdbc14</artifactId>
-             <version>11.0.2.0</version>
-         </dependency> -->
+
          
          <!-- json -->
 		<dependency>
