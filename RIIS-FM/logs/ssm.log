@@ -1042,4 +1042,11 @@ Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'pa
   [INFO] [2017-12-27 10:00:40][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
   [INFO] [2017-12-27 10:00:40][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
   [INFO] [2017-12-27 10:00:41][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@40133da0: startup date [Wed Dec 27 10:00:40 CST 2017]; root of context hierarchy
+  [INFO] [2018-01-02 17:28:58][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2018-01-02 17:28:58][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@3a03464: startup date [Tue Jan 02 17:28:58 CST 2018]; root of context hierarchy
+  [INFO] [2018-01-02 17:28:59][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2018-01-02 17:28:59][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2018-01-02 17:28:59][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+  [INFO] [2018-01-02 17:28:59][org.springframework.jdbc.support.SQLErrorCodesFactory]SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+  [INFO] [2018-01-02 17:28:59][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@3a03464: startup date [Tue Jan 02 17:28:58 CST 2018]; root of context hierarchy
   
