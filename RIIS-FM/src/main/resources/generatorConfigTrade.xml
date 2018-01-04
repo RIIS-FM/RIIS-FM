@@ -72,7 +72,7 @@
 		       enableDeleteByExample="true" enableSelectByExample="true" 
 		       selectByExampleQueryId="true"></table>
         <!--运输评价-->        
-        <table tableName="fm_trade_transport_estimate" domainObjectName="FmTradeTransportEntity"
+        <table tableName="fm_trade_transport_estimate" domainObjectName="FmTradeTransportEstimateEntity"
 		       enableCountByExample="true" enableUpdateByExample="true" 
 		       enableDeleteByExample="true" enableSelectByExample="true" 
 		       selectByExampleQueryId="true"></table>				              

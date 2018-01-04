@@ -1,30 +1,30 @@
 package com.crscd.riis.freightmarket.authority.dao;
 
-import com.crscd.riis.freightmarket.authority.entity.FmTradeTransportEntity;
-import com.crscd.riis.freightmarket.authority.entity.FmTradeTransportEntityExample.Criteria;
-import com.crscd.riis.freightmarket.authority.entity.FmTradeTransportEntityExample.Criterion;
-import com.crscd.riis.freightmarket.authority.entity.FmTradeTransportEntityExample;
+import com.crscd.riis.freightmarket.authority.entity.FmTradeTransportEstimateEntity;
+import com.crscd.riis.freightmarket.authority.entity.FmTradeTransportEstimateEntityExample.Criteria;
+import com.crscd.riis.freightmarket.authority.entity.FmTradeTransportEstimateEntityExample.Criterion;
+import com.crscd.riis.freightmarket.authority.entity.FmTradeTransportEstimateEntityExample;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
 
-public class FmTradeTransportEntitySqlProvider {
+public class FmTradeTransportEstimateEntitySqlProvider {
 
-    public String countByExample(FmTradeTransportEntityExample example) {
+    public String countByExample(FmTradeTransportEstimateEntityExample example) {
         SQL sql = new SQL();
         sql.SELECT("count(*)").FROM("fm_trade_transport_estimate");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(FmTradeTransportEntityExample example) {
+    public String deleteByExample(FmTradeTransportEstimateEntityExample example) {
         SQL sql = new SQL();
         sql.DELETE_FROM("fm_trade_transport_estimate");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(FmTradeTransportEntity record) {
+    public String insertSelective(FmTradeTransportEstimateEntity record) {
         SQL sql = new SQL();
         sql.INSERT_INTO("fm_trade_transport_estimate");
         
@@ -44,8 +44,8 @@ public class FmTradeTransportEntitySqlProvider {
             sql.VALUES("C_ORDER_CODE", "#{cOrderCode,jdbcType=VARCHAR}");
         }
         
-        if (record.getiEstimateId() != null) {
-            sql.VALUES("I_ESTIMATE_ID", "#{iEstimateId,jdbcType=INTEGER}");
+        if (record.getiEstimateServiceEfficiency() != null) {
+            sql.VALUES("I_ESTIMATE_SERVICE_EFFICIENCY", "#{iEstimateServiceEfficiency,jdbcType=INTEGER}");
         }
         
         if (record.getiEstimateTransport() != null) {
@@ -71,7 +71,7 @@ public class FmTradeTransportEntitySqlProvider {
         return sql.toString();
     }
 
-    public String selectByExample(FmTradeTransportEntityExample example) {
+    public String selectByExample(FmTradeTransportEstimateEntityExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
             sql.SELECT_DISTINCT("id");
@@ -81,7 +81,7 @@ public class FmTradeTransportEntitySqlProvider {
         sql.SELECT("I_ORDER_ID");
         sql.SELECT("I_ORDER_TYPE_ID");
         sql.SELECT("C_ORDER_CODE");
-        sql.SELECT("I_ESTIMATE_ID");
+        sql.SELECT("I_ESTIMATE_SERVICE_EFFICIENCY");
         sql.SELECT("I_ESTIMATE_TRANSPORT");
         sql.SELECT("I_ESTIMATE_PARTITY");
         sql.SELECT("I_ESTIMATE_CONVININET");
@@ -98,8 +98,8 @@ public class FmTradeTransportEntitySqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        FmTradeTransportEntity record = (FmTradeTransportEntity) parameter.get("record");
-        FmTradeTransportEntityExample example = (FmTradeTransportEntityExample) parameter.get("example");
+        FmTradeTransportEstimateEntity record = (FmTradeTransportEstimateEntity) parameter.get("record");
+        FmTradeTransportEstimateEntityExample example = (FmTradeTransportEstimateEntityExample) parameter.get("example");
         
         SQL sql = new SQL();
         sql.UPDATE("fm_trade_transport_estimate");
@@ -120,8 +120,8 @@ public class FmTradeTransportEntitySqlProvider {
             sql.SET("C_ORDER_CODE = #{record.cOrderCode,jdbcType=VARCHAR}");
         }
         
-        if (record.getiEstimateId() != null) {
-            sql.SET("I_ESTIMATE_ID = #{record.iEstimateId,jdbcType=INTEGER}");
+        if (record.getiEstimateServiceEfficiency() != null) {
+            sql.SET("I_ESTIMATE_SERVICE_EFFICIENCY = #{record.iEstimateServiceEfficiency,jdbcType=INTEGER}");
         }
         
         if (record.getiEstimateTransport() != null) {
@@ -156,19 +156,19 @@ public class FmTradeTransportEntitySqlProvider {
         sql.SET("I_ORDER_ID = #{record.iOrderId,jdbcType=INTEGER}");
         sql.SET("I_ORDER_TYPE_ID = #{record.iOrderTypeId,jdbcType=INTEGER}");
         sql.SET("C_ORDER_CODE = #{record.cOrderCode,jdbcType=VARCHAR}");
-        sql.SET("I_ESTIMATE_ID = #{record.iEstimateId,jdbcType=INTEGER}");
+        sql.SET("I_ESTIMATE_SERVICE_EFFICIENCY = #{record.iEstimateServiceEfficiency,jdbcType=INTEGER}");
         sql.SET("I_ESTIMATE_TRANSPORT = #{record.iEstimateTransport,jdbcType=INTEGER}");
         sql.SET("I_ESTIMATE_PARTITY = #{record.iEstimatePartity,jdbcType=INTEGER}");
         sql.SET("I_ESTIMATE_CONVININET = #{record.iEstimateConvininet,jdbcType=INTEGER}");
         sql.SET("I_ESTIMATE_OUTLINE = #{record.iEstimateOutline,jdbcType=INTEGER}");
         sql.SET("I_ESTIMATE_CONTENT = #{record.iEstimateContent,jdbcType=INTEGER}");
         
-        FmTradeTransportEntityExample example = (FmTradeTransportEntityExample) parameter.get("example");
+        FmTradeTransportEstimateEntityExample example = (FmTradeTransportEstimateEntityExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(FmTradeTransportEntity record) {
+    public String updateByPrimaryKeySelective(FmTradeTransportEstimateEntity record) {
         SQL sql = new SQL();
         sql.UPDATE("fm_trade_transport_estimate");
         
@@ -184,8 +184,8 @@ public class FmTradeTransportEntitySqlProvider {
             sql.SET("C_ORDER_CODE = #{cOrderCode,jdbcType=VARCHAR}");
         }
         
-        if (record.getiEstimateId() != null) {
-            sql.SET("I_ESTIMATE_ID = #{iEstimateId,jdbcType=INTEGER}");
+        if (record.getiEstimateServiceEfficiency() != null) {
+            sql.SET("I_ESTIMATE_SERVICE_EFFICIENCY = #{iEstimateServiceEfficiency,jdbcType=INTEGER}");
         }
         
         if (record.getiEstimateTransport() != null) {
@@ -213,7 +213,7 @@ public class FmTradeTransportEntitySqlProvider {
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, FmTradeTransportEntityExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, FmTradeTransportEstimateEntityExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }
