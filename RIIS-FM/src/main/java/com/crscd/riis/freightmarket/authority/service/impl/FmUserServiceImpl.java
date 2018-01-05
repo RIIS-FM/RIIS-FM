@@ -1,19 +1,18 @@
 package com.crscd.riis.freightmarket.authority.service.impl;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import com.crscd.riis.freightmarket.authority.dao.FmUserEntityMapper;
 import com.crscd.riis.freightmarket.authority.entity.FmUserEntity;
 import com.crscd.riis.freightmarket.authority.service.IFmUserService;
 
+@Service("userService")
 public class FmUserServiceImpl implements IFmUserService{
-	FmUserEntityMapper fmUserMapper;
+	@Resource
+	private FmUserEntityMapper fmUserMapper;
 
-	public FmUserEntityMapper getFmUserMapper() {
-		return fmUserMapper;
-	}
-
-	public void setFmUserMapper(FmUserEntityMapper fmUserMapper) {
-		this.fmUserMapper = fmUserMapper;
-	}
 	
 	@Override
 	public void insertFmUser(FmUserEntity user) {
