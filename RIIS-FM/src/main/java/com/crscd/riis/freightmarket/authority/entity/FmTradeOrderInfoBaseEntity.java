@@ -82,44 +82,11 @@ public class FmTradeOrderInfoBaseEntity {
     private Float fProtectPrice;
 
     private Float fInsuranceValue;
+    
 
-    private String cGoodsName;
-
-    private String cGoodsTypeCode;
-
-    private Float fGoodsWeight;
-
-    private Integer iGoodsRequestTrainNumber;
-
-    private Integer iGoodsRequestBoxNumber;
-
-    private Float fGoodsVolume;
-
-    private Integer iGoodsNumber;
-
-    private String cGoodsWrapper;
-
-    private Integer iGoodsSealNum;
-
-    private Integer iGoodsReinforce;
-
-    private String cGoodsFeature;
-
-    private Float fEachGoodsMaxWeight;
-
-    private String cTrainNumber;
-
-    private Integer iCanvasNumber;
-
-    private Integer cPredictTrainType;
-
-    private Integer iExtractCanvasType;
-
-    private Integer iSenderLineId;
-
-    private Integer iBoxSealNum;
-
-    private Integer iRecverLineId;
+    private FmTradeOrderInfoBoxFreightEntity fmTradeOrderInfoBoxFreightRecord;
+    private FmTradeOrderInfoFastFreightEntity fmTradeOrderInfoFastFreightRecord;
+    private FmTradeOrderInfoWholeVegicleFreightEntity fmTradeOrderInfoWholeVegicleFreightRecord;
 
     public Integer getId() {
         return id;
@@ -441,155 +408,29 @@ public class FmTradeOrderInfoBaseEntity {
         this.fInsuranceValue = fInsuranceValue;
     }
 
-    public String getcGoodsName() {
-        return cGoodsName;
-    }
+	public FmTradeOrderInfoBoxFreightEntity getFmTradeOrderInfoBoxFreightRecord() {
+		return fmTradeOrderInfoBoxFreightRecord;
+	}
 
-    public void setcGoodsName(String cGoodsName) {
-        this.cGoodsName = cGoodsName == null ? null : cGoodsName.trim();
-    }
+	public void setFmTradeOrderInfoBoxFreightRecord(FmTradeOrderInfoBoxFreightEntity fmTradeOrderInfoBoxFreightRecord) {
+		this.fmTradeOrderInfoBoxFreightRecord = fmTradeOrderInfoBoxFreightRecord;
+	}
 
-    public String getcGoodsTypeCode() {
-        return cGoodsTypeCode;
-    }
+	public FmTradeOrderInfoFastFreightEntity getFmTradeOrderInfoFastFreightRecord() {
+		return fmTradeOrderInfoFastFreightRecord;
+	}
 
-    public void setcGoodsTypeCode(String cGoodsTypeCode) {
-        this.cGoodsTypeCode = cGoodsTypeCode == null ? null : cGoodsTypeCode.trim();
-    }
+	public void setFmTradeOrderInfoFastFreightRecord(FmTradeOrderInfoFastFreightEntity fmTradeOrderInfoFastFreightRecord) {
+		this.fmTradeOrderInfoFastFreightRecord = fmTradeOrderInfoFastFreightRecord;
+	}
 
-    public Float getfGoodsWeight() {
-        return fGoodsWeight;
-    }
+	public FmTradeOrderInfoWholeVegicleFreightEntity getFmTradeOrderInfoWholeVegicleFreightRecord() {
+		return fmTradeOrderInfoWholeVegicleFreightRecord;
+	}
 
-    public void setfGoodsWeight(Float fGoodsWeight) {
-        this.fGoodsWeight = fGoodsWeight;
-    }
-
-    public Integer getiGoodsRequestTrainNumber() {
-        return iGoodsRequestTrainNumber;
-    }
-
-    public void setiGoodsRequestTrainNumber(Integer iGoodsRequestTrainNumber) {
-        this.iGoodsRequestTrainNumber = iGoodsRequestTrainNumber;
-    }
-
-    public Integer getiGoodsRequestBoxNumber() {
-        return iGoodsRequestBoxNumber;
-    }
-
-    public void setiGoodsRequestBoxNumber(Integer iGoodsRequestBoxNumber) {
-        this.iGoodsRequestBoxNumber = iGoodsRequestBoxNumber;
-    }
-
-    public Float getfGoodsVolume() {
-        return fGoodsVolume;
-    }
-
-    public void setfGoodsVolume(Float fGoodsVolume) {
-        this.fGoodsVolume = fGoodsVolume;
-    }
-
-    public Integer getiGoodsNumber() {
-        return iGoodsNumber;
-    }
-
-    public void setiGoodsNumber(Integer iGoodsNumber) {
-        this.iGoodsNumber = iGoodsNumber;
-    }
-
-    public String getcGoodsWrapper() {
-        return cGoodsWrapper;
-    }
-
-    public void setcGoodsWrapper(String cGoodsWrapper) {
-        this.cGoodsWrapper = cGoodsWrapper == null ? null : cGoodsWrapper.trim();
-    }
-
-    public Integer getiGoodsSealNum() {
-        return iGoodsSealNum;
-    }
-
-    public void setiGoodsSealNum(Integer iGoodsSealNum) {
-        this.iGoodsSealNum = iGoodsSealNum;
-    }
-
-    public Integer getiGoodsReinforce() {
-        return iGoodsReinforce;
-    }
-
-    public void setiGoodsReinforce(Integer iGoodsReinforce) {
-        this.iGoodsReinforce = iGoodsReinforce;
-    }
-
-    public String getcGoodsFeature() {
-        return cGoodsFeature;
-    }
-
-    public void setcGoodsFeature(String cGoodsFeature) {
-        this.cGoodsFeature = cGoodsFeature == null ? null : cGoodsFeature.trim();
-    }
-
-    public Float getfEachGoodsMaxWeight() {
-        return fEachGoodsMaxWeight;
-    }
-
-    public void setfEachGoodsMaxWeight(Float fEachGoodsMaxWeight) {
-        this.fEachGoodsMaxWeight = fEachGoodsMaxWeight;
-    }
-
-    public String getcTrainNumber() {
-        return cTrainNumber;
-    }
-
-    public void setcTrainNumber(String cTrainNumber) {
-        this.cTrainNumber = cTrainNumber == null ? null : cTrainNumber.trim();
-    }
-
-    public Integer getiCanvasNumber() {
-        return iCanvasNumber;
-    }
-
-    public void setiCanvasNumber(Integer iCanvasNumber) {
-        this.iCanvasNumber = iCanvasNumber;
-    }
-
-    public Integer getcPredictTrainType() {
-        return cPredictTrainType;
-    }
-
-    public void setcPredictTrainType(Integer cPredictTrainType) {
-        this.cPredictTrainType = cPredictTrainType;
-    }
-
-    public Integer getiExtractCanvasType() {
-        return iExtractCanvasType;
-    }
-
-    public void setiExtractCanvasType(Integer iExtractCanvasType) {
-        this.iExtractCanvasType = iExtractCanvasType;
-    }
-
-    public Integer getiSenderLineId() {
-        return iSenderLineId;
-    }
-
-    public void setiSenderLineId(Integer iSenderLineId) {
-        this.iSenderLineId = iSenderLineId;
-    }
-
-    public Integer getiBoxSealNum() {
-        return iBoxSealNum;
-    }
-
-    public void setiBoxSealNum(Integer iBoxSealNum) {
-        this.iBoxSealNum = iBoxSealNum;
-    }
-
-    public Integer getiRecverLineId() {
-        return iRecverLineId;
-    }
-
-    public void setiRecverLineId(Integer iRecverLineId) {
-        this.iRecverLineId = iRecverLineId;
-    }
+	public void setFmTradeOrderInfoWholeVegicleFreightRecord(
+			FmTradeOrderInfoWholeVegicleFreightEntity fmTradeOrderInfoWholeVegicleFreightRecord) {
+		this.fmTradeOrderInfoWholeVegicleFreightRecord = fmTradeOrderInfoWholeVegicleFreightRecord;
+	}
+    
 }
