@@ -188,82 +188,6 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
             sql.VALUES("F_INSURANCE_VALUE", "#{fInsuranceValue,jdbcType=REAL}");
         }
         
-        if (record.getcGoodsName() != null) {
-            sql.VALUES("C_GOODS_NAME", "#{cGoodsName,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getcGoodsTypeCode() != null) {
-            sql.VALUES("C_GOODS_TYPE_CODE", "#{cGoodsTypeCode,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getfGoodsWeight() != null) {
-            sql.VALUES("F_GOODS_WEIGHT", "#{fGoodsWeight,jdbcType=REAL}");
-        }
-        
-        if (record.getiGoodsRequestTrainNumber() != null) {
-            sql.VALUES("I_GOODS_REQUEST_TRAIN_NUMBER", "#{iGoodsRequestTrainNumber,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiGoodsRequestBoxNumber() != null) {
-            sql.VALUES("I_GOODS_REQUEST_BOX_NUMBER", "#{iGoodsRequestBoxNumber,jdbcType=INTEGER}");
-        }
-        
-        if (record.getfGoodsVolume() != null) {
-            sql.VALUES("F_GOODS_VOLUME", "#{fGoodsVolume,jdbcType=REAL}");
-        }
-        
-        if (record.getiGoodsNumber() != null) {
-            sql.VALUES("I_GOODS_NUMBER", "#{iGoodsNumber,jdbcType=INTEGER}");
-        }
-        
-        if (record.getcGoodsWrapper() != null) {
-            sql.VALUES("C_GOODS_WRAPPER", "#{cGoodsWrapper,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getiGoodsSealNum() != null) {
-            sql.VALUES("I_GOODS_SEAL_NUM", "#{iGoodsSealNum,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiGoodsReinforce() != null) {
-            sql.VALUES("I_GOODS_REINFORCE", "#{iGoodsReinforce,jdbcType=INTEGER}");
-        }
-        
-        if (record.getcGoodsFeature() != null) {
-            sql.VALUES("C_GOODS_FEATURE", "#{cGoodsFeature,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getfEachGoodsMaxWeight() != null) {
-            sql.VALUES("F_EACH_GOODS_MAX_WEIGHT", "#{fEachGoodsMaxWeight,jdbcType=REAL}");
-        }
-        
-        if (record.getcTrainNumber() != null) {
-            sql.VALUES("C_TRAIN_NUMBER", "#{cTrainNumber,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getiCanvasNumber() != null) {
-            sql.VALUES("I_CANVAS_NUMBER", "#{iCanvasNumber,jdbcType=INTEGER}");
-        }
-        
-        if (record.getcPredictTrainType() != null) {
-            sql.VALUES("C_PREDICT_TRAIN_TYPE", "#{cPredictTrainType,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiExtractCanvasType() != null) {
-            sql.VALUES("I_EXTRACT_CANVAS_TYPE", "#{iExtractCanvasType,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiSenderLineId() != null) {
-            sql.VALUES("I_SENDER_LINE_ID", "#{iSenderLineId,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiBoxSealNum() != null) {
-            sql.VALUES("I_BOX_SEAL_NUM", "#{iBoxSealNum,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiRecverLineId() != null) {
-            sql.VALUES("I_RECVER_LINE_ID", "#{iRecverLineId,jdbcType=INTEGER}");
-        }
-        
         return sql.toString();
     }
 
@@ -313,25 +237,6 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         sql.SELECT("I_LOGISTICS_TYPE");
         sql.SELECT("F_PROTECT_PRICE");
         sql.SELECT("F_INSURANCE_VALUE");
-        sql.SELECT("C_GOODS_NAME");
-        sql.SELECT("C_GOODS_TYPE_CODE");
-        sql.SELECT("F_GOODS_WEIGHT");
-        sql.SELECT("I_GOODS_REQUEST_TRAIN_NUMBER");
-        sql.SELECT("I_GOODS_REQUEST_BOX_NUMBER");
-        sql.SELECT("F_GOODS_VOLUME");
-        sql.SELECT("I_GOODS_NUMBER");
-        sql.SELECT("C_GOODS_WRAPPER");
-        sql.SELECT("I_GOODS_SEAL_NUM");
-        sql.SELECT("I_GOODS_REINFORCE");
-        sql.SELECT("C_GOODS_FEATURE");
-        sql.SELECT("F_EACH_GOODS_MAX_WEIGHT");
-        sql.SELECT("C_TRAIN_NUMBER");
-        sql.SELECT("I_CANVAS_NUMBER");
-        sql.SELECT("C_PREDICT_TRAIN_TYPE");
-        sql.SELECT("I_EXTRACT_CANVAS_TYPE");
-        sql.SELECT("I_SENDER_LINE_ID");
-        sql.SELECT("I_BOX_SEAL_NUM");
-        sql.SELECT("I_RECVER_LINE_ID");
         sql.FROM("fm_trade_order_info_base");
         applyWhere(sql, example, false);
         
@@ -509,82 +414,6 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
             sql.SET("F_INSURANCE_VALUE = #{record.fInsuranceValue,jdbcType=REAL}");
         }
         
-        if (record.getcGoodsName() != null) {
-            sql.SET("C_GOODS_NAME = #{record.cGoodsName,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getcGoodsTypeCode() != null) {
-            sql.SET("C_GOODS_TYPE_CODE = #{record.cGoodsTypeCode,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getfGoodsWeight() != null) {
-            sql.SET("F_GOODS_WEIGHT = #{record.fGoodsWeight,jdbcType=REAL}");
-        }
-        
-        if (record.getiGoodsRequestTrainNumber() != null) {
-            sql.SET("I_GOODS_REQUEST_TRAIN_NUMBER = #{record.iGoodsRequestTrainNumber,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiGoodsRequestBoxNumber() != null) {
-            sql.SET("I_GOODS_REQUEST_BOX_NUMBER = #{record.iGoodsRequestBoxNumber,jdbcType=INTEGER}");
-        }
-        
-        if (record.getfGoodsVolume() != null) {
-            sql.SET("F_GOODS_VOLUME = #{record.fGoodsVolume,jdbcType=REAL}");
-        }
-        
-        if (record.getiGoodsNumber() != null) {
-            sql.SET("I_GOODS_NUMBER = #{record.iGoodsNumber,jdbcType=INTEGER}");
-        }
-        
-        if (record.getcGoodsWrapper() != null) {
-            sql.SET("C_GOODS_WRAPPER = #{record.cGoodsWrapper,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getiGoodsSealNum() != null) {
-            sql.SET("I_GOODS_SEAL_NUM = #{record.iGoodsSealNum,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiGoodsReinforce() != null) {
-            sql.SET("I_GOODS_REINFORCE = #{record.iGoodsReinforce,jdbcType=INTEGER}");
-        }
-        
-        if (record.getcGoodsFeature() != null) {
-            sql.SET("C_GOODS_FEATURE = #{record.cGoodsFeature,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getfEachGoodsMaxWeight() != null) {
-            sql.SET("F_EACH_GOODS_MAX_WEIGHT = #{record.fEachGoodsMaxWeight,jdbcType=REAL}");
-        }
-        
-        if (record.getcTrainNumber() != null) {
-            sql.SET("C_TRAIN_NUMBER = #{record.cTrainNumber,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getiCanvasNumber() != null) {
-            sql.SET("I_CANVAS_NUMBER = #{record.iCanvasNumber,jdbcType=INTEGER}");
-        }
-        
-        if (record.getcPredictTrainType() != null) {
-            sql.SET("C_PREDICT_TRAIN_TYPE = #{record.cPredictTrainType,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiExtractCanvasType() != null) {
-            sql.SET("I_EXTRACT_CANVAS_TYPE = #{record.iExtractCanvasType,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiSenderLineId() != null) {
-            sql.SET("I_SENDER_LINE_ID = #{record.iSenderLineId,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiBoxSealNum() != null) {
-            sql.SET("I_BOX_SEAL_NUM = #{record.iBoxSealNum,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiRecverLineId() != null) {
-            sql.SET("I_RECVER_LINE_ID = #{record.iRecverLineId,jdbcType=INTEGER}");
-        }
-        
         applyWhere(sql, example, true);
         return sql.toString();
     }
@@ -633,25 +462,6 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         sql.SET("I_LOGISTICS_TYPE = #{record.iLogisticsType,jdbcType=INTEGER}");
         sql.SET("F_PROTECT_PRICE = #{record.fProtectPrice,jdbcType=REAL}");
         sql.SET("F_INSURANCE_VALUE = #{record.fInsuranceValue,jdbcType=REAL}");
-        sql.SET("C_GOODS_NAME = #{record.cGoodsName,jdbcType=VARCHAR}");
-        sql.SET("C_GOODS_TYPE_CODE = #{record.cGoodsTypeCode,jdbcType=VARCHAR}");
-        sql.SET("F_GOODS_WEIGHT = #{record.fGoodsWeight,jdbcType=REAL}");
-        sql.SET("I_GOODS_REQUEST_TRAIN_NUMBER = #{record.iGoodsRequestTrainNumber,jdbcType=INTEGER}");
-        sql.SET("I_GOODS_REQUEST_BOX_NUMBER = #{record.iGoodsRequestBoxNumber,jdbcType=INTEGER}");
-        sql.SET("F_GOODS_VOLUME = #{record.fGoodsVolume,jdbcType=REAL}");
-        sql.SET("I_GOODS_NUMBER = #{record.iGoodsNumber,jdbcType=INTEGER}");
-        sql.SET("C_GOODS_WRAPPER = #{record.cGoodsWrapper,jdbcType=VARCHAR}");
-        sql.SET("I_GOODS_SEAL_NUM = #{record.iGoodsSealNum,jdbcType=INTEGER}");
-        sql.SET("I_GOODS_REINFORCE = #{record.iGoodsReinforce,jdbcType=INTEGER}");
-        sql.SET("C_GOODS_FEATURE = #{record.cGoodsFeature,jdbcType=VARCHAR}");
-        sql.SET("F_EACH_GOODS_MAX_WEIGHT = #{record.fEachGoodsMaxWeight,jdbcType=REAL}");
-        sql.SET("C_TRAIN_NUMBER = #{record.cTrainNumber,jdbcType=VARCHAR}");
-        sql.SET("I_CANVAS_NUMBER = #{record.iCanvasNumber,jdbcType=INTEGER}");
-        sql.SET("C_PREDICT_TRAIN_TYPE = #{record.cPredictTrainType,jdbcType=INTEGER}");
-        sql.SET("I_EXTRACT_CANVAS_TYPE = #{record.iExtractCanvasType,jdbcType=INTEGER}");
-        sql.SET("I_SENDER_LINE_ID = #{record.iSenderLineId,jdbcType=INTEGER}");
-        sql.SET("I_BOX_SEAL_NUM = #{record.iBoxSealNum,jdbcType=INTEGER}");
-        sql.SET("I_RECVER_LINE_ID = #{record.iRecverLineId,jdbcType=INTEGER}");
         
         FmTradeOrderInfoBaseEntityExample example = (FmTradeOrderInfoBaseEntityExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -816,82 +626,6 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         
         if (record.getfInsuranceValue() != null) {
             sql.SET("F_INSURANCE_VALUE = #{fInsuranceValue,jdbcType=REAL}");
-        }
-        
-        if (record.getcGoodsName() != null) {
-            sql.SET("C_GOODS_NAME = #{cGoodsName,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getcGoodsTypeCode() != null) {
-            sql.SET("C_GOODS_TYPE_CODE = #{cGoodsTypeCode,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getfGoodsWeight() != null) {
-            sql.SET("F_GOODS_WEIGHT = #{fGoodsWeight,jdbcType=REAL}");
-        }
-        
-        if (record.getiGoodsRequestTrainNumber() != null) {
-            sql.SET("I_GOODS_REQUEST_TRAIN_NUMBER = #{iGoodsRequestTrainNumber,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiGoodsRequestBoxNumber() != null) {
-            sql.SET("I_GOODS_REQUEST_BOX_NUMBER = #{iGoodsRequestBoxNumber,jdbcType=INTEGER}");
-        }
-        
-        if (record.getfGoodsVolume() != null) {
-            sql.SET("F_GOODS_VOLUME = #{fGoodsVolume,jdbcType=REAL}");
-        }
-        
-        if (record.getiGoodsNumber() != null) {
-            sql.SET("I_GOODS_NUMBER = #{iGoodsNumber,jdbcType=INTEGER}");
-        }
-        
-        if (record.getcGoodsWrapper() != null) {
-            sql.SET("C_GOODS_WRAPPER = #{cGoodsWrapper,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getiGoodsSealNum() != null) {
-            sql.SET("I_GOODS_SEAL_NUM = #{iGoodsSealNum,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiGoodsReinforce() != null) {
-            sql.SET("I_GOODS_REINFORCE = #{iGoodsReinforce,jdbcType=INTEGER}");
-        }
-        
-        if (record.getcGoodsFeature() != null) {
-            sql.SET("C_GOODS_FEATURE = #{cGoodsFeature,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getfEachGoodsMaxWeight() != null) {
-            sql.SET("F_EACH_GOODS_MAX_WEIGHT = #{fEachGoodsMaxWeight,jdbcType=REAL}");
-        }
-        
-        if (record.getcTrainNumber() != null) {
-            sql.SET("C_TRAIN_NUMBER = #{cTrainNumber,jdbcType=VARCHAR}");
-        }
-        
-        if (record.getiCanvasNumber() != null) {
-            sql.SET("I_CANVAS_NUMBER = #{iCanvasNumber,jdbcType=INTEGER}");
-        }
-        
-        if (record.getcPredictTrainType() != null) {
-            sql.SET("C_PREDICT_TRAIN_TYPE = #{cPredictTrainType,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiExtractCanvasType() != null) {
-            sql.SET("I_EXTRACT_CANVAS_TYPE = #{iExtractCanvasType,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiSenderLineId() != null) {
-            sql.SET("I_SENDER_LINE_ID = #{iSenderLineId,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiBoxSealNum() != null) {
-            sql.SET("I_BOX_SEAL_NUM = #{iBoxSealNum,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiRecverLineId() != null) {
-            sql.SET("I_RECVER_LINE_ID = #{iRecverLineId,jdbcType=INTEGER}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");
