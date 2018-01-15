@@ -2,6 +2,8 @@ package com.crscd.riis.freightmarket.authority.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class FmTradeOrderInfoBaseEntity {
     private Integer id;
 
@@ -116,6 +118,7 @@ public class FmTradeOrderInfoBaseEntity {
         this.iOrderTypeId = iOrderTypeId;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm",timezone = "GMT+8")
     public Date getdOrderDateline() {
         return dOrderDateline;
     }
