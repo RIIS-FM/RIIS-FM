@@ -2265,6 +2265,126 @@ public class FmTradeOrderInfoBaseEntityExample {
             return (Criteria) this;
         }
 
+        public Criteria andDOrderTemminateTimeIsNull() {
+            addCriterion("D_ORDER_TEMMINATE_TIME is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDOrderTemminateTimeIsNotNull() {
+            addCriterion("D_ORDER_TEMMINATE_TIME is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDOrderTemminateTimeEqualTo(Date value) {
+            addCriterion("D_ORDER_TEMMINATE_TIME =", value, "dOrderTemminateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDOrderTemminateTimeNotEqualTo(Date value) {
+            addCriterion("D_ORDER_TEMMINATE_TIME <>", value, "dOrderTemminateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDOrderTemminateTimeGreaterThan(Date value) {
+            addCriterion("D_ORDER_TEMMINATE_TIME >", value, "dOrderTemminateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDOrderTemminateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("D_ORDER_TEMMINATE_TIME >=", value, "dOrderTemminateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDOrderTemminateTimeLessThan(Date value) {
+            addCriterion("D_ORDER_TEMMINATE_TIME <", value, "dOrderTemminateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDOrderTemminateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("D_ORDER_TEMMINATE_TIME <=", value, "dOrderTemminateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDOrderTemminateTimeIn(List<Date> values) {
+            addCriterion("D_ORDER_TEMMINATE_TIME in", values, "dOrderTemminateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDOrderTemminateTimeNotIn(List<Date> values) {
+            addCriterion("D_ORDER_TEMMINATE_TIME not in", values, "dOrderTemminateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDOrderTemminateTimeBetween(Date value1, Date value2) {
+            addCriterion("D_ORDER_TEMMINATE_TIME between", value1, value2, "dOrderTemminateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDOrderTemminateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("D_ORDER_TEMMINATE_TIME not between", value1, value2, "dOrderTemminateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andIOrderTemminateIsNull() {
+            addCriterion("I_ORDER_TEMMINATE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIOrderTemminateIsNotNull() {
+            addCriterion("I_ORDER_TEMMINATE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIOrderTemminateEqualTo(Integer value) {
+            addCriterion("I_ORDER_TEMMINATE =", value, "iOrderTemminate");
+            return (Criteria) this;
+        }
+
+        public Criteria andIOrderTemminateNotEqualTo(Integer value) {
+            addCriterion("I_ORDER_TEMMINATE <>", value, "iOrderTemminate");
+            return (Criteria) this;
+        }
+
+        public Criteria andIOrderTemminateGreaterThan(Integer value) {
+            addCriterion("I_ORDER_TEMMINATE >", value, "iOrderTemminate");
+            return (Criteria) this;
+        }
+
+        public Criteria andIOrderTemminateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("I_ORDER_TEMMINATE >=", value, "iOrderTemminate");
+            return (Criteria) this;
+        }
+
+        public Criteria andIOrderTemminateLessThan(Integer value) {
+            addCriterion("I_ORDER_TEMMINATE <", value, "iOrderTemminate");
+            return (Criteria) this;
+        }
+
+        public Criteria andIOrderTemminateLessThanOrEqualTo(Integer value) {
+            addCriterion("I_ORDER_TEMMINATE <=", value, "iOrderTemminate");
+            return (Criteria) this;
+        }
+
+        public Criteria andIOrderTemminateIn(List<Integer> values) {
+            addCriterion("I_ORDER_TEMMINATE in", values, "iOrderTemminate");
+            return (Criteria) this;
+        }
+
+        public Criteria andIOrderTemminateNotIn(List<Integer> values) {
+            addCriterion("I_ORDER_TEMMINATE not in", values, "iOrderTemminate");
+            return (Criteria) this;
+        }
+
+        public Criteria andIOrderTemminateBetween(Integer value1, Integer value2) {
+            addCriterion("I_ORDER_TEMMINATE between", value1, value2, "iOrderTemminate");
+            return (Criteria) this;
+        }
+
+        public Criteria andIOrderTemminateNotBetween(Integer value1, Integer value2) {
+            addCriterion("I_ORDER_TEMMINATE not between", value1, value2, "iOrderTemminate");
+            return (Criteria) this;
+        }
+
         public Criteria andIOrderDeleteIsNull() {
             addCriterion("I_ORDER_DELETE is null");
             return (Criteria) this;

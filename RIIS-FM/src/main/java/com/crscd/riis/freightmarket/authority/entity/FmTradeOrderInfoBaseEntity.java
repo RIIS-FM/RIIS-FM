@@ -69,6 +69,10 @@ public class FmTradeOrderInfoBaseEntity {
 
     private Date dOrderEndTime;
 
+    private Date dOrderTemminateTime;
+
+    private Integer iOrderTemminate;
+
     private Integer iOrderDelete;
 
     private Date dOrderDeleteTime;
@@ -352,6 +356,22 @@ public class FmTradeOrderInfoBaseEntity {
         this.dOrderEndTime = dOrderEndTime;
     }
 
+    public Date getdOrderTemminateTime() {
+        return dOrderTemminateTime;
+    }
+
+    public void setdOrderTemminateTime(Date dOrderTemminateTime) {
+        this.dOrderTemminateTime = dOrderTemminateTime;
+    }
+
+    public Integer getiOrderTemminate() {
+        return iOrderTemminate;
+    }
+
+    public void setiOrderTemminate(Integer iOrderTemminate) {
+        this.iOrderTemminate = iOrderTemminate;
+    }
+
     public Integer getiOrderDelete() {
         return iOrderDelete;
     }
@@ -432,5 +452,6 @@ public class FmTradeOrderInfoBaseEntity {
 			FmTradeOrderInfoWholeVegicleFreightEntity fmTradeOrderInfoWholeVegicleFreightRecord) {
 		this.fmTradeOrderInfoWholeVegicleFreightRecord = fmTradeOrderInfoWholeVegicleFreightRecord;
 	}
+    
     
 }

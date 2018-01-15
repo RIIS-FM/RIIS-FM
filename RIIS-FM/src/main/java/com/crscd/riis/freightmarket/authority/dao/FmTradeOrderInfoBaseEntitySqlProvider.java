@@ -160,6 +160,14 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
             sql.VALUES("D_ORDER_END_TIME", "#{dOrderEndTime,jdbcType=TIMESTAMP}");
         }
         
+        if (record.getdOrderTemminateTime() != null) {
+            sql.VALUES("D_ORDER_TEMMINATE_TIME", "#{dOrderTemminateTime,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getiOrderTemminate() != null) {
+            sql.VALUES("I_ORDER_TEMMINATE", "#{iOrderTemminate,jdbcType=INTEGER}");
+        }
+        
         if (record.getiOrderDelete() != null) {
             sql.VALUES("I_ORDER_DELETE", "#{iOrderDelete,jdbcType=INTEGER}");
         }
@@ -230,6 +238,8 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         sql.SELECT("I_ORDER_SPLITE");
         sql.SELECT("D_ORDER_CREATE_TIME");
         sql.SELECT("D_ORDER_END_TIME");
+        sql.SELECT("D_ORDER_TEMMINATE_TIME");
+        sql.SELECT("I_ORDER_TEMMINATE");
         sql.SELECT("I_ORDER_DELETE");
         sql.SELECT("D_ORDER_DELETE_TIME");
         sql.SELECT("D_ORDER_ALTER_TIME");
@@ -386,6 +396,14 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
             sql.SET("D_ORDER_END_TIME = #{record.dOrderEndTime,jdbcType=TIMESTAMP}");
         }
         
+        if (record.getdOrderTemminateTime() != null) {
+            sql.SET("D_ORDER_TEMMINATE_TIME = #{record.dOrderTemminateTime,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getiOrderTemminate() != null) {
+            sql.SET("I_ORDER_TEMMINATE = #{record.iOrderTemminate,jdbcType=INTEGER}");
+        }
+        
         if (record.getiOrderDelete() != null) {
             sql.SET("I_ORDER_DELETE = #{record.iOrderDelete,jdbcType=INTEGER}");
         }
@@ -455,6 +473,8 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         sql.SET("I_ORDER_SPLITE = #{record.iOrderSplite,jdbcType=INTEGER}");
         sql.SET("D_ORDER_CREATE_TIME = #{record.dOrderCreateTime,jdbcType=TIMESTAMP}");
         sql.SET("D_ORDER_END_TIME = #{record.dOrderEndTime,jdbcType=TIMESTAMP}");
+        sql.SET("D_ORDER_TEMMINATE_TIME = #{record.dOrderTemminateTime,jdbcType=TIMESTAMP}");
+        sql.SET("I_ORDER_TEMMINATE = #{record.iOrderTemminate,jdbcType=INTEGER}");
         sql.SET("I_ORDER_DELETE = #{record.iOrderDelete,jdbcType=INTEGER}");
         sql.SET("D_ORDER_DELETE_TIME = #{record.dOrderDeleteTime,jdbcType=TIMESTAMP}");
         sql.SET("D_ORDER_ALTER_TIME = #{record.dOrderAlterTime,jdbcType=TIMESTAMP}");
@@ -598,6 +618,14 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         
         if (record.getdOrderEndTime() != null) {
             sql.SET("D_ORDER_END_TIME = #{dOrderEndTime,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getdOrderTemminateTime() != null) {
+            sql.SET("D_ORDER_TEMMINATE_TIME = #{dOrderTemminateTime,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getiOrderTemminate() != null) {
+            sql.SET("I_ORDER_TEMMINATE = #{iOrderTemminate,jdbcType=INTEGER}");
         }
         
         if (record.getiOrderDelete() != null) {
