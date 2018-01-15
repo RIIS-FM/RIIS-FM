@@ -87,6 +87,14 @@ public class FmTradeOrderInfoBaseServiceImpl implements IFmTradeOrderInfoBaseSer
 		if ( deleteOrder == 0) {
 			record.setdOrderDeleteTime(time);
 		}
+		
+		/* *
+         * 设置订单取消时间
+         * */
+		int temminateOrder = record.getiOrderTemminate();
+		if ( temminateOrder == 0){
+			record.setdOrderTemminateTime(time);
+		}
 		int ret = fmTradeOrderInfoBaseEntityMapper.updateByPrimaryKey(record);
 		return ret;
 	}
