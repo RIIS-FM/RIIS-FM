@@ -100,6 +100,34 @@ public interface FmTradeOrderInfoBoxFreightEntityMapper {
         @Result(column="I_RECVER_LINE_ID", property="iRecverLineId", jdbcType=JdbcType.INTEGER)
     })
     FmTradeOrderInfoBoxFreightEntity selectByPrimaryKey(Integer id);
+    
+    @Select({
+        "select",
+        "id, I_ORDER_ID, C_GOODS_NAME, C_GOODS_CODE, C_GOODS_FEATURE, I_BOX_GET_TYPE, ",
+        "I_BOX_NUMBER, I_BOX_TYPE, I_BOX_NUM, I_BOX_SEAL_NUM, D_BOX_RECVER_TIME, F_GOODS_WEIGHT, ",
+        "C_SENDER_BOX_STATION, I_FULLBOX_IN_STATION, I_SENDER_LINE_ID, I_RECVER_LINE_ID",
+        "from fm_trade_order_info_box_freight",
+        "where I_ORDER_ID = #{orderId,jdbcType=INTEGER}"
+    })
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="I_ORDER_ID", property="iOrderId", jdbcType=JdbcType.INTEGER),
+        @Result(column="C_GOODS_NAME", property="cGoodsName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_GOODS_CODE", property="cGoodsCode", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_GOODS_FEATURE", property="cGoodsFeature", jdbcType=JdbcType.VARCHAR),
+        @Result(column="I_BOX_GET_TYPE", property="iBoxGetType", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_BOX_NUMBER", property="iBoxNumber", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_BOX_TYPE", property="iBoxType", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_BOX_NUM", property="iBoxNum", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_BOX_SEAL_NUM", property="iBoxSealNum", jdbcType=JdbcType.INTEGER),
+        @Result(column="D_BOX_RECVER_TIME", property="dBoxRecverTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="F_GOODS_WEIGHT", property="fGoodsWeight", jdbcType=JdbcType.REAL),
+        @Result(column="C_SENDER_BOX_STATION", property="cSenderBoxStation", jdbcType=JdbcType.VARCHAR),
+        @Result(column="I_FULLBOX_IN_STATION", property="iFullboxInStation", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_SENDER_LINE_ID", property="iSenderLineId", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_RECVER_LINE_ID", property="iRecverLineId", jdbcType=JdbcType.INTEGER)
+    })
+    FmTradeOrderInfoBoxFreightEntity selectByOrderId(Integer orderId);
 
     @UpdateProvider(type=FmTradeOrderInfoBoxFreightEntitySqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") FmTradeOrderInfoBoxFreightEntity record, @Param("example") FmTradeOrderInfoBoxFreightEntityExample example);
