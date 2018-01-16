@@ -30,12 +30,12 @@ public interface FmTradeOrderTypeEntityMapper {
     int deleteByPrimaryKey(Integer id);
 
     @Insert({
-        "insert into fm_trade_order_type (id, C_TYPE_LABEL, ",
+        "insert into fm_trade_order_type (id, I_TYPE_LABEL, ",
         "C_TYPE_VALUE, D_TYPE_CREATE_TIME, ",
         "D_TYPE_MODIFY_TIME, D_TYPE_DELETE_TIME, ",
         "I_TYPE_CREATER, I_TYPE_MODIFIER, ",
         "I_TYPE_DELETE)",
-        "values (#{id,jdbcType=INTEGER}, #{cTypeLabel,jdbcType=VARCHAR}, ",
+        "values (#{id,jdbcType=INTEGER}, #{iTypeLabel,jdbcType=VARCHAR}, ",
         "#{cTypeValue,jdbcType=VARCHAR}, #{dTypeCreateTime,jdbcType=TIMESTAMP}, ",
         "#{dTypeModifyTime,jdbcType=TIMESTAMP}, #{dTypeDeleteTime,jdbcType=TIMESTAMP}, ",
         "#{iTypeCreater,jdbcType=INTEGER}, #{iTypeModifier,jdbcType=INTEGER}, ",
@@ -49,7 +49,7 @@ public interface FmTradeOrderTypeEntityMapper {
     @SelectProvider(type=FmTradeOrderTypeEntitySqlProvider.class, method="selectByExample")
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="C_TYPE_LABEL", property="cTypeLabel", jdbcType=JdbcType.VARCHAR),
+        @Result(column="I_TYPE_LABEL", property="iTypeLabel", jdbcType=JdbcType.VARCHAR),
         @Result(column="C_TYPE_VALUE", property="cTypeValue", jdbcType=JdbcType.VARCHAR),
         @Result(column="D_TYPE_CREATE_TIME", property="dTypeCreateTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="D_TYPE_MODIFY_TIME", property="dTypeModifyTime", jdbcType=JdbcType.TIMESTAMP),
@@ -62,14 +62,14 @@ public interface FmTradeOrderTypeEntityMapper {
 
     @Select({
         "select",
-        "id, C_TYPE_LABEL, C_TYPE_VALUE, D_TYPE_CREATE_TIME, D_TYPE_MODIFY_TIME, D_TYPE_DELETE_TIME, ",
+        "id, I_TYPE_LABEL, C_TYPE_VALUE, D_TYPE_CREATE_TIME, D_TYPE_MODIFY_TIME, D_TYPE_DELETE_TIME, ",
         "I_TYPE_CREATER, I_TYPE_MODIFIER, I_TYPE_DELETE",
         "from fm_trade_order_type",
         "where id = #{id,jdbcType=INTEGER}"
     })
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="C_TYPE_LABEL", property="cTypeLabel", jdbcType=JdbcType.VARCHAR),
+        @Result(column="I_TYPE_LABEL", property="iTypeLabel", jdbcType=JdbcType.VARCHAR),
         @Result(column="C_TYPE_VALUE", property="cTypeValue", jdbcType=JdbcType.VARCHAR),
         @Result(column="D_TYPE_CREATE_TIME", property="dTypeCreateTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="D_TYPE_MODIFY_TIME", property="dTypeModifyTime", jdbcType=JdbcType.TIMESTAMP),
@@ -91,7 +91,7 @@ public interface FmTradeOrderTypeEntityMapper {
 
     @Update({
         "update fm_trade_order_type",
-        "set C_TYPE_LABEL = #{cTypeLabel,jdbcType=VARCHAR},",
+        "set I_TYPE_LABEL = #{iTypeLabel,jdbcType=VARCHAR},",
           "C_TYPE_VALUE = #{cTypeValue,jdbcType=VARCHAR},",
           "D_TYPE_CREATE_TIME = #{dTypeCreateTime,jdbcType=TIMESTAMP},",
           "D_TYPE_MODIFY_TIME = #{dTypeModifyTime,jdbcType=TIMESTAMP},",

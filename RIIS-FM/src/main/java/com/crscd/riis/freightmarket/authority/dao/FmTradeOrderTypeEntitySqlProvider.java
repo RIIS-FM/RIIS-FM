@@ -32,8 +32,8 @@ public class FmTradeOrderTypeEntitySqlProvider {
             sql.VALUES("id", "#{id,jdbcType=INTEGER}");
         }
         
-        if (record.getcTypeLabel() != null) {
-            sql.VALUES("C_TYPE_LABEL", "#{cTypeLabel,jdbcType=VARCHAR}");
+        if (record.getiTypeLabel() != null) {
+            sql.VALUES("I_TYPE_LABEL", "#{iTypeLabel,jdbcType=VARCHAR}");
         }
         
         if (record.getcTypeValue() != null) {
@@ -74,7 +74,7 @@ public class FmTradeOrderTypeEntitySqlProvider {
         } else {
             sql.SELECT("id");
         }
-        sql.SELECT("C_TYPE_LABEL");
+        sql.SELECT("I_TYPE_LABEL");
         sql.SELECT("C_TYPE_VALUE");
         sql.SELECT("D_TYPE_CREATE_TIME");
         sql.SELECT("D_TYPE_MODIFY_TIME");
@@ -103,8 +103,8 @@ public class FmTradeOrderTypeEntitySqlProvider {
             sql.SET("id = #{record.id,jdbcType=INTEGER}");
         }
         
-        if (record.getcTypeLabel() != null) {
-            sql.SET("C_TYPE_LABEL = #{record.cTypeLabel,jdbcType=VARCHAR}");
+        if (record.getiTypeLabel() != null) {
+            sql.SET("I_TYPE_LABEL = #{record.iTypeLabel,jdbcType=VARCHAR}");
         }
         
         if (record.getcTypeValue() != null) {
@@ -144,7 +144,7 @@ public class FmTradeOrderTypeEntitySqlProvider {
         sql.UPDATE("fm_trade_order_type");
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("C_TYPE_LABEL = #{record.cTypeLabel,jdbcType=VARCHAR}");
+        sql.SET("I_TYPE_LABEL = #{record.iTypeLabel,jdbcType=VARCHAR}");
         sql.SET("C_TYPE_VALUE = #{record.cTypeValue,jdbcType=VARCHAR}");
         sql.SET("D_TYPE_CREATE_TIME = #{record.dTypeCreateTime,jdbcType=TIMESTAMP}");
         sql.SET("D_TYPE_MODIFY_TIME = #{record.dTypeModifyTime,jdbcType=TIMESTAMP}");
@@ -162,8 +162,8 @@ public class FmTradeOrderTypeEntitySqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("fm_trade_order_type");
         
-        if (record.getcTypeLabel() != null) {
-            sql.SET("C_TYPE_LABEL = #{cTypeLabel,jdbcType=VARCHAR}");
+        if (record.getiTypeLabel() != null) {
+            sql.SET("I_TYPE_LABEL = #{iTypeLabel,jdbcType=VARCHAR}");
         }
         
         if (record.getcTypeValue() != null) {

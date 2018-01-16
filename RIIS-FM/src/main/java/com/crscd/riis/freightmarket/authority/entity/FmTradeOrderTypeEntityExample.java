@@ -165,73 +165,73 @@ public class FmTradeOrderTypeEntityExample {
             return (Criteria) this;
         }
 
-        public Criteria andCTypeLabelIsNull() {
-            addCriterion("C_TYPE_LABEL is null");
+        public Criteria andITypeLabelIsNull() {
+            addCriterion("I_TYPE_LABEL is null");
             return (Criteria) this;
         }
 
-        public Criteria andCTypeLabelIsNotNull() {
-            addCriterion("C_TYPE_LABEL is not null");
+        public Criteria andITypeLabelIsNotNull() {
+            addCriterion("I_TYPE_LABEL is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCTypeLabelEqualTo(String value) {
-            addCriterion("C_TYPE_LABEL =", value, "cTypeLabel");
+        public Criteria andITypeLabelEqualTo(String value) {
+            addCriterion("I_TYPE_LABEL =", value, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andCTypeLabelNotEqualTo(String value) {
-            addCriterion("C_TYPE_LABEL <>", value, "cTypeLabel");
+        public Criteria andITypeLabelNotEqualTo(String value) {
+            addCriterion("I_TYPE_LABEL <>", value, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andCTypeLabelGreaterThan(String value) {
-            addCriterion("C_TYPE_LABEL >", value, "cTypeLabel");
+        public Criteria andITypeLabelGreaterThan(String value) {
+            addCriterion("I_TYPE_LABEL >", value, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andCTypeLabelGreaterThanOrEqualTo(String value) {
-            addCriterion("C_TYPE_LABEL >=", value, "cTypeLabel");
+        public Criteria andITypeLabelGreaterThanOrEqualTo(String value) {
+            addCriterion("I_TYPE_LABEL >=", value, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andCTypeLabelLessThan(String value) {
-            addCriterion("C_TYPE_LABEL <", value, "cTypeLabel");
+        public Criteria andITypeLabelLessThan(String value) {
+            addCriterion("I_TYPE_LABEL <", value, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andCTypeLabelLessThanOrEqualTo(String value) {
-            addCriterion("C_TYPE_LABEL <=", value, "cTypeLabel");
+        public Criteria andITypeLabelLessThanOrEqualTo(String value) {
+            addCriterion("I_TYPE_LABEL <=", value, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andCTypeLabelLike(String value) {
-            addCriterion("C_TYPE_LABEL like", value, "cTypeLabel");
+        public Criteria andITypeLabelLike(String value) {
+            addCriterion("I_TYPE_LABEL like", value, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andCTypeLabelNotLike(String value) {
-            addCriterion("C_TYPE_LABEL not like", value, "cTypeLabel");
+        public Criteria andITypeLabelNotLike(String value) {
+            addCriterion("I_TYPE_LABEL not like", value, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andCTypeLabelIn(List<String> values) {
-            addCriterion("C_TYPE_LABEL in", values, "cTypeLabel");
+        public Criteria andITypeLabelIn(List<String> values) {
+            addCriterion("I_TYPE_LABEL in", values, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andCTypeLabelNotIn(List<String> values) {
-            addCriterion("C_TYPE_LABEL not in", values, "cTypeLabel");
+        public Criteria andITypeLabelNotIn(List<String> values) {
+            addCriterion("I_TYPE_LABEL not in", values, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andCTypeLabelBetween(String value1, String value2) {
-            addCriterion("C_TYPE_LABEL between", value1, value2, "cTypeLabel");
+        public Criteria andITypeLabelBetween(String value1, String value2) {
+            addCriterion("I_TYPE_LABEL between", value1, value2, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andCTypeLabelNotBetween(String value1, String value2) {
-            addCriterion("C_TYPE_LABEL not between", value1, value2, "cTypeLabel");
+        public Criteria andITypeLabelNotBetween(String value1, String value2) {
+            addCriterion("I_TYPE_LABEL not between", value1, value2, "iTypeLabel");
             return (Criteria) this;
         }
 
