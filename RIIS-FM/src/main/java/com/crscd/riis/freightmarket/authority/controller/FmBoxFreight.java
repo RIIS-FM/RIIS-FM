@@ -29,45 +29,8 @@ public class FmBoxFreight {
 	@ResponseBody
 	public int saveboxfreightorder(@RequestBody FmTradeOrderInfoBaseEntity record) {
 			
-		FmTradeOrderInfoBoxFreightEntity recordBox = record.getFmTradeOrderInfoBoxFreightRecord();
-		int retStr = -1;
-		int retiOrderId = 0;
-		int orderState = -1;
-        /* *
-         * 判断是否插入重复的订单信息
-         * 	*/
-		long countRecord = tradeOrderInfoBaseService.countOrderNumber(record);
-		long countRecordBox = tradeOrderBoxFreightService.countOrderNumber(recordBox);
-		
-		if ( countRecord == 0 && countRecordBox == 0) {
-			orderState = record.getiOrderState();
-			if (orderState == 0) {
-				retStr = 1;//1成功 0失败
-			}
-			else if (orderState == 1) {
-				retStr = 1;
-			}
-
-		}
-		else {
-			int retSaveRecord =tradeOrderInfoBaseService.saveOrderInfo(record);
-			String orderCode = record.getcOrderCode();
-			retiOrderId = tradeOrderInfoBaseService.getOrderIdByOrderCode(orderCode);
-			recordBox.setiOrderId(retiOrderId);
-			int retSaveRecordBox =tradeOrderBoxFreightService.saveOrderBoxInfo(recordBox);
-			
-			orderState = record.getiOrderState();
-			if( retSaveRecord == 1 && retSaveRecordBox == 1) {
-				if (orderState == 0) {
-					retStr = 1;
-				}
-				else if (orderState == 1) {
-					retStr = 1;
-				}
-			}
-		}
-		
-        return retStr;
+		int retSaveRecordBox =tradeOrderBoxFreightService.saveOrderBoxInfo(record);
+        return retSaveRecordBox;
 	}
 	
 	@RequestMapping("/modifyBoxFreightOrder")
@@ -88,7 +51,6 @@ public class FmBoxFreight {
 	@ResponseBody
 	public int selectBoxfreightorder(@RequestBody FmTradeOrderInfoBaseEntity record) {
 		return 0;
-		
 	}
 	
 

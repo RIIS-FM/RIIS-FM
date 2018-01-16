@@ -1,6 +1,7 @@
 package com.crscd.riis.freightmarket.authority.service;
 
 
+import com.crscd.riis.freightmarket.authority.entity.FmTradeOrderInfoBaseEntity;
 import com.crscd.riis.freightmarket.authority.entity.FmTradeOrderInfoBoxFreightEntity;
 
 public interface IFmTradeOrderBoxFreightService {
@@ -10,7 +11,7 @@ public interface IFmTradeOrderBoxFreightService {
 	 * @param FmTradeOrderInfoBoxFreightEntity record
 	 * @return  插入成功返回1， 插入失败返回0
 	 * */
-	 int saveOrderBoxInfo(FmTradeOrderInfoBoxFreightEntity record);
+	 int saveOrderBoxInfo(FmTradeOrderInfoBaseEntity record);
 	 
 	 /* *
 	  * 获取订单个数
