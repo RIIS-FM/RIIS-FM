@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.crscd.riis.freightmarket.authority.dao.FmAccountEntityMapper;
 import com.crscd.riis.freightmarket.authority.dao.FmUserEntityMapper;
 import com.crscd.riis.freightmarket.authority.entity.FmAccountEntity;
-import com.crscd.riis.freightmarket.authority.entity.FmAccountEntityExample;
 import com.crscd.riis.freightmarket.authority.entity.FmPermissionEntity;
 import com.crscd.riis.freightmarket.authority.entity.FmUserEntityExample;
 import com.crscd.riis.freightmarket.authority.entity.FmUserEntityExample.Criteria;

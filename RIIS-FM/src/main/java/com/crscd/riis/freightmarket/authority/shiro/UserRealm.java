@@ -37,17 +37,17 @@ public class UserRealm extends AuthorizingRealm{
 	        FmAccountEntity account =iFmAccountService.getAccountByName(accountName);
 
 	        if(account == null) {
-	            throw new UnknownAccountException();//Ã»ÕÒµ½ÕÊºÅ
+	            throw new UnknownAccountException();//Ã»ï¿½Òµï¿½ï¿½Êºï¿½
 	        }
 
 	        if(Boolean.TRUE.equals(account.getiLockFlag())) {
-	            throw new LockedAccountException(); //ÕÊºÅËø¶¨
+	            throw new LockedAccountException(); //ï¿½Êºï¿½ï¿½ï¿½ï¿½ï¿½
 	        }
 
-	        //½»¸øAuthenticatingRealmÊ¹ÓÃCredentialsMatcher½øÐÐÃÜÂëÆ¥Åä£¬Èç¹û¾õµÃÈË¼ÒµÄ²»ºÃ¿ÉÒÔ×Ô¶¨ÒåÊµÏÖ
+	        //ï¿½ï¿½ï¿½ï¿½AuthenticatingRealmÊ¹ï¿½ï¿½CredentialsMatcherï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ÒµÄ²ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Êµï¿½ï¿½
 	        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-	        		account.getcLoginName(), //ÓÃ»§Ãû
-	        		account.getcLoginPwd(), //ÃÜÂë
+	        		account.getcLoginName(), //ï¿½Ã»ï¿½ï¿½ï¿½
+	        		account.getcLoginPwd(), //ï¿½ï¿½ï¿½ï¿½
 	                ByteSource.Util.bytes(account.getcLoginPwdSalt()),//salt=username+salt
 	                getName()  //realm name
 	        );
