@@ -12,7 +12,7 @@
             <property name="suppressAllComments" value="true"/>    
         </commentGenerator>    
         <!--数据库链接URL，用户名、密码 -->    
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://172.168.1.190:3306/riis" userId="root" password="1234">    
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://172.168.0.222:3306/riis" userId="root" password="1234">    
         </jdbcConnection>    
         <javaTypeResolver>    
             <property name="forceBigDecimals" value="false"/>    
@@ -32,7 +32,8 @@
         <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.crscd.riis.freightmarket.authority.dao" targetProject="RIIS-FM\src\main\java">    
             <property name="enableSubPackages" value="true"/>    
         </javaClientGenerator>    
-        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->    
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
+        <!--用户权限-->    
         <table tableName="fm_authority_account" domainObjectName="FmAccountEntity"
                enableCountByExample="true" enableUpdateByExample="true" 
                enableDeleteByExample="true" enableSelectByExample="true" 
@@ -73,5 +74,6 @@
 		       enableCountByExample="true" enableUpdateByExample="true" 
 		       enableDeleteByExample="true" enableSelectByExample="true" 
 		       selectByExampleQueryId="true"></table>
+		       
     </context>    
 </generatorConfiguration>    
