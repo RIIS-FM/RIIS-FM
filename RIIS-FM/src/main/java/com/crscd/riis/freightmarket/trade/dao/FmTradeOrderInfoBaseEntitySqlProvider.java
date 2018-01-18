@@ -6,6 +6,7 @@ import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntityExamp
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntityExample;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.ibatis.jdbc.SQL;
 
 public class FmTradeOrderInfoBaseEntitySqlProvider {
@@ -16,6 +17,119 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         applyWhere(sql, example, false);
         return sql.toString();
     }
+    
+    /* *分页动态查询   */
+    public String selectWhitParam(Map<String, Object> params){
+		String sql =  new SQL() {
+			{
+			SELECT("id");
+			SELECT("C_ORDER_CODE");
+	        SELECT("I_ORDER_TYPE_ID");
+	        SELECT("D_ORDER_DATELINE");
+	        SELECT("I_USER_TYPE");
+	        SELECT("I_SENDER_ID");
+	        SELECT("I_RECVER_ID");
+	        SELECT("I_SENDER_OPERATOR_ID");
+	        SELECT("I_RECVER_OPERATOR_ID");
+	        SELECT("C_SENDER_NAME");
+	        SELECT("C_SENDER_ADDRESS");
+	        SELECT("C_SENDER_PHONE");
+	        SELECT("C_SENDER_EMAIL");
+	        SELECT("C_SENDER_POSTCODE");
+	        SELECT("C_SENDER_NOTE");
+	        SELECT("C_SENDER_CITY");
+	        SELECT("C_LOAD_STATION");
+	        SELECT("C_LOAD_LOCATION");
+	        SELECT("D_PREDICT_SEND_TIME");
+	        SELECT("D_PREDICT_LOAD_START_TIME");
+	        SELECT("D_PREDICT_LOAD_END_TIME");
+	        SELECT("C_RECVER_ADDRESS");
+	        SELECT("C_RECVER_PHONE");
+	        SELECT("C_RECVER_EMAIL");
+	        SELECT("C_RECVER_POSTCODE");
+	        SELECT("C_RECVER_CITY");
+	        SELECT("C_UNLOAD_STATION");
+	        SELECT("C_UNLOAD_LOCATION");
+	        SELECT("C_ORDER_TYPE");
+	        SELECT("I_ORDER_STATE");
+	        SELECT("I_ORDER_SPLITE");
+	        SELECT("D_ORDER_CREATE_TIME");
+	        SELECT("D_ORDER_END_TIME");
+	        SELECT("D_ORDER_TEMMINATE_TIME");
+	        SELECT("I_ORDER_TEMMINATE");
+	        SELECT("I_ORDER_DELETE");
+	        SELECT("D_ORDER_DELETE_TIME");
+	        SELECT("D_ORDER_ALTER_TIME");
+	        SELECT("C_ACCESS_CODE");
+	        SELECT("I_LOGISTICS_TYPE");
+	        SELECT("F_PROTECT_PRICE");
+	        SELECT("F_INSURANCE_VALUE");
+		    FROM("fm_trade_order_info_base");
+		    
+			if(params.get("iOrderTypeId") != null) {
+				WHERE("I_ORDER_TYPE_ID = #{iOrderTypeId}");
+			}	
+			if(params.get("cOrderCode") != null) {
+				WHERE("C_ORDER_CODE = #{cOrderCode}");
+			}	
+			if(params.get("dOrderDatelineStart") != null && params.get("dOrderDatelineEnd") != null) {
+				WHERE("D_ORDER_DATELINE >= #{dOrderDatelineStart} AND D_ORDER_DATELINE <= #{dOrderDatelineEnd}");
+			}	
+			if(params.get("iRecverId") != null) {
+				WHERE("I_RECVER_ID = #{iRecverId}");
+			}	
+			if(params.get("iSenderId") != null) {
+				WHERE("I_SENDER_ID = #{iSenderId}");
+			}	
+			if(params.get("iSenderOperatorId") != null) {
+				WHERE("I_SENDER_OPERATOR_ID = #{iSenderOperatorId}");
+			}	
+			if(params.get("iRecverOperatorId") != null) {
+				WHERE("I_RECVER_OPERATOR_ID = #{iRecverOperatorId}");
+			}	
+			if(params.get("iOrderState") != null) {
+				WHERE("I_ORDER_STATE = #{iOrderState}");
+			}	
+			if(params.get("iOrderSplite") != null) {
+				WHERE("I_ORDER_SPLITE = #{iOrderSplited}");
+			}	
+			if(params.get("dOrderCreateTimeStart") != null && params.get("dOrderCreateTimeEnd") != null) {
+				WHERE("D_ORDER_CREATE_TIME >= #{dOrderCreateTimeStart} AND D_ORDER_CREATE_TIME <= #{dOrderCreateTimeEnd}");
+			}	
+			if(params.get("dOrderEndTimeStart") != null && params.get("dOrderEndTimeEnd") != null) {
+				WHERE("D_ORDER_END_TIME >= #{dOrderEndTimeStart} AND D_ORDER_END_TIME <= #{dOrderEndTimeEnd}");
+			}	
+			if(params.get("dOrderTemminateTimeStart") != null && params.get("dOrderTemminateTimeEnd") != null) {
+				WHERE("D_ORDER_TEMMINATE_TIME >= #{dOrderTemminateTimeStart} AND D_ORDER_TEMMINATE_TIME <= #{dOrderTemminateTimeEnd}");
+			}	
+			if(params.get("iOrderTemminate") != null) {
+				WHERE("I_ORDER_TEMMINATE = #{iOrderTemminate}");
+			}	
+			if(params.get("iOrderDelete") != null) {
+				WHERE("I_ORDER_DELETE = #{iOrderDelete}");
+			}	
+			if(params.get("dOrderDeleteTimeStart") != null && params.get("dOrderDeleteTimeEnd") != null) {
+				WHERE("D_ORDER_DELETE_TIME >= #{dOrderDeleteTimeStart} AND D_ORDER_DELETE_TIME <= #{dOrderDeleteTimeEnd}");
+			}	
+			if(params.get("dOrderAlterTimeStart") != null && params.get("dOrderAlterTimeEnd") != null) {
+				WHERE("D_ORDER_ALTER_TIME >= #{dOrderAlterTimeStart} AND D_ORDER_ALTER_TIME <= #{dOrderAlterTimeEnd}");
+			}	
+			if(params.get("fProtectPriceStart") != null && params.get("fProtectPriceEnd") != null) {
+				WHERE("F_PROTECT_PRICE >= #{fProtectPriceStart} AND F_PROTECT_PRICE <= #{fProtectPriceEnd}");
+			}	
+			if(params.get("fInsuranceValueStart") != null && params.get("fInsuranceValueEnd") != null) {
+				WHERE("F_INSURANCE_VALUE >= #{fInsuranceValueStart} AND F_INSURANCE_VALUE <= #{fInsuranceValueEnd}");
+			}	
+			
+		}
+		}.toString();
+		
+		if(params.get("pageModel") != null){
+			sql += " limit #{pageModel.firstLimitParam} , #{pageModel.pageSize}  ";
+		}
+		System.out.println(sql);
+		return sql;
+	}	
 
     public String deleteByExample(FmTradeOrderInfoBaseEntityExample example) {
         SQL sql = new SQL();
@@ -23,7 +137,7 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         applyWhere(sql, example, false);
         return sql.toString();
     }
-
+    
     public String insertSelective(FmTradeOrderInfoBaseEntity record) {
         SQL sql = new SQL();
         sql.INSERT_INTO("fm_trade_order_info_base");

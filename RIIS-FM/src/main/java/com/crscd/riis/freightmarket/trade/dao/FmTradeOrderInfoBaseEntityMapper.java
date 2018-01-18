@@ -3,6 +3,8 @@ package com.crscd.riis.freightmarket.trade.dao;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntityExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.DeleteProvider;
 import org.apache.ibatis.annotations.Insert;
@@ -16,9 +18,62 @@ import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
 
+
 public interface FmTradeOrderInfoBaseEntityMapper {
     @SelectProvider(type=FmTradeOrderInfoBaseEntitySqlProvider.class, method="countByExample")
     long countByExample(FmTradeOrderInfoBaseEntityExample example);
+    
+    /* *
+     * 分页查询订单
+     * @param Map<String, Object> params 
+     * @return List<FmTradeOrderInfoBaseEntity>订单对象列表
+     *   */
+    @SelectProvider(type=FmTradeOrderInfoBaseEntitySqlProvider.class,method="selectWhitParam")
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="C_ORDER_CODE", property="cOrderCode", jdbcType=JdbcType.VARCHAR),
+        @Result(column="I_ORDER_TYPE_ID", property="iOrderTypeId", jdbcType=JdbcType.INTEGER),
+        @Result(column="D_ORDER_DATELINE", property="dOrderDateline", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="I_USER_TYPE", property="iUserType", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_SENDER_ID", property="iSenderId", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_RECVER_ID", property="iRecverId", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_SENDER_OPERATOR_ID", property="iSenderOperatorId", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_RECVER_OPERATOR_ID", property="iRecverOperatorId", jdbcType=JdbcType.INTEGER),
+        @Result(column="C_SENDER_NAME", property="cSenderName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_SENDER_ADDRESS", property="cSenderAddress", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_SENDER_PHONE", property="cSenderPhone", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_SENDER_EMAIL", property="cSenderEmail", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_SENDER_POSTCODE", property="cSenderPostcode", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_SENDER_NOTE", property="cSenderNote", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_SENDER_CITY", property="cSenderCity", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_LOAD_STATION", property="cLoadStation", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_LOAD_LOCATION", property="cLoadLocation", jdbcType=JdbcType.VARCHAR),
+        @Result(column="D_PREDICT_SEND_TIME", property="dPredictSendTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="D_PREDICT_LOAD_START_TIME", property="dPredictLoadStartTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="D_PREDICT_LOAD_END_TIME", property="dPredictLoadEndTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="C_RECVER_ADDRESS", property="cRecverAddress", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_RECVER_PHONE", property="cRecverPhone", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_RECVER_EMAIL", property="cRecverEmail", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_RECVER_POSTCODE", property="cRecverPostcode", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_RECVER_CITY", property="cRecverCity", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_UNLOAD_STATION", property="cUnloadStation", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_UNLOAD_LOCATION", property="cUnloadLocation", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_ORDER_TYPE", property="cOrderType", jdbcType=JdbcType.VARCHAR),
+        @Result(column="I_ORDER_STATE", property="iOrderState", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_ORDER_SPLITE", property="iOrderSplite", jdbcType=JdbcType.INTEGER),
+        @Result(column="D_ORDER_CREATE_TIME", property="dOrderCreateTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="D_ORDER_END_TIME", property="dOrderEndTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="D_ORDER_TEMMINATE_TIME", property="dOrderTemminateTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="I_ORDER_TEMMINATE", property="iOrderTemminate", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_ORDER_DELETE", property="iOrderDelete", jdbcType=JdbcType.INTEGER),
+        @Result(column="D_ORDER_DELETE_TIME", property="dOrderDeleteTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="D_ORDER_ALTER_TIME", property="dOrderAlterTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="C_ACCESS_CODE", property="cAccessCode", jdbcType=JdbcType.VARCHAR),
+        @Result(column="I_LOGISTICS_TYPE", property="iLogisticsType", jdbcType=JdbcType.INTEGER),
+        @Result(column="F_PROTECT_PRICE", property="fProtectPrice", jdbcType=JdbcType.REAL),
+        @Result(column="F_INSURANCE_VALUE", property="fInsuranceValue", jdbcType=JdbcType.REAL),
+    })
+	List<FmTradeOrderInfoBaseEntity> selectByPage(Map<String, Object> params);
 
     @DeleteProvider(type=FmTradeOrderInfoBaseEntitySqlProvider.class, method="deleteByExample")
     int deleteByExample(FmTradeOrderInfoBaseEntityExample example);

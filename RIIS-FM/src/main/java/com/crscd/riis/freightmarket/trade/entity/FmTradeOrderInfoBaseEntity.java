@@ -238,7 +238,8 @@ public class FmTradeOrderInfoBaseEntity {
     public void setcLoadLocation(String cLoadLocation) {
         this.cLoadLocation = cLoadLocation == null ? null : cLoadLocation.trim();
     }
-
+    
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdPredictSendTime() {
         return dPredictSendTime;
     }
@@ -247,6 +248,7 @@ public class FmTradeOrderInfoBaseEntity {
         this.dPredictSendTime = dPredictSendTime;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdPredictLoadStartTime() {
         return dPredictLoadStartTime;
     }
@@ -255,6 +257,7 @@ public class FmTradeOrderInfoBaseEntity {
         this.dPredictLoadStartTime = dPredictLoadStartTime;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdPredictLoadEndTime() {
         return dPredictLoadEndTime;
     }
@@ -343,6 +346,7 @@ public class FmTradeOrderInfoBaseEntity {
         this.iOrderSplite = iOrderSplite;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderCreateTime() {
         return dOrderCreateTime;
     }
@@ -351,6 +355,7 @@ public class FmTradeOrderInfoBaseEntity {
         this.dOrderCreateTime = dOrderCreateTime;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderEndTime() {
         return dOrderEndTime;
     }
@@ -359,6 +364,7 @@ public class FmTradeOrderInfoBaseEntity {
         this.dOrderEndTime = dOrderEndTime;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderTemminateTime() {
         return dOrderTemminateTime;
     }
@@ -383,6 +389,7 @@ public class FmTradeOrderInfoBaseEntity {
         this.iOrderDelete = iOrderDelete;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderDeleteTime() {
         return dOrderDeleteTime;
     }
@@ -391,6 +398,7 @@ public class FmTradeOrderInfoBaseEntity {
         this.dOrderDeleteTime = dOrderDeleteTime;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderAlterTime() {
         return dOrderAlterTime;
     }

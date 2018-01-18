@@ -1,6 +1,9 @@
 package com.crscd.riis.freightmarket.trade.controller;
 
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -8,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
-
-
-
+import com.crscd.riis.freightmarket.authority.entity.FmAccountEntity;
+import com.crscd.riis.freightmarket.trade.dto.findOrderDtoIn;
+import com.crscd.riis.freightmarket.trade.dto.findOrderDtoOut;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBoxFreightEntity;
+import com.crscd.riis.freightmarket.trade.page.PageModel;
 import com.crscd.riis.freightmarket.trade.service.IFmTradeOrderBoxFreightService;
 import com.crscd.riis.freightmarket.trade.service.IFmTradeOrderInfoBaseService;
 
@@ -53,8 +56,23 @@ public class FmBoxFreight {
 	
 	@RequestMapping("/selectBoxFreightOrder")
 	@ResponseBody
-	public int selectBoxfreightorder(@RequestBody FmTradeOrderInfoBaseEntity record) {
-		return 0;
+	public findOrderDtoOut selectBoxfreightorder(@RequestBody findOrderDtoIn dto) {
+		
+		/*System.out.println(params.get("id"));
+		System.out.println(params.get("pageModel"));*/
+		
+		PageModel pageModel = dto.getPageModel();
+		Map<String, Object>  requirement = dto.getRequirement();
+		FmAccountEntity user = dto.getUser();
+
+		List<FmTradeOrderInfoBaseEntity> order = tradeOrderInfoBaseService.findOrder(user, requirement, pageModel);
+		System.out.println("pageModel.getTotalSize(): "+pageModel.getTotalSize());
+		System.out.println("pageModel.getRecordCount(): "+pageModel.getRecordCount());
+		
+		findOrderDtoOut retOrderListAndPageModelInfo = new findOrderDtoOut();
+		retOrderListAndPageModelInfo.setOrderList(order);
+		retOrderListAndPageModelInfo.setPageModel(pageModel);
+		return retOrderListAndPageModelInfo;
 	}
 	
 
