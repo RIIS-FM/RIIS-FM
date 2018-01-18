@@ -2,6 +2,7 @@ package com.crscd.riis.freightmarket.trade.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class FmTradeOrderInfoBaseEntityExample {
@@ -103,6 +104,32 @@ public class FmTradeOrderInfoBaseEntityExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -306,52 +333,52 @@ public class FmTradeOrderInfoBaseEntityExample {
         }
 
         public Criteria andDOrderDatelineEqualTo(Date value) {
-            addCriterion("D_ORDER_DATELINE =", value, "dOrderDateline");
+            addCriterionForJDBCDate("D_ORDER_DATELINE =", value, "dOrderDateline");
             return (Criteria) this;
         }
 
         public Criteria andDOrderDatelineNotEqualTo(Date value) {
-            addCriterion("D_ORDER_DATELINE <>", value, "dOrderDateline");
+            addCriterionForJDBCDate("D_ORDER_DATELINE <>", value, "dOrderDateline");
             return (Criteria) this;
         }
 
         public Criteria andDOrderDatelineGreaterThan(Date value) {
-            addCriterion("D_ORDER_DATELINE >", value, "dOrderDateline");
+            addCriterionForJDBCDate("D_ORDER_DATELINE >", value, "dOrderDateline");
             return (Criteria) this;
         }
 
         public Criteria andDOrderDatelineGreaterThanOrEqualTo(Date value) {
-            addCriterion("D_ORDER_DATELINE >=", value, "dOrderDateline");
+            addCriterionForJDBCDate("D_ORDER_DATELINE >=", value, "dOrderDateline");
             return (Criteria) this;
         }
 
         public Criteria andDOrderDatelineLessThan(Date value) {
-            addCriterion("D_ORDER_DATELINE <", value, "dOrderDateline");
+            addCriterionForJDBCDate("D_ORDER_DATELINE <", value, "dOrderDateline");
             return (Criteria) this;
         }
 
         public Criteria andDOrderDatelineLessThanOrEqualTo(Date value) {
-            addCriterion("D_ORDER_DATELINE <=", value, "dOrderDateline");
+            addCriterionForJDBCDate("D_ORDER_DATELINE <=", value, "dOrderDateline");
             return (Criteria) this;
         }
 
         public Criteria andDOrderDatelineIn(List<Date> values) {
-            addCriterion("D_ORDER_DATELINE in", values, "dOrderDateline");
+            addCriterionForJDBCDate("D_ORDER_DATELINE in", values, "dOrderDateline");
             return (Criteria) this;
         }
 
         public Criteria andDOrderDatelineNotIn(List<Date> values) {
-            addCriterion("D_ORDER_DATELINE not in", values, "dOrderDateline");
+            addCriterionForJDBCDate("D_ORDER_DATELINE not in", values, "dOrderDateline");
             return (Criteria) this;
         }
 
         public Criteria andDOrderDatelineBetween(Date value1, Date value2) {
-            addCriterion("D_ORDER_DATELINE between", value1, value2, "dOrderDateline");
+            addCriterionForJDBCDate("D_ORDER_DATELINE between", value1, value2, "dOrderDateline");
             return (Criteria) this;
         }
 
         public Criteria andDOrderDatelineNotBetween(Date value1, Date value2) {
-            addCriterion("D_ORDER_DATELINE not between", value1, value2, "dOrderDateline");
+            addCriterionForJDBCDate("D_ORDER_DATELINE not between", value1, value2, "dOrderDateline");
             return (Criteria) this;
         }
 
@@ -1462,6 +1489,76 @@ public class FmTradeOrderInfoBaseEntityExample {
 
         public Criteria andDPredictLoadEndTimeNotBetween(Date value1, Date value2) {
             addCriterion("D_PREDICT_LOAD_END_TIME not between", value1, value2, "dPredictLoadEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCRecverNameIsNull() {
+            addCriterion("C_RECVER_NAME is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCRecverNameIsNotNull() {
+            addCriterion("C_RECVER_NAME is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCRecverNameEqualTo(String value) {
+            addCriterion("C_RECVER_NAME =", value, "cRecverName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCRecverNameNotEqualTo(String value) {
+            addCriterion("C_RECVER_NAME <>", value, "cRecverName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCRecverNameGreaterThan(String value) {
+            addCriterion("C_RECVER_NAME >", value, "cRecverName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCRecverNameGreaterThanOrEqualTo(String value) {
+            addCriterion("C_RECVER_NAME >=", value, "cRecverName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCRecverNameLessThan(String value) {
+            addCriterion("C_RECVER_NAME <", value, "cRecverName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCRecverNameLessThanOrEqualTo(String value) {
+            addCriterion("C_RECVER_NAME <=", value, "cRecverName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCRecverNameLike(String value) {
+            addCriterion("C_RECVER_NAME like", value, "cRecverName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCRecverNameNotLike(String value) {
+            addCriterion("C_RECVER_NAME not like", value, "cRecverName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCRecverNameIn(List<String> values) {
+            addCriterion("C_RECVER_NAME in", values, "cRecverName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCRecverNameNotIn(List<String> values) {
+            addCriterion("C_RECVER_NAME not in", values, "cRecverName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCRecverNameBetween(String value1, String value2) {
+            addCriterion("C_RECVER_NAME between", value1, value2, "cRecverName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCRecverNameNotBetween(String value1, String value2) {
+            addCriterion("C_RECVER_NAME not between", value1, value2, "cRecverName");
             return (Criteria) this;
         }
 

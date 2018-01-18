@@ -6,7 +6,6 @@ import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntityExamp
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntityExample;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.jdbc.SQL;
 
 public class FmTradeOrderInfoBaseEntitySqlProvider {
@@ -43,6 +42,7 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
 	        SELECT("D_PREDICT_SEND_TIME");
 	        SELECT("D_PREDICT_LOAD_START_TIME");
 	        SELECT("D_PREDICT_LOAD_END_TIME");
+	        SELECT("C_RECVER_NAME");
 	        SELECT("C_RECVER_ADDRESS");
 	        SELECT("C_RECVER_PHONE");
 	        SELECT("C_RECVER_EMAIL");
@@ -131,13 +131,14 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
 		return sql;
 	}	
 
+
     public String deleteByExample(FmTradeOrderInfoBaseEntityExample example) {
         SQL sql = new SQL();
         sql.DELETE_FROM("fm_trade_order_info_base");
         applyWhere(sql, example, false);
         return sql.toString();
     }
-    
+
     public String insertSelective(FmTradeOrderInfoBaseEntity record) {
         SQL sql = new SQL();
         sql.INSERT_INTO("fm_trade_order_info_base");
@@ -155,7 +156,7 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         }
         
         if (record.getdOrderDateline() != null) {
-            sql.VALUES("D_ORDER_DATELINE", "#{dOrderDateline,jdbcType=TIMESTAMP}");
+            sql.VALUES("D_ORDER_DATELINE", "#{dOrderDateline,jdbcType=DATE}");
         }
         
         if (record.getiUserType() != null) {
@@ -224,6 +225,10 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         
         if (record.getdPredictLoadEndTime() != null) {
             sql.VALUES("D_PREDICT_LOAD_END_TIME", "#{dPredictLoadEndTime,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getcRecverName() != null) {
+            sql.VALUES("C_RECVER_NAME", "#{cRecverName,jdbcType=VARCHAR}");
         }
         
         if (record.getcRecverAddress() != null) {
@@ -340,6 +345,7 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         sql.SELECT("D_PREDICT_SEND_TIME");
         sql.SELECT("D_PREDICT_LOAD_START_TIME");
         sql.SELECT("D_PREDICT_LOAD_END_TIME");
+        sql.SELECT("C_RECVER_NAME");
         sql.SELECT("C_RECVER_ADDRESS");
         sql.SELECT("C_RECVER_PHONE");
         sql.SELECT("C_RECVER_EMAIL");
@@ -391,7 +397,7 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         }
         
         if (record.getdOrderDateline() != null) {
-            sql.SET("D_ORDER_DATELINE = #{record.dOrderDateline,jdbcType=TIMESTAMP}");
+            sql.SET("D_ORDER_DATELINE = #{record.dOrderDateline,jdbcType=DATE}");
         }
         
         if (record.getiUserType() != null) {
@@ -460,6 +466,10 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         
         if (record.getdPredictLoadEndTime() != null) {
             sql.SET("D_PREDICT_LOAD_END_TIME = #{record.dPredictLoadEndTime,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getcRecverName() != null) {
+            sql.SET("C_RECVER_NAME = #{record.cRecverName,jdbcType=VARCHAR}");
         }
         
         if (record.getcRecverAddress() != null) {
@@ -557,7 +567,7 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
         sql.SET("C_ORDER_CODE = #{record.cOrderCode,jdbcType=VARCHAR}");
         sql.SET("I_ORDER_TYPE_ID = #{record.iOrderTypeId,jdbcType=INTEGER}");
-        sql.SET("D_ORDER_DATELINE = #{record.dOrderDateline,jdbcType=TIMESTAMP}");
+        sql.SET("D_ORDER_DATELINE = #{record.dOrderDateline,jdbcType=DATE}");
         sql.SET("I_USER_TYPE = #{record.iUserType,jdbcType=INTEGER}");
         sql.SET("I_SENDER_ID = #{record.iSenderId,jdbcType=INTEGER}");
         sql.SET("I_RECVER_ID = #{record.iRecverId,jdbcType=INTEGER}");
@@ -575,6 +585,7 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         sql.SET("D_PREDICT_SEND_TIME = #{record.dPredictSendTime,jdbcType=TIMESTAMP}");
         sql.SET("D_PREDICT_LOAD_START_TIME = #{record.dPredictLoadStartTime,jdbcType=TIMESTAMP}");
         sql.SET("D_PREDICT_LOAD_END_TIME = #{record.dPredictLoadEndTime,jdbcType=TIMESTAMP}");
+        sql.SET("C_RECVER_NAME = #{record.cRecverName,jdbcType=VARCHAR}");
         sql.SET("C_RECVER_ADDRESS = #{record.cRecverAddress,jdbcType=VARCHAR}");
         sql.SET("C_RECVER_PHONE = #{record.cRecverPhone,jdbcType=VARCHAR}");
         sql.SET("C_RECVER_EMAIL = #{record.cRecverEmail,jdbcType=VARCHAR}");
@@ -615,7 +626,7 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         }
         
         if (record.getdOrderDateline() != null) {
-            sql.SET("D_ORDER_DATELINE = #{dOrderDateline,jdbcType=TIMESTAMP}");
+            sql.SET("D_ORDER_DATELINE = #{dOrderDateline,jdbcType=DATE}");
         }
         
         if (record.getiUserType() != null) {
@@ -684,6 +695,10 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
         
         if (record.getdPredictLoadEndTime() != null) {
             sql.SET("D_PREDICT_LOAD_END_TIME = #{dPredictLoadEndTime,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getcRecverName() != null) {
+            sql.SET("C_RECVER_NAME = #{cRecverName,jdbcType=VARCHAR}");
         }
         
         if (record.getcRecverAddress() != null) {

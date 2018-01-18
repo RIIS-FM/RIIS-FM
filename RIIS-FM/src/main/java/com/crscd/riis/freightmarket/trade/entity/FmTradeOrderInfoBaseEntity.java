@@ -2,8 +2,6 @@ package com.crscd.riis.freightmarket.trade.entity;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class FmTradeOrderInfoBaseEntity {
     private Integer id;
 
@@ -47,6 +45,8 @@ public class FmTradeOrderInfoBaseEntity {
 
     private Date dPredictLoadEndTime;
 
+    private String cRecverName;
+
     private String cRecverAddress;
 
     private String cRecverPhone;
@@ -89,9 +89,10 @@ public class FmTradeOrderInfoBaseEntity {
 
     private Float fInsuranceValue;
     
-
     private FmTradeOrderInfoBoxFreightEntity fmTradeOrderInfoBoxFreightRecord;
+    
     private FmTradeOrderInfoFastFreightEntity fmTradeOrderInfoFastFreightRecord;
+    
     private FmTradeOrderInfoWholeVegicleFreightEntity fmTradeOrderInfoWholeVegicleFreightRecord;
 
     public Integer getId() {
@@ -118,7 +119,6 @@ public class FmTradeOrderInfoBaseEntity {
         this.iOrderTypeId = iOrderTypeId;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     public Date getdOrderDateline() {
         return dOrderDateline;
     }
@@ -238,8 +238,7 @@ public class FmTradeOrderInfoBaseEntity {
     public void setcLoadLocation(String cLoadLocation) {
         this.cLoadLocation = cLoadLocation == null ? null : cLoadLocation.trim();
     }
-    
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+
     public Date getdPredictSendTime() {
         return dPredictSendTime;
     }
@@ -248,7 +247,6 @@ public class FmTradeOrderInfoBaseEntity {
         this.dPredictSendTime = dPredictSendTime;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdPredictLoadStartTime() {
         return dPredictLoadStartTime;
     }
@@ -257,13 +255,20 @@ public class FmTradeOrderInfoBaseEntity {
         this.dPredictLoadStartTime = dPredictLoadStartTime;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdPredictLoadEndTime() {
         return dPredictLoadEndTime;
     }
 
     public void setdPredictLoadEndTime(Date dPredictLoadEndTime) {
         this.dPredictLoadEndTime = dPredictLoadEndTime;
+    }
+
+    public String getcRecverName() {
+        return cRecverName;
+    }
+
+    public void setcRecverName(String cRecverName) {
+        this.cRecverName = cRecverName == null ? null : cRecverName.trim();
     }
 
     public String getcRecverAddress() {
@@ -346,7 +351,6 @@ public class FmTradeOrderInfoBaseEntity {
         this.iOrderSplite = iOrderSplite;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderCreateTime() {
         return dOrderCreateTime;
     }
@@ -355,7 +359,6 @@ public class FmTradeOrderInfoBaseEntity {
         this.dOrderCreateTime = dOrderCreateTime;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderEndTime() {
         return dOrderEndTime;
     }
@@ -364,7 +367,6 @@ public class FmTradeOrderInfoBaseEntity {
         this.dOrderEndTime = dOrderEndTime;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderTemminateTime() {
         return dOrderTemminateTime;
     }
@@ -389,7 +391,6 @@ public class FmTradeOrderInfoBaseEntity {
         this.iOrderDelete = iOrderDelete;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderDeleteTime() {
         return dOrderDeleteTime;
     }
@@ -398,7 +399,6 @@ public class FmTradeOrderInfoBaseEntity {
         this.dOrderDeleteTime = dOrderDeleteTime;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderAlterTime() {
         return dOrderAlterTime;
     }
