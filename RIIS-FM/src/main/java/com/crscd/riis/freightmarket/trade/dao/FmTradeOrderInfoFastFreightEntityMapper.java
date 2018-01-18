@@ -64,6 +64,32 @@ public interface FmTradeOrderInfoFastFreightEntityMapper {
     })
     List<FmTradeOrderInfoFastFreightEntity> selectByExample(FmTradeOrderInfoFastFreightEntityExample example);
 
+    /** 通过订单id查询订单详细信息
+     * @param 基本订单id
+     * @return 快运详细订单实体
+     * */
+    @Select({
+        "select",
+        "id, I_ORDER_ID, C_GOODS_NAME, C_GOODS_CODE, F_GOODS_WEIGHT, F_GOODS_VOLUME, ",
+        "F_EACH_GOODS_MAX_WEIGHT, C_GOODS_WRAPPER, C_GOODS_FEATURE, C_TRAIN_NUM, I_GOODS_NUMBER",
+        "from fm_trade_order_info_fast_freight",
+        "where I_ORDER_ID = #{orderId,jdbcType=INTEGER}"
+    })
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="I_ORDER_ID", property="iOrderId", jdbcType=JdbcType.INTEGER),
+        @Result(column="C_GOODS_NAME", property="cGoodsName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_GOODS_CODE", property="cGoodsCode", jdbcType=JdbcType.VARCHAR),
+        @Result(column="F_GOODS_WEIGHT", property="fGoodsWeight", jdbcType=JdbcType.REAL),
+        @Result(column="F_GOODS_VOLUME", property="fGoodsVolume", jdbcType=JdbcType.REAL),
+        @Result(column="F_EACH_GOODS_MAX_WEIGHT", property="fEachGoodsMaxWeight", jdbcType=JdbcType.REAL),
+        @Result(column="C_GOODS_WRAPPER", property="cGoodsWrapper", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_GOODS_FEATURE", property="cGoodsFeature", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_TRAIN_NUM", property="cTrainNum", jdbcType=JdbcType.VARCHAR),
+        @Result(column="I_GOODS_NUMBER", property="iGoodsNumber", jdbcType=JdbcType.INTEGER)
+    })
+    FmTradeOrderInfoFastFreightEntity selectByOrderId(Integer orderId);
+    
     @Select({
         "select",
         "id, I_ORDER_ID, C_GOODS_NAME, C_GOODS_CODE, F_GOODS_WEIGHT, F_GOODS_VOLUME, ",

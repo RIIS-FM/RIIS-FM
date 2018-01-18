@@ -16,9 +16,13 @@ import org.springframework.stereotype.Service;
 import com.crscd.riis.freightmarket.authority.entity.FmAccountEntity;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderInfoBaseEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderInfoBoxFreightEntityMapper;
+import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderInfoFastFreightEntityMapper;
+import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderInfoWholeVegicleFreightEntityMapper;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntityExample;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBoxFreightEntity;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoFastFreightEntity;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoWholeVegicleFreightEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntityExample.Criteria;
 import com.crscd.riis.freightmarket.trade.page.PageModel;
 import com.crscd.riis.freightmarket.trade.service.IFmTradeOrderInfoBaseService;
@@ -36,6 +40,12 @@ public class FmTradeOrderInfoBaseServiceImpl implements IFmTradeOrderInfoBaseSer
 	
 	@Resource
 	private FmTradeOrderInfoBoxFreightEntityMapper fmTradeOrderInfoBoxFreightEntityMapper;
+	
+	@Resource
+	private FmTradeOrderInfoWholeVegicleFreightEntityMapper fmTradeOrderInfoWholeVegicleFreightEntityMapper;
+	
+	@Resource 
+	private FmTradeOrderInfoFastFreightEntityMapper fmTradeOrderInfoFastFreightEntityMapper;
 	
     /**IFmTradeOrderInfoBaseService接口的countOrderNumber方法实现 */
 	
@@ -294,6 +304,7 @@ public class FmTradeOrderInfoBaseServiceImpl implements IFmTradeOrderInfoBaseSer
 		return fmTradeOrderInfoBaseEntityMapper.insertSelective(record);
 	}
 	
+    /** 编辑订单编号	*/
 	@Override
 	public String editOrderCode() {
 		String orderCode = new String();
@@ -462,7 +473,6 @@ public class FmTradeOrderInfoBaseServiceImpl implements IFmTradeOrderInfoBaseSer
 		for ( int i = 0; i < len; i++) {
 			orderId = orderList.get(i).getId();
 			orderType = orderList.get(i).getiOrderTypeId();
-			FmTradeOrderInfoBoxFreightEntity recordBox = new FmTradeOrderInfoBoxFreightEntity();
 			
 			/**
 			 * 3集装箱运输
@@ -470,17 +480,21 @@ public class FmTradeOrderInfoBaseServiceImpl implements IFmTradeOrderInfoBaseSer
 			 * 7-10整车
 			 * */
 			if( orderType == 3 ) {
+				FmTradeOrderInfoBoxFreightEntity recordBox = new FmTradeOrderInfoBoxFreightEntity();
 				recordBox = fmTradeOrderInfoBoxFreightEntityMapper.selectByOrderId(orderId);
 				orderList.get(i).setFmTradeOrderInfoBoxFreightRecord(recordBox);
 			}
-			/*else if( orderType >= 4 && orderType <= 6) {
+			else if( orderType >= 4 && orderType <= 6) {
+				FmTradeOrderInfoFastFreightEntity recordFast = new FmTradeOrderInfoFastFreightEntity();
+				recordFast = fmTradeOrderInfoFastFreightEntityMapper.selectByOrderId(orderId);
+				orderList.get(i).setFmTradeOrderInfoFastFreightRecord(recordFast);
 				
 			}
 			else if( orderType >= 7 && orderType <= 10 ) {
-				
-			}*/
-			
-			
+				FmTradeOrderInfoWholeVegicleFreightEntity recordWholeVegicle = new FmTradeOrderInfoWholeVegicleFreightEntity();
+				recordWholeVegicle = fmTradeOrderInfoWholeVegicleFreightEntityMapper.selectByOrderId(orderId);
+				orderList.get(i).setFmTradeOrderInfoWholeVegicleFreightRecord(recordWholeVegicle);	
+			}
 		}
 		return orderList;
 	}

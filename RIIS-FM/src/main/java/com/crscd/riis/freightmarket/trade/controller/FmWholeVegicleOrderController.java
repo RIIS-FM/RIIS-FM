@@ -2,6 +2,7 @@ package com.crscd.riis.freightmarket.trade.controller;
 
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.crscd.riis.freightmarket.trade.dto.findOrderDTO;
+import com.crscd.riis.freightmarket.authority.entity.FmAccountEntity;
+import com.crscd.riis.freightmarket.trade.dto.findOrderDtoIn;
+import com.crscd.riis.freightmarket.trade.dto.findOrderDtoOut;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoWholeVegicleFreightEntity;
 import com.crscd.riis.freightmarket.trade.page.PageModel;
@@ -91,14 +94,18 @@ public class FmWholeVegicleOrderController {
      * */
 	@RequestMapping(value="/findorder")
 	@ResponseBody
-	public List<FmTradeOrderInfoBaseEntity> findorder(@RequestBody findOrderDTO dto){
-		/*PageModel pageModel=new PageModel();
-		return fmWholeVegicleOrderService.findOrder(iAccountId, pageModel);*/
-		/*System.out.println(dto.getId());
-		System.out.println(dto.getPageModel().getPageIndex());*/
+	public findOrderDtoOut findorder(@RequestBody findOrderDtoIn dto){
+
 		PageModel pageModel=dto.getPageModel();
-		int iSenderId=dto.getId();
-		return fmBaseOrderService.findOrder(iSenderId, pageModel);
+		FmAccountEntity user = dto.getUser();
+		Map<String, Object>  requirement = dto.getRequirement();
+		List<FmTradeOrderInfoBaseEntity> order = tradeOrderInfoBaseService.findOrder(user, requirement, pageModel);
+		
+		findOrderDtoOut retOrderListAndPageModelInfo = new findOrderDtoOut();
+		retOrderListAndPageModelInfo.setOrderList(order);
+		retOrderListAndPageModelInfo.setPageModel(pageModel);
+		
+		return retOrderListAndPageModelInfo;
 	}
 
 }

@@ -74,12 +74,12 @@ public class FmBaseOrderServiceImpl implements IFmBaseOrderService{
 			params.put("pageModel", pageModel);
 			params.put("id", iAccountId);
 		}
-		List<FmTradeOrderInfoBaseEntity> orders=fmTradeOrderInfoBaseEntityMapper.selectWithParam(params);
+		List<FmTradeOrderInfoBaseEntity> orders=fmTradeOrderInfoBaseEntityMapper.selectByPage(params);
 		for(int i=0;i<orders.size();i++) {
 			FmTradeOrderInfoBaseEntity order=orders.get(i);
-			if(order.getiOrderTypeId()==2) {
+			/*if(order.getiOrderTypeId()==2) {
 				order.setFmTradeOrderInfoWholeVegicleFreightRecord(order.getId());
-			}
+			}*/
 		}
 		return orders;
 	}

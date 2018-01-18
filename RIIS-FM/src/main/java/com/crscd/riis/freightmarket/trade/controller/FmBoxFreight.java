@@ -62,9 +62,10 @@ public class FmBoxFreight {
 		System.out.println(params.get("pageModel"));*/
 		
 		PageModel pageModel = dto.getPageModel();
-		Map<String, Object>  requirement = dto.getRequirement();
 		FmAccountEntity user = dto.getUser();
 
+		Map<String, Object>  requirement = dto.getRequirement();
+		
 		List<FmTradeOrderInfoBaseEntity> order = tradeOrderInfoBaseService.findOrder(user, requirement, pageModel);
 		System.out.println("pageModel.getTotalSize(): "+pageModel.getTotalSize());
 		System.out.println("pageModel.getRecordCount(): "+pageModel.getRecordCount());
