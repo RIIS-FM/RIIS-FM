@@ -25,4 +25,16 @@ public class tradeConstants {
 	/** 默认系统审核的标志位为0*/
 	public static int SYS_AUDIT_TYPE_ID = 0;
 
+	/** 20英寸集装箱*/
+	public static int BOX_TYPE_20INCH = 0;
+	
+	/** 40英寸集装箱*/
+	public static int BOX_TYPE_40INCH = 1;
+	
+	/** 运单未支付标志为0*/
+	public static int WAYBILL_STATE_NON_PAYMENT = 0;
+	
+	/** 运单已支付标志为1*/
+	public static int WAYBILL_STATE_PAYMENT = 1;
+
 }
