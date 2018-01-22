@@ -100,6 +100,34 @@ public interface FmTradeOrderInfoWholeVegicleFreightEntityMapper {
         @Result(column="I_RECVER_LINE_ID", property="iRecverLineId", jdbcType=JdbcType.INTEGER)
     })
     FmTradeOrderInfoWholeVegicleFreightEntity selectByPrimaryKey(Integer id);
+    
+    @Select({
+        "select",
+        "id, I_ORDER_ID, C_GOODS_NAME, C_GOODS_CODE, F_GOODS_WIGHT, F_GOODS_VOLUME, C_GOODS_FEATURE, ",
+        "F_EACH_GOODS_MAX_WEIGHT, I_GOODS_REQUEST_TRAIN_NUMBER, I_GOODS_SEAL_NUM, I_GOODS_REINFORCE, ",
+        "I_GOODS_WRAPPER, I_CANVAS_NUMBER, I_TRAIN_TYPE, I_SENDER_LINE_ID, I_RECVER_LINE_ID",
+        "from fm_trade_order_info_whole_vegicle_freight",
+        "where I_ORDER_ID = #{orderId,jdbcType=INTEGER}"
+    })
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="I_ORDER_ID", property="iOrderId", jdbcType=JdbcType.INTEGER),
+        @Result(column="C_GOODS_NAME", property="cGoodsName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_GOODS_CODE", property="cGoodsCode", jdbcType=JdbcType.VARCHAR),
+        @Result(column="F_GOODS_WIGHT", property="fGoodsWight", jdbcType=JdbcType.REAL),
+        @Result(column="F_GOODS_VOLUME", property="fGoodsVolume", jdbcType=JdbcType.REAL),
+        @Result(column="C_GOODS_FEATURE", property="cGoodsFeature", jdbcType=JdbcType.VARCHAR),
+        @Result(column="F_EACH_GOODS_MAX_WEIGHT", property="fEachGoodsMaxWeight", jdbcType=JdbcType.REAL),
+        @Result(column="I_GOODS_REQUEST_TRAIN_NUMBER", property="iGoodsRequestTrainNumber", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_GOODS_SEAL_NUM", property="iGoodsSealNum", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_GOODS_REINFORCE", property="iGoodsReinforce", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_GOODS_WRAPPER", property="iGoodsWrapper", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_CANVAS_NUMBER", property="iCanvasNumber", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_TRAIN_TYPE", property="iTrainType", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_SENDER_LINE_ID", property="iSenderLineId", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_RECVER_LINE_ID", property="iRecverLineId", jdbcType=JdbcType.INTEGER)
+    })
+    FmTradeOrderInfoWholeVegicleFreightEntity selectByOrderId(Integer orderId);
 
     @UpdateProvider(type=FmTradeOrderInfoWholeVegicleFreightEntitySqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") FmTradeOrderInfoWholeVegicleFreightEntity record, @Param("example") FmTradeOrderInfoWholeVegicleFreightEntityExample example);
