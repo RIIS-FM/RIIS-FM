@@ -794,73 +794,63 @@ public class FmTradeOrderInfoWholeVegicleFreightEntityExample {
             return (Criteria) this;
         }
 
-        public Criteria andCGoodsWrapperIsNull() {
-            addCriterion("C_GOODS_WRAPPER is null");
+        public Criteria andIGoodsWrapperIsNull() {
+            addCriterion("I_GOODS_WRAPPER is null");
             return (Criteria) this;
         }
 
-        public Criteria andCGoodsWrapperIsNotNull() {
-            addCriterion("C_GOODS_WRAPPER is not null");
+        public Criteria andIGoodsWrapperIsNotNull() {
+            addCriterion("I_GOODS_WRAPPER is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCGoodsWrapperEqualTo(String value) {
-            addCriterion("C_GOODS_WRAPPER =", value, "cGoodsWrapper");
+        public Criteria andIGoodsWrapperEqualTo(Integer value) {
+            addCriterion("I_GOODS_WRAPPER =", value, "iGoodsWrapper");
             return (Criteria) this;
         }
 
-        public Criteria andCGoodsWrapperNotEqualTo(String value) {
-            addCriterion("C_GOODS_WRAPPER <>", value, "cGoodsWrapper");
+        public Criteria andIGoodsWrapperNotEqualTo(Integer value) {
+            addCriterion("I_GOODS_WRAPPER <>", value, "iGoodsWrapper");
             return (Criteria) this;
         }
 
-        public Criteria andCGoodsWrapperGreaterThan(String value) {
-            addCriterion("C_GOODS_WRAPPER >", value, "cGoodsWrapper");
+        public Criteria andIGoodsWrapperGreaterThan(Integer value) {
+            addCriterion("I_GOODS_WRAPPER >", value, "iGoodsWrapper");
             return (Criteria) this;
         }
 
-        public Criteria andCGoodsWrapperGreaterThanOrEqualTo(String value) {
-            addCriterion("C_GOODS_WRAPPER >=", value, "cGoodsWrapper");
+        public Criteria andIGoodsWrapperGreaterThanOrEqualTo(Integer value) {
+            addCriterion("I_GOODS_WRAPPER >=", value, "iGoodsWrapper");
             return (Criteria) this;
         }
 
-        public Criteria andCGoodsWrapperLessThan(String value) {
-            addCriterion("C_GOODS_WRAPPER <", value, "cGoodsWrapper");
+        public Criteria andIGoodsWrapperLessThan(Integer value) {
+            addCriterion("I_GOODS_WRAPPER <", value, "iGoodsWrapper");
             return (Criteria) this;
         }
 
-        public Criteria andCGoodsWrapperLessThanOrEqualTo(String value) {
-            addCriterion("C_GOODS_WRAPPER <=", value, "cGoodsWrapper");
+        public Criteria andIGoodsWrapperLessThanOrEqualTo(Integer value) {
+            addCriterion("I_GOODS_WRAPPER <=", value, "iGoodsWrapper");
             return (Criteria) this;
         }
 
-        public Criteria andCGoodsWrapperLike(String value) {
-            addCriterion("C_GOODS_WRAPPER like", value, "cGoodsWrapper");
+        public Criteria andIGoodsWrapperIn(List<Integer> values) {
+            addCriterion("I_GOODS_WRAPPER in", values, "iGoodsWrapper");
             return (Criteria) this;
         }
 
-        public Criteria andCGoodsWrapperNotLike(String value) {
-            addCriterion("C_GOODS_WRAPPER not like", value, "cGoodsWrapper");
+        public Criteria andIGoodsWrapperNotIn(List<Integer> values) {
+            addCriterion("I_GOODS_WRAPPER not in", values, "iGoodsWrapper");
             return (Criteria) this;
         }
 
-        public Criteria andCGoodsWrapperIn(List<String> values) {
-            addCriterion("C_GOODS_WRAPPER in", values, "cGoodsWrapper");
+        public Criteria andIGoodsWrapperBetween(Integer value1, Integer value2) {
+            addCriterion("I_GOODS_WRAPPER between", value1, value2, "iGoodsWrapper");
             return (Criteria) this;
         }
 
-        public Criteria andCGoodsWrapperNotIn(List<String> values) {
-            addCriterion("C_GOODS_WRAPPER not in", values, "cGoodsWrapper");
-            return (Criteria) this;
-        }
-
-        public Criteria andCGoodsWrapperBetween(String value1, String value2) {
-            addCriterion("C_GOODS_WRAPPER between", value1, value2, "cGoodsWrapper");
-            return (Criteria) this;
-        }
-
-        public Criteria andCGoodsWrapperNotBetween(String value1, String value2) {
-            addCriterion("C_GOODS_WRAPPER not between", value1, value2, "cGoodsWrapper");
+        public Criteria andIGoodsWrapperNotBetween(Integer value1, Integer value2) {
+            addCriterion("I_GOODS_WRAPPER not between", value1, value2, "iGoodsWrapper");
             return (Criteria) this;
         }
 

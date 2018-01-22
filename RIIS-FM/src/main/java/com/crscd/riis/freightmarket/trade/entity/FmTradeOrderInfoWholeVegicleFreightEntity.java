@@ -23,7 +23,7 @@ public class FmTradeOrderInfoWholeVegicleFreightEntity {
 
     private Integer iGoodsReinforce;
 
-    private String cGoodsWrapper;
+    private Integer iGoodsWrapper;
 
     private Integer iCanvasNumber;
 
@@ -121,12 +121,12 @@ public class FmTradeOrderInfoWholeVegicleFreightEntity {
         this.iGoodsReinforce = iGoodsReinforce;
     }
 
-    public String getcGoodsWrapper() {
-        return cGoodsWrapper;
+    public Integer getiGoodsWrapper() {
+        return iGoodsWrapper;
     }
 
-    public void setcGoodsWrapper(String cGoodsWrapper) {
-        this.cGoodsWrapper = cGoodsWrapper == null ? null : cGoodsWrapper.trim();
+    public void setiGoodsWrapper(Integer iGoodsWrapper) {
+        this.iGoodsWrapper = iGoodsWrapper;
     }
 
     public Integer getiCanvasNumber() {
