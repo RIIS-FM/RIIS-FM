@@ -72,8 +72,8 @@ public class FmTradeOrderInfoWholeVegicleFreightEntitySqlProvider {
             sql.VALUES("I_GOODS_REINFORCE", "#{iGoodsReinforce,jdbcType=INTEGER}");
         }
         
-        if (record.getcGoodsWrapper() != null) {
-            sql.VALUES("C_GOODS_WRAPPER", "#{cGoodsWrapper,jdbcType=VARCHAR}");
+        if (record.getiGoodsWrapper() != null) {
+            sql.VALUES("I_GOODS_WRAPPER", "#{iGoodsWrapper,jdbcType=INTEGER}");
         }
         
         if (record.getiCanvasNumber() != null) {
@@ -112,7 +112,7 @@ public class FmTradeOrderInfoWholeVegicleFreightEntitySqlProvider {
         sql.SELECT("I_GOODS_REQUEST_TRAIN_NUMBER");
         sql.SELECT("I_GOODS_SEAL_NUM");
         sql.SELECT("I_GOODS_REINFORCE");
-        sql.SELECT("C_GOODS_WRAPPER");
+        sql.SELECT("I_GOODS_WRAPPER");
         sql.SELECT("I_CANVAS_NUMBER");
         sql.SELECT("I_TRAIN_TYPE");
         sql.SELECT("I_SENDER_LINE_ID");
@@ -178,8 +178,8 @@ public class FmTradeOrderInfoWholeVegicleFreightEntitySqlProvider {
             sql.SET("I_GOODS_REINFORCE = #{record.iGoodsReinforce,jdbcType=INTEGER}");
         }
         
-        if (record.getcGoodsWrapper() != null) {
-            sql.SET("C_GOODS_WRAPPER = #{record.cGoodsWrapper,jdbcType=VARCHAR}");
+        if (record.getiGoodsWrapper() != null) {
+            sql.SET("I_GOODS_WRAPPER = #{record.iGoodsWrapper,jdbcType=INTEGER}");
         }
         
         if (record.getiCanvasNumber() != null) {
@@ -217,7 +217,7 @@ public class FmTradeOrderInfoWholeVegicleFreightEntitySqlProvider {
         sql.SET("I_GOODS_REQUEST_TRAIN_NUMBER = #{record.iGoodsRequestTrainNumber,jdbcType=INTEGER}");
         sql.SET("I_GOODS_SEAL_NUM = #{record.iGoodsSealNum,jdbcType=INTEGER}");
         sql.SET("I_GOODS_REINFORCE = #{record.iGoodsReinforce,jdbcType=INTEGER}");
-        sql.SET("C_GOODS_WRAPPER = #{record.cGoodsWrapper,jdbcType=VARCHAR}");
+        sql.SET("I_GOODS_WRAPPER = #{record.iGoodsWrapper,jdbcType=INTEGER}");
         sql.SET("I_CANVAS_NUMBER = #{record.iCanvasNumber,jdbcType=INTEGER}");
         sql.SET("I_TRAIN_TYPE = #{record.iTrainType,jdbcType=INTEGER}");
         sql.SET("I_SENDER_LINE_ID = #{record.iSenderLineId,jdbcType=INTEGER}");
@@ -272,8 +272,8 @@ public class FmTradeOrderInfoWholeVegicleFreightEntitySqlProvider {
             sql.SET("I_GOODS_REINFORCE = #{iGoodsReinforce,jdbcType=INTEGER}");
         }
         
-        if (record.getcGoodsWrapper() != null) {
-            sql.SET("C_GOODS_WRAPPER = #{cGoodsWrapper,jdbcType=VARCHAR}");
+        if (record.getiGoodsWrapper() != null) {
+            sql.SET("I_GOODS_WRAPPER = #{iGoodsWrapper,jdbcType=INTEGER}");
         }
         
         if (record.getiCanvasNumber() != null) {
