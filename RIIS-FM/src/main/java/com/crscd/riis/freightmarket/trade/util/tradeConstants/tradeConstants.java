@@ -1,4 +1,4 @@
-package com.crscd.riis.freightmarket.trade.tradeConstants;
+package com.crscd.riis.freightmarket.trade.util.tradeConstants;
 
 public class tradeConstants {
 	/** 默认每页4条数据*/		
