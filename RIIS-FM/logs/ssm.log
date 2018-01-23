@@ -1373,4 +1373,92 @@ Caused by: java.lang.ClassFormatError: Duplicate method name&signature in class 
   [INFO] [2018-01-19 09:57:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fmWholeVegicle/modifyWholeVegicleOrder],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.crscd.riis.freightmarket.trade.controller.FmWholeVegicleOrderController.modifyWholeVegicleOrder(com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity)
   [INFO] [2018-01-19 09:57:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fmWholeVegicle/insertWholeVegicleOrder],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.crscd.riis.freightmarket.trade.controller.FmWholeVegicleOrderController.insertWholeVegicleOrder(com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity)
   [INFO] [2018-01-19 09:57:19][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'SpringMVC': initialization completed in 638 ms
+  [INFO] [2018-01-19 15:10:55][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+  [INFO] [2018-01-19 15:10:55][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Fri Jan 19 15:10:55 CST 2018]; root of context hierarchy
+  [INFO] [2018-01-19 15:10:55][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2018-01-19 15:10:56][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2018-01-19 15:10:56][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [ERROR] [2018-01-19 15:10:56][org.springframework.web.context.ContextLoader]Context initialization failed
+  org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fmTradeOrderController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [com.crscd.riis.freightmarket.trade.tradeConstants.tradeConstants] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:307)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:700)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4135)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4630)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardHost.start(StandardHost.java:785)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1045)
+	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:445)
+	at org.apache.catalina.startup.Embedded.start(Embedded.java:825)
+	at org.codehaus.mojo.tomcat.AbstractRunMojo.startContainer(AbstractRunMojo.java:558)
+	at org.codehaus.mojo.tomcat.AbstractRunMojo.execute(AbstractRunMojo.java:255)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:134)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:207)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:116)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:80)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:51)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:128)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:307)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:193)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:106)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:863)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:288)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:199)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [com.crscd.riis.freightmarket.trade.tradeConstants.tradeConstants] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1100)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:960)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:441)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:419)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:544)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:155)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:304)
+	... 44 more
+[INFO] [2018-01-19 15:18:17][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+  [INFO] [2018-01-19 15:18:17][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Fri Jan 19 15:18:17 CST 2018]; root of context hierarchy
+  [INFO] [2018-01-19 15:18:17][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2018-01-19 15:18:17][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2018-01-19 15:18:17][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 934 ms
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'SpringMVC': initialization started
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'SpringMVC-servlet': startup date [Fri Jan 19 15:18:18 CST 2018]; parent: Root WebApplicationContext
+  [INFO] [2018-01-19 15:18:18][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mvc.xml]
+  [INFO] [2018-01-19 15:18:18][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fmBoxFreight/selectBoxFreightOrder],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public com.crscd.riis.freightmarket.trade.dto.findOrderDtoOut com.crscd.riis.freightmarket.trade.controller.FmBoxFreight.selectBoxfreightorder(com.crscd.riis.freightmarket.trade.dto.findOrderDtoIn)
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fmBoxFreight/saveBoxFreightOrder],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public int com.crscd.riis.freightmarket.trade.controller.FmBoxFreight.saveboxfreightorder(com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity)
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fmBoxFreight/modifyBoxFreightOrder],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public int com.crscd.riis.freightmarket.trade.controller.FmBoxFreight.modifyBoxfreightorder(com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity)
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fmTradeOrder/insertTradeOrder],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.crscd.riis.freightmarket.trade.controller.FmTradeOrderController.insertTradeOrder(com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity)
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fmTradeOrder/selectTradeOrder],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public com.crscd.riis.freightmarket.trade.dto.findOrderDtoOut com.crscd.riis.freightmarket.trade.controller.FmTradeOrderController.selectTradeOrder(com.crscd.riis.freightmarket.trade.dto.findOrderDtoIn)
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fmTradeOrder/modifyTradeOrder],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public int com.crscd.riis.freightmarket.trade.controller.FmTradeOrderController.modifyTradeOrder(com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity)
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fmTradeOrder/getOrderInfo],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity com.crscd.riis.freightmarket.trade.controller.FmTradeOrderController.getOrderInfo(com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity)
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fastFreightService/getOrderInfo],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity com.crscd.riis.freightmarket.trade.controller.FmTradeOrderInfoFastFreightController.getOrderInfo(com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity)
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fastFreightService/insertFastFreightOrder],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.crscd.riis.freightmarket.trade.controller.FmTradeOrderInfoFastFreightController.insertFastFreightOrder(com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity)
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fastFreightService/modifyFastFreightOrder],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.crscd.riis.freightmarket.trade.controller.FmTradeOrderInfoFastFreightController.modifyWholeVegicleOrder(com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity)
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fmWholeVegicle/findorder],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public com.crscd.riis.freightmarket.trade.dto.findOrderDtoOut com.crscd.riis.freightmarket.trade.controller.FmWholeVegicleOrderController.findorder(com.crscd.riis.freightmarket.trade.dto.findOrderDtoIn)
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fmWholeVegicle/getOrderInfo],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity com.crscd.riis.freightmarket.trade.controller.FmWholeVegicleOrderController.getOrderInfo(com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity)
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fmWholeVegicle/modifyWholeVegicleOrder],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.crscd.riis.freightmarket.trade.controller.FmWholeVegicleOrderController.modifyWholeVegicleOrder(com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity)
+  [INFO] [2018-01-19 15:18:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/fmWholeVegicle/insertWholeVegicleOrder],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public java.lang.String com.crscd.riis.freightmarket.trade.controller.FmWholeVegicleOrderController.insertWholeVegicleOrder(com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity)
+  [INFO] [2018-01-19 15:18:19][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'SpringMVC': initialization completed in 861 ms
   

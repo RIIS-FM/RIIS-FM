@@ -27,6 +27,7 @@ import com.crscd.riis.freightmarket.trade.service.IFmBaseOrderService;
 import com.crscd.riis.freightmarket.trade.service.IFmTradeOrderBoxFreightService;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoWholeVegicleFreightEntity;
 import com.crscd.riis.freightmarket.trade.service.IFmWholeVegicleOrderService;
+import com.crscd.riis.freightmarket.trade.tradeConstants.tradeConstants;
 
 @Controller
 @RequestMapping("/fmTradeOrder")
@@ -65,10 +66,10 @@ public class FmTradeOrderController {
 		 * 4-6快运
 		 * 7-10整车
 		 * */
-		if (orderType == 3){
+		if (orderType == tradeConstants.BOX_FREIGHT_FLAG){
 			tradeOrderBoxFreightService.saveOrderBoxInfo(record);
 		}
-		else if (orderType >= 4 && orderType <= 6) {
+		else if (orderType >= tradeConstants.FAST_FREIGHT_FLAG_START && orderType <= tradeConstants.FAST_FREIGHT_FLAG_END) {
 			FmTradeOrderInfoFastFreightEntity recordFast=record.getFmTradeOrderInfoFastFreightRecord();
 			long countRecord = tradeOrderInfoBaseService.countOrderNumber(record);
 			long countRecordFast = fmTradeOrderInfoFastFreightService.countOrderNumber(recordFast);
@@ -88,7 +89,7 @@ public class FmTradeOrderController {
 				fmTradeOrderInfoFastFreightService.saveFmTradeOrderInfoFastFreight(recordFast);
 			}
 		}
-		else if (orderType >= 7 && orderType <= 10) {
+		else if (orderType >= tradeConstants.WHOLE_VEGICLE_FLAG_START && orderType <= tradeConstants.WHOLE_VEGICLE_FLAG_END) {
 			FmTradeOrderInfoWholeVegicleFreightEntity recordWhole=record.getFmTradeOrderInfoWholeVegicleFreightRecord();
 			long countRecord=tradeOrderInfoBaseService.countOrderNumber(record);
 			long countRecordWhole=fmWholeVegicleOrderService.countOrderNumber(recordWhole);
@@ -138,13 +139,13 @@ public class FmTradeOrderController {
 		 * 4-6快运
 		 * 7-10整车
 		 * */
-		if (orderType == 3) {
+		if (orderType == tradeConstants.BOX_FREIGHT_FLAG) {
 			orderInfoBase.setFmTradeOrderInfoBoxFreightRecord(tradeOrderBoxFreightService.getFmBoxFreightOrder(id).get(0));
 		}
-		else if (orderType >= 4 && orderType <= 6) {
+		else if (orderType >= tradeConstants.FAST_FREIGHT_FLAG_START && orderType <= tradeConstants.FAST_FREIGHT_FLAG_END) {
 			orderInfoBase.setFmTradeOrderInfoFastFreightRecord(fmTradeOrderInfoFastFreightService.getFmFastFreightOrder(id).get(0));
 		}
-		else if (orderType >= 7 && orderType <= 10) {
+		else if (orderType >= tradeConstants.WHOLE_VEGICLE_FLAG_START && orderType <= tradeConstants.WHOLE_VEGICLE_FLAG_END) {
 			orderInfoBase.setFmTradeOrderInfoWholeVegicleFreightRecord(fmWholeVegicleOrderService.getFmWholeVegicleOrder(id).get(0));
 		}
 		return orderInfoBase;
@@ -168,7 +169,7 @@ public class FmTradeOrderController {
 		 * 4-6快运
 		 * 7-10整车
 		 * */
-		if (orderType == 3) {
+		if (orderType == tradeConstants.BOX_FREIGHT_FLAG) {
 			FmTradeOrderInfoBoxFreightEntity recordBox = record.getFmTradeOrderInfoBoxFreightRecord();
 			int retBoxInfo = tradeOrderBoxFreightService.modifyOrderInfo(recordBox);
 
@@ -176,7 +177,7 @@ public class FmTradeOrderController {
 				ret = 1;
 			}
 		}
-		else if (orderType >= 4 && orderType <= 6){
+		else if (orderType >= tradeConstants.FAST_FREIGHT_FLAG_START && orderType <= tradeConstants.FAST_FREIGHT_FLAG_END){
 			FmTradeOrderInfoFastFreightEntity recordBox = record.getFmTradeOrderInfoFastFreightRecord();
 			int retFastInfo = fmTradeOrderInfoFastFreightService.modifyOrderInfo(recordBox);
 
@@ -184,7 +185,7 @@ public class FmTradeOrderController {
 				ret = 1;
 			}
 		}
-		else if (orderType >= 7 && orderType <= 10) {
+		else if (orderType >= tradeConstants.WHOLE_VEGICLE_FLAG_START && orderType <= tradeConstants.WHOLE_VEGICLE_FLAG_END) {
 			FmTradeOrderInfoWholeVegicleFreightEntity recordBox = record.getFmTradeOrderInfoWholeVegicleFreightRecord();
 			int retWholeVegicleInfo = fmWholeVegicleOrderService.modifyOrderInfo(recordBox);
 

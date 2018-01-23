@@ -35,7 +35,7 @@ public interface FmTradeOrderInfoWholeVegicleFreightEntityMapper {
         "F_GOODS_WIGHT, F_GOODS_VOLUME, ",
         "C_GOODS_FEATURE, F_EACH_GOODS_MAX_WEIGHT, ",
         "I_GOODS_REQUEST_TRAIN_NUMBER, I_GOODS_SEAL_NUM, ",
-        "I_GOODS_REINFORCE, C_GOODS_WRAPPER, ",
+        "I_GOODS_REINFORCE, I_GOODS_WRAPPER, ",
         "I_CANVAS_NUMBER, I_TRAIN_TYPE, ",
         "I_SENDER_LINE_ID, I_RECVER_LINE_ID)",
         "values (#{id,jdbcType=INTEGER}, #{iOrderId,jdbcType=INTEGER}, ",
@@ -43,7 +43,7 @@ public interface FmTradeOrderInfoWholeVegicleFreightEntityMapper {
         "#{fGoodsWight,jdbcType=REAL}, #{fGoodsVolume,jdbcType=REAL}, ",
         "#{cGoodsFeature,jdbcType=VARCHAR}, #{fEachGoodsMaxWeight,jdbcType=REAL}, ",
         "#{iGoodsRequestTrainNumber,jdbcType=INTEGER}, #{iGoodsSealNum,jdbcType=INTEGER}, ",
-        "#{iGoodsReinforce,jdbcType=INTEGER}, #{cGoodsWrapper,jdbcType=VARCHAR}, ",
+        "#{iGoodsReinforce,jdbcType=INTEGER}, #{iGoodsWrapper,jdbcType=INTEGER}, ",
         "#{iCanvasNumber,jdbcType=INTEGER}, #{iTrainType,jdbcType=INTEGER}, ",
         "#{iSenderLineId,jdbcType=INTEGER}, #{iRecverLineId,jdbcType=INTEGER})"
     })
@@ -65,7 +65,7 @@ public interface FmTradeOrderInfoWholeVegicleFreightEntityMapper {
         @Result(column="I_GOODS_REQUEST_TRAIN_NUMBER", property="iGoodsRequestTrainNumber", jdbcType=JdbcType.INTEGER),
         @Result(column="I_GOODS_SEAL_NUM", property="iGoodsSealNum", jdbcType=JdbcType.INTEGER),
         @Result(column="I_GOODS_REINFORCE", property="iGoodsReinforce", jdbcType=JdbcType.INTEGER),
-        @Result(column="C_GOODS_WRAPPER", property="cGoodsWrapper", jdbcType=JdbcType.VARCHAR),
+        @Result(column="I_GOODS_WRAPPER", property="iGoodsWrapper", jdbcType=JdbcType.INTEGER),
         @Result(column="I_CANVAS_NUMBER", property="iCanvasNumber", jdbcType=JdbcType.INTEGER),
         @Result(column="I_TRAIN_TYPE", property="iTrainType", jdbcType=JdbcType.INTEGER),
         @Result(column="I_SENDER_LINE_ID", property="iSenderLineId", jdbcType=JdbcType.INTEGER),
@@ -77,7 +77,7 @@ public interface FmTradeOrderInfoWholeVegicleFreightEntityMapper {
         "select",
         "id, I_ORDER_ID, C_GOODS_NAME, C_GOODS_CODE, F_GOODS_WIGHT, F_GOODS_VOLUME, C_GOODS_FEATURE, ",
         "F_EACH_GOODS_MAX_WEIGHT, I_GOODS_REQUEST_TRAIN_NUMBER, I_GOODS_SEAL_NUM, I_GOODS_REINFORCE, ",
-        "C_GOODS_WRAPPER, I_CANVAS_NUMBER, I_TRAIN_TYPE, I_SENDER_LINE_ID, I_RECVER_LINE_ID",
+        "I_GOODS_WRAPPER, I_CANVAS_NUMBER, I_TRAIN_TYPE, I_SENDER_LINE_ID, I_RECVER_LINE_ID",
         "from fm_trade_order_info_whole_vegicle_freight",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -93,7 +93,7 @@ public interface FmTradeOrderInfoWholeVegicleFreightEntityMapper {
         @Result(column="I_GOODS_REQUEST_TRAIN_NUMBER", property="iGoodsRequestTrainNumber", jdbcType=JdbcType.INTEGER),
         @Result(column="I_GOODS_SEAL_NUM", property="iGoodsSealNum", jdbcType=JdbcType.INTEGER),
         @Result(column="I_GOODS_REINFORCE", property="iGoodsReinforce", jdbcType=JdbcType.INTEGER),
-        @Result(column="C_GOODS_WRAPPER", property="cGoodsWrapper", jdbcType=JdbcType.VARCHAR),
+        @Result(column="I_GOODS_WRAPPER", property="iGoodsWrapper", jdbcType=JdbcType.INTEGER),
         @Result(column="I_CANVAS_NUMBER", property="iCanvasNumber", jdbcType=JdbcType.INTEGER),
         @Result(column="I_TRAIN_TYPE", property="iTrainType", jdbcType=JdbcType.INTEGER),
         @Result(column="I_SENDER_LINE_ID", property="iSenderLineId", jdbcType=JdbcType.INTEGER),
@@ -101,15 +101,11 @@ public interface FmTradeOrderInfoWholeVegicleFreightEntityMapper {
     })
     FmTradeOrderInfoWholeVegicleFreightEntity selectByPrimaryKey(Integer id);
     
-    /** 通过订单id查询订单详细信息
-     * @param 基本订单id
-     * @return 整车详细订单实体
-     * */
     @Select({
         "select",
         "id, I_ORDER_ID, C_GOODS_NAME, C_GOODS_CODE, F_GOODS_WIGHT, F_GOODS_VOLUME, C_GOODS_FEATURE, ",
         "F_EACH_GOODS_MAX_WEIGHT, I_GOODS_REQUEST_TRAIN_NUMBER, I_GOODS_SEAL_NUM, I_GOODS_REINFORCE, ",
-        "C_GOODS_WRAPPER, I_CANVAS_NUMBER, I_TRAIN_TYPE, I_SENDER_LINE_ID, I_RECVER_LINE_ID",
+        "I_GOODS_WRAPPER, I_CANVAS_NUMBER, I_TRAIN_TYPE, I_SENDER_LINE_ID, I_RECVER_LINE_ID",
         "from fm_trade_order_info_whole_vegicle_freight",
         "where I_ORDER_ID = #{orderId,jdbcType=INTEGER}"
     })
@@ -125,13 +121,13 @@ public interface FmTradeOrderInfoWholeVegicleFreightEntityMapper {
         @Result(column="I_GOODS_REQUEST_TRAIN_NUMBER", property="iGoodsRequestTrainNumber", jdbcType=JdbcType.INTEGER),
         @Result(column="I_GOODS_SEAL_NUM", property="iGoodsSealNum", jdbcType=JdbcType.INTEGER),
         @Result(column="I_GOODS_REINFORCE", property="iGoodsReinforce", jdbcType=JdbcType.INTEGER),
-        @Result(column="C_GOODS_WRAPPER", property="cGoodsWrapper", jdbcType=JdbcType.VARCHAR),
+        @Result(column="I_GOODS_WRAPPER", property="iGoodsWrapper", jdbcType=JdbcType.INTEGER),
         @Result(column="I_CANVAS_NUMBER", property="iCanvasNumber", jdbcType=JdbcType.INTEGER),
         @Result(column="I_TRAIN_TYPE", property="iTrainType", jdbcType=JdbcType.INTEGER),
         @Result(column="I_SENDER_LINE_ID", property="iSenderLineId", jdbcType=JdbcType.INTEGER),
         @Result(column="I_RECVER_LINE_ID", property="iRecverLineId", jdbcType=JdbcType.INTEGER)
     })
-    FmTradeOrderInfoWholeVegicleFreightEntity selectByOrderId(Integer orderid);
+    FmTradeOrderInfoWholeVegicleFreightEntity selectByOrderId(Integer orderId);
 
     @UpdateProvider(type=FmTradeOrderInfoWholeVegicleFreightEntitySqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") FmTradeOrderInfoWholeVegicleFreightEntity record, @Param("example") FmTradeOrderInfoWholeVegicleFreightEntityExample example);
@@ -154,7 +150,7 @@ public interface FmTradeOrderInfoWholeVegicleFreightEntityMapper {
           "I_GOODS_REQUEST_TRAIN_NUMBER = #{iGoodsRequestTrainNumber,jdbcType=INTEGER},",
           "I_GOODS_SEAL_NUM = #{iGoodsSealNum,jdbcType=INTEGER},",
           "I_GOODS_REINFORCE = #{iGoodsReinforce,jdbcType=INTEGER},",
-          "C_GOODS_WRAPPER = #{cGoodsWrapper,jdbcType=VARCHAR},",
+          "I_GOODS_WRAPPER = #{iGoodsWrapper,jdbcType=INTEGER},",
           "I_CANVAS_NUMBER = #{iCanvasNumber,jdbcType=INTEGER},",
           "I_TRAIN_TYPE = #{iTrainType,jdbcType=INTEGER},",
           "I_SENDER_LINE_ID = #{iSenderLineId,jdbcType=INTEGER},",

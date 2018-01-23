@@ -10,7 +10,7 @@ public class tradeConstants {
 	/** 默认快运的起始标志位为4*/
 	public static int FAST_FREIGHT_FLAG_START = 4;
 	
-	/** 默认快运的终止标志位为4*/
+	/** 默认快运的终止标志位为6*/
 	public static int FAST_FREIGHT_FLAG_END = 6;
 	
 	/** 默认整车运输的起始标志位为7*/
