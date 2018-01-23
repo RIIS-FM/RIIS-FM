@@ -2,6 +2,8 @@ package com.crscd.riis.freightmarket.trade.service.impl;
 
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -159,11 +161,13 @@ public class FmTradeOrderBoxFreightServiceImpl implements IFmTradeOrderBoxFreigh
 		return ret;
 	}
 	
-/*	@Override
-	public FmTradeOrderInfoBoxFreightEntity getOrderInfoByOrderId(Integer orderId) {
-		
-		return fmTradeOrderInfoBoxFreightEntityMapper.selectByOrderId(orderId);
-	}*/
+	@Override
+	public List<FmTradeOrderInfoBoxFreightEntity> getFmBoxFreightOrder(int iOrderId) {
+		FmTradeOrderInfoBoxFreightEntityExample boxOrderExample=new FmTradeOrderInfoBoxFreightEntityExample();
+		Criteria boxOrderCriteria=boxOrderExample.createCriteria();
+		boxOrderCriteria.andIOrderIdEqualTo(iOrderId);
+		return fmTradeOrderInfoBoxFreightEntityMapper.selectByExample(boxOrderExample);
+	}
 	
 
 	

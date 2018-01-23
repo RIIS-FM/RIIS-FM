@@ -1,5 +1,7 @@
 package com.crscd.riis.freightmarket.trade.service;
 
+import java.util.List;
+
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBoxFreightEntity;
 
@@ -29,7 +31,8 @@ public interface IFmTradeOrderBoxFreightService {
 	  * @param 订单基本信息的id
 	  * @return 查找成功集装箱运输实体，查找失败返回空
 	  * */
-/*	 FmTradeOrderInfoBoxFreightEntity getOrderInfoByOrderId(Integer orderId);*/
+	 public List<FmTradeOrderInfoBoxFreightEntity> getFmBoxFreightOrder(int iOrderId);
+
 	 
 
 }

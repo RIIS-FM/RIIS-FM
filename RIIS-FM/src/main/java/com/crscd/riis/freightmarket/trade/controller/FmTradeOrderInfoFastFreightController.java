@@ -16,64 +16,52 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoFastFreightEntity;
 import com.crscd.riis.freightmarket.trade.service.IFmTradeOrderInfoFastFreightService;
+import com.crscd.riis.freightmarket.trade.service.IFmBaseOrderService;
+import com.crscd.riis.freightmarket.trade.service.IFmTradeOrderInfoBaseService;
+
 
 @Controller
-
 @RequestMapping("/fastFreightService")
 
 public class FmTradeOrderInfoFastFreightController {
 	@Resource
 	private IFmTradeOrderInfoFastFreightService fmTradeOrderInfoFastFreightService;
-	
+	 
+	@Resource
+	private IFmTradeOrderInfoBaseService tradeOrderInfoBaseService;
+
+	@Resource
+	private IFmBaseOrderService fmBaseOrderService;
 	/* URL：http://localhost:8080/RIIS-FM/fastFreightService/insertFastFreightOrder
 	 * 功能：新增快运货物需求
-	 * 输入：FmTradeOrderInfoBaseEntity 基本订单信息
+	 * 输入：FmTradeOrderInfoBaseEntity 基本订单信息   测试JSON:{"iOrderTypeId":5,"dOrderDateline":"2018-01-19","iUserType":3,"iSenderId":7,"iRecverId":5,"cSenderName":"王石","cSenderAddress":"四川省成都市青羊区","cSenderPhone":"13896321568","cSenderEmail":"941103169@qq.com","cSenderPostcode":"135300","cSenderNote":"轻拿轻放","cSenderCity":"成都","cLoadStation":"成都北站","cLoadLocation":"成都北站货仓","cRecverAddress":"北京市海定区","cRecverPhone":"14789651236","cRecverEmail":"47894562@qq.com","cRecverPostcode":"10000","cRecverCity":"北京","cUnloadStation":"北京站","cUnloadLocation":"北京","cOrderType":"集装箱运输","iOrderSplite":"0","iOrderState":1,"fProtectPrice":100,"fInsuranceValue":100,"fmTradeOrderInfoFastFreightRecord":{"cGoodsName":"铁合金"}}
 	 * 输出：保存或者提交成功标识符
 	 */
 	@RequestMapping(value="/insertFastFreightOrder")
 	@ResponseBody
 	public String insertFastFreightOrder(@RequestBody FmTradeOrderInfoBaseEntity record) {
-		System.out.println(1);
-		fmTradeOrderInfoFastFreightService.saveBasicOrder(record);
-		FmTradeOrderInfoFastFreightEntity record1=record.getFmTradeOrderInfoFastFreightRecord();
-		List<FmTradeOrderInfoBaseEntity> list=fmTradeOrderInfoFastFreightService.getOrderId(record.getcOrderCode());
-		int orderId=list.get(0).getId();
-		record1.setiOrderId(orderId);
-		fmTradeOrderInfoFastFreightService.saveFmTradeOrderInfoFastFreight(record1);
-        return "defeat";	
-	}
-	
-	/* URL：http://localhost:8080/RIIS-FM/fastFreightService/commitFastFreightOrder
-	 * 功能：提交快运货物运输需求
-	 * 输入：id
-	 * 输出：提交成功标识符
-	 */
-	@RequestMapping(value="/commitFastFreightOrder")
-	@ResponseBody
-	public String commitFastFreightOrder(@RequestBody int id) {
-		FmTradeOrderInfoBaseEntity record=fmTradeOrderInfoFastFreightService.getBaseOrder(id);
-		int c=fmTradeOrderInfoFastFreightService.commitOrder(record);
-		if(c==1)
-			return "提交成功";
-		else return "提交失败";
+		FmTradeOrderInfoFastFreightEntity recordFast=record.getFmTradeOrderInfoFastFreightRecord();
+		long countRecord = tradeOrderInfoBaseService.countOrderNumber(record);
+		long countRecordFast = fmTradeOrderInfoFastFreightService.countOrderNumber(recordFast);
 		
+		if(countRecord != 0 && countRecordFast!= 0) {
+			if(record.getiOrderState() == 0)
+				return "defeat";
+			else if(record.getiOrderState() == 1)
+				return "defeat";
+		}
+		else{
+			fmBaseOrderService.saveBasicOrder(record);
+			FmTradeOrderInfoBaseEntity fastOrder = fmBaseOrderService.getOrderId(record.getcOrderCode());
+			int orderId = fastOrder.getId();
+			
+			recordFast.setiOrderId(orderId);
+			fmTradeOrderInfoFastFreightService.saveFmTradeOrderInfoFastFreight(recordFast);
+		}
+		return "success";
 	}
 	
-	/* URL：http://localhost:8080/RIIS-FM/fastFreightService/deleteFastFreightOrder
-	 * 功能：提交快运货物运输需求
-	 * 输入：id
-	 * 输出：提交成功标识符
-	 */
-	@RequestMapping(value="/deleteFastFreightOrder")
-	@ResponseBody
-	public String deleteFastFreightOrder(@RequestBody int id) {
-		FmTradeOrderInfoBaseEntity record=fmTradeOrderInfoFastFreightService.getBaseOrder(id);
-		int c=fmTradeOrderInfoFastFreightService.commitOrder(record);
-		if(c==1)
-			return "删除成功";
-		else return "删除失败";
-	}
-	
+
 	/* URL：http://localhost:8080/RIIS-FM/fastFreightService/getOrderInfo
 	 * 功能：查看快运货物运输需求
 	 * 输入：FmTradeOrderInfoBaseEntity 基本订单信息
@@ -82,9 +70,11 @@ public class FmTradeOrderInfoFastFreightController {
 	@RequestMapping(value="/getOrderInfo")
 	@ResponseBody
 	public FmTradeOrderInfoBaseEntity getOrderInfo(@RequestBody FmTradeOrderInfoBaseEntity record) {
-		int id=record.getId();
-		FmTradeOrderInfoBaseEntity orderInfoBase=fmTradeOrderInfoFastFreightService.getBaseOrder(id);
-		orderInfoBase.setFmTradeOrderInfoFastFreightRecord(fmTradeOrderInfoFastFreightService.getFmFastFreightOrder(id).get(0));	
+		int id = record.getId();
+		int orderType = record.getiOrderTypeId();
+		
+		FmTradeOrderInfoBaseEntity orderInfoBase = fmBaseOrderService.getBaseOrder(id);
+		orderInfoBase.setFmTradeOrderInfoFastFreightRecord(fmTradeOrderInfoFastFreightService.getFmFastFreightOrder(id).get(0));
 		return orderInfoBase;
 	}
 	
@@ -96,7 +86,6 @@ public class FmTradeOrderInfoFastFreightController {
 	@RequestMapping(value="/modifyFastFreightOrder")
 	@ResponseBody
 	public String modifyWholeVegicleOrder(@RequestBody FmTradeOrderInfoBaseEntity record) {
-		fmTradeOrderInfoFastFreightService.modifyOrder(record);
 		return "修改成功";
 	}
 }
