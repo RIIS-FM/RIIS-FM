@@ -4,10 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.crscd.riis.freightmarket.authority.entity.FmAccountEntity;
-import com.crscd.riis.freightmarket.trade.page.PageModel;
+import com.crscd.riis.freightmarket.trade.util.page.PageModel;
 import com.crscd.riis.freightmarket.trade.dto.findOrderDtoIn;
 import com.crscd.riis.freightmarket.trade.dto.findOrderDtoOut;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
@@ -27,7 +23,7 @@ import com.crscd.riis.freightmarket.trade.service.IFmBaseOrderService;
 import com.crscd.riis.freightmarket.trade.service.IFmTradeOrderBoxFreightService;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoWholeVegicleFreightEntity;
 import com.crscd.riis.freightmarket.trade.service.IFmWholeVegicleOrderService;
-import com.crscd.riis.freightmarket.trade.tradeConstants.tradeConstants;
+import com.crscd.riis.freightmarket.trade.util.tradeConstants.tradeConstants;
 
 @Controller
 @RequestMapping("/fmTradeOrder")
