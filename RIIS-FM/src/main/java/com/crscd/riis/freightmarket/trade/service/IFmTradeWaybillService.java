@@ -14,6 +14,8 @@ public interface IFmTradeWaybillService {
 	 * */
 	public List<FmTradeWaybillEntity> getWaybillByOrder(Integer id);
 	
+	设置运单基本信息
+	
 	/** 
 	 * 编辑运单编号	
 	 * */
@@ -25,6 +27,7 @@ public interface IFmTradeWaybillService {
 	 * @return 返回影响的行数
 	 * */
 	public int saveWaybill(FmTradeWaybillEntity record);
+	
 	
 
 }
