@@ -36,5 +36,17 @@ public class tradeConstants {
 	
 	/** 运单已支付标志为1*/
 	public static int WAYBILL_STATE_PAYMENT = 1;
+	
+	/*运单待发货标志位为0*/
+	public static int WAYBILL_STATE_WAIT_SEND = 0;
+	
+	/*运单待收货标志位为1*/
+	public static int WAYBILL_STATE_WAIT_RECEIVE = 1;
+	
+	/*运单待评价标志位为2*/
+	public static int WAYBILL_STATE_WAIT_ESTIMATE = 2;
+	
+	/*运单已完成标志位为3*/
+	public static int WAYBILL_STATE_WAIT_COMPLETE = 3;
 
 }
