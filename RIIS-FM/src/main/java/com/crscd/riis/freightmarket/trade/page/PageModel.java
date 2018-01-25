@@ -1,6 +1,6 @@
-package com.crscd.riis.freightmarket.trade.util.page;
+package com.crscd.riis.freightmarket.trade.page;
 
-import com.crscd.riis.freightmarket.trade.util.tradeConstants.tradeConstants;
+import com.crscd.riis.freightmarket.trade.tradeConstants.tradeConstants;
 
 public class PageModel {
 	/** 分页总数据条数  */
