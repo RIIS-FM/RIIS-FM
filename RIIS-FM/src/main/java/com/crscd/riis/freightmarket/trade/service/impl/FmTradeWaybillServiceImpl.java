@@ -20,7 +20,7 @@ import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoFastFreightEnti
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoWholeVegicleFreightEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeWaybillEntity;
 import com.crscd.riis.freightmarket.trade.service.IFmTradeWaybillService;
-import com.crscd.riis.freightmarket.trade.tradeConstants.tradeConstants;
+import com.crscd.riis.freightmarket.trade.util.tradeConstants.tradeConstants;
 
 
 /* *
