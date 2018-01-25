@@ -1,88 +1,73 @@
 package com.crscd.riis.freightmarket.trade.dao;
 
-import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderTypeEntity;
-import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderTypeEntityExample.Criteria;
-import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderTypeEntityExample.Criterion;
-import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderTypeEntityExample;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeFeeEntity;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeFeeEntityExample.Criteria;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeFeeEntityExample.Criterion;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeFeeEntityExample;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
 
-public class FmTradeOrderTypeEntitySqlProvider {
+public class FmTradeFeeEntitySqlProvider {
 
-    public String countByExample(FmTradeOrderTypeEntityExample example) {
+    public String countByExample(FmTradeFeeEntityExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("fm_trade_order_type");
+        sql.SELECT("count(*)").FROM("fm_trade_fee");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(FmTradeOrderTypeEntityExample example) {
+    public String deleteByExample(FmTradeFeeEntityExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("fm_trade_order_type");
+        sql.DELETE_FROM("fm_trade_fee");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(FmTradeOrderTypeEntity record) {
+    public String insertSelective(FmTradeFeeEntity record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("fm_trade_order_type");
+        sql.INSERT_INTO("fm_trade_fee");
         
         if (record.getId() != null) {
             sql.VALUES("id", "#{id,jdbcType=INTEGER}");
         }
         
-        if (record.getiTypeLabel() != null) {
-            sql.VALUES("I_TYPE_LABEL", "#{iTypeLabel,jdbcType=INTEGER}");
+        if (record.getiFeeType() != null) {
+            sql.VALUES("I_FEE_TYPE", "#{iFeeType,jdbcType=INTEGER}");
         }
         
-        if (record.getcTypeValue() != null) {
-            sql.VALUES("C_TYPE_VALUE", "#{cTypeValue,jdbcType=VARCHAR}");
+        if (record.getiTransportType() != null) {
+            sql.VALUES("I_TRANSPORT_TYPE", "#{iTransportType,jdbcType=INTEGER}");
         }
         
-        if (record.getdTypeCreateTime() != null) {
-            sql.VALUES("D_TYPE_CREATE_TIME", "#{dTypeCreateTime,jdbcType=TIMESTAMP}");
+        if (record.getcPriceNo() != null) {
+            sql.VALUES("C_PRICE_NO", "#{cPriceNo,jdbcType=VARCHAR}");
         }
         
-        if (record.getdTypeModifyTime() != null) {
-            sql.VALUES("D_TYPE_MODIFY_TIME", "#{dTypeModifyTime,jdbcType=TIMESTAMP}");
+        if (record.getfBasePriceOne() != null) {
+            sql.VALUES("F_BASE_PRICE_ONE", "#{fBasePriceOne,jdbcType=REAL}");
         }
         
-        if (record.getdTypeDeleteTime() != null) {
-            sql.VALUES("D_TYPE_DELETE_TIME", "#{dTypeDeleteTime,jdbcType=TIMESTAMP}");
-        }
-        
-        if (record.getiTypeCreater() != null) {
-            sql.VALUES("I_TYPE_CREATER", "#{iTypeCreater,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiTypeModifier() != null) {
-            sql.VALUES("I_TYPE_MODIFIER", "#{iTypeModifier,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiTypeDelete() != null) {
-            sql.VALUES("I_TYPE_DELETE", "#{iTypeDelete,jdbcType=INTEGER}");
+        if (record.getfBasePriceTwo() != null) {
+            sql.VALUES("F_BASE_PRICE_TWO", "#{fBasePriceTwo,jdbcType=REAL}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(FmTradeOrderTypeEntityExample example) {
+    public String selectByExample(FmTradeFeeEntityExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
             sql.SELECT_DISTINCT("id");
         } else {
             sql.SELECT("id");
         }
-        sql.SELECT("I_TYPE_LABEL");
-        sql.SELECT("C_TYPE_VALUE");
-        sql.SELECT("D_TYPE_CREATE_TIME");
-        sql.SELECT("D_TYPE_MODIFY_TIME");
-        sql.SELECT("D_TYPE_DELETE_TIME");
-        sql.SELECT("I_TYPE_CREATER");
-        sql.SELECT("I_TYPE_MODIFIER");
-        sql.SELECT("I_TYPE_DELETE");
-        sql.FROM("fm_trade_order_type");
+        sql.SELECT("I_FEE_TYPE");
+        sql.SELECT("I_TRANSPORT_TYPE");
+        sql.SELECT("C_PRICE_NO");
+        sql.SELECT("F_BASE_PRICE_ONE");
+        sql.SELECT("F_BASE_PRICE_TWO");
+        sql.FROM("fm_trade_fee");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -93,46 +78,34 @@ public class FmTradeOrderTypeEntitySqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        FmTradeOrderTypeEntity record = (FmTradeOrderTypeEntity) parameter.get("record");
-        FmTradeOrderTypeEntityExample example = (FmTradeOrderTypeEntityExample) parameter.get("example");
+        FmTradeFeeEntity record = (FmTradeFeeEntity) parameter.get("record");
+        FmTradeFeeEntityExample example = (FmTradeFeeEntityExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("fm_trade_order_type");
+        sql.UPDATE("fm_trade_fee");
         
         if (record.getId() != null) {
             sql.SET("id = #{record.id,jdbcType=INTEGER}");
         }
         
-        if (record.getiTypeLabel() != null) {
-            sql.SET("I_TYPE_LABEL = #{record.iTypeLabel,jdbcType=INTEGER}");
+        if (record.getiFeeType() != null) {
+            sql.SET("I_FEE_TYPE = #{record.iFeeType,jdbcType=INTEGER}");
         }
         
-        if (record.getcTypeValue() != null) {
-            sql.SET("C_TYPE_VALUE = #{record.cTypeValue,jdbcType=VARCHAR}");
+        if (record.getiTransportType() != null) {
+            sql.SET("I_TRANSPORT_TYPE = #{record.iTransportType,jdbcType=INTEGER}");
         }
         
-        if (record.getdTypeCreateTime() != null) {
-            sql.SET("D_TYPE_CREATE_TIME = #{record.dTypeCreateTime,jdbcType=TIMESTAMP}");
+        if (record.getcPriceNo() != null) {
+            sql.SET("C_PRICE_NO = #{record.cPriceNo,jdbcType=VARCHAR}");
         }
         
-        if (record.getdTypeModifyTime() != null) {
-            sql.SET("D_TYPE_MODIFY_TIME = #{record.dTypeModifyTime,jdbcType=TIMESTAMP}");
+        if (record.getfBasePriceOne() != null) {
+            sql.SET("F_BASE_PRICE_ONE = #{record.fBasePriceOne,jdbcType=REAL}");
         }
         
-        if (record.getdTypeDeleteTime() != null) {
-            sql.SET("D_TYPE_DELETE_TIME = #{record.dTypeDeleteTime,jdbcType=TIMESTAMP}");
-        }
-        
-        if (record.getiTypeCreater() != null) {
-            sql.SET("I_TYPE_CREATER = #{record.iTypeCreater,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiTypeModifier() != null) {
-            sql.SET("I_TYPE_MODIFIER = #{record.iTypeModifier,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiTypeDelete() != null) {
-            sql.SET("I_TYPE_DELETE = #{record.iTypeDelete,jdbcType=INTEGER}");
+        if (record.getfBasePriceTwo() != null) {
+            sql.SET("F_BASE_PRICE_TWO = #{record.fBasePriceTwo,jdbcType=REAL}");
         }
         
         applyWhere(sql, example, true);
@@ -141,57 +114,42 @@ public class FmTradeOrderTypeEntitySqlProvider {
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("fm_trade_order_type");
+        sql.UPDATE("fm_trade_fee");
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("I_TYPE_LABEL = #{record.iTypeLabel,jdbcType=INTEGER}");
-        sql.SET("C_TYPE_VALUE = #{record.cTypeValue,jdbcType=VARCHAR}");
-        sql.SET("D_TYPE_CREATE_TIME = #{record.dTypeCreateTime,jdbcType=TIMESTAMP}");
-        sql.SET("D_TYPE_MODIFY_TIME = #{record.dTypeModifyTime,jdbcType=TIMESTAMP}");
-        sql.SET("D_TYPE_DELETE_TIME = #{record.dTypeDeleteTime,jdbcType=TIMESTAMP}");
-        sql.SET("I_TYPE_CREATER = #{record.iTypeCreater,jdbcType=INTEGER}");
-        sql.SET("I_TYPE_MODIFIER = #{record.iTypeModifier,jdbcType=INTEGER}");
-        sql.SET("I_TYPE_DELETE = #{record.iTypeDelete,jdbcType=INTEGER}");
+        sql.SET("I_FEE_TYPE = #{record.iFeeType,jdbcType=INTEGER}");
+        sql.SET("I_TRANSPORT_TYPE = #{record.iTransportType,jdbcType=INTEGER}");
+        sql.SET("C_PRICE_NO = #{record.cPriceNo,jdbcType=VARCHAR}");
+        sql.SET("F_BASE_PRICE_ONE = #{record.fBasePriceOne,jdbcType=REAL}");
+        sql.SET("F_BASE_PRICE_TWO = #{record.fBasePriceTwo,jdbcType=REAL}");
         
-        FmTradeOrderTypeEntityExample example = (FmTradeOrderTypeEntityExample) parameter.get("example");
+        FmTradeFeeEntityExample example = (FmTradeFeeEntityExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(FmTradeOrderTypeEntity record) {
+    public String updateByPrimaryKeySelective(FmTradeFeeEntity record) {
         SQL sql = new SQL();
-        sql.UPDATE("fm_trade_order_type");
+        sql.UPDATE("fm_trade_fee");
         
-        if (record.getiTypeLabel() != null) {
-            sql.SET("I_TYPE_LABEL = #{iTypeLabel,jdbcType=INTEGER}");
+        if (record.getiFeeType() != null) {
+            sql.SET("I_FEE_TYPE = #{iFeeType,jdbcType=INTEGER}");
         }
         
-        if (record.getcTypeValue() != null) {
-            sql.SET("C_TYPE_VALUE = #{cTypeValue,jdbcType=VARCHAR}");
+        if (record.getiTransportType() != null) {
+            sql.SET("I_TRANSPORT_TYPE = #{iTransportType,jdbcType=INTEGER}");
         }
         
-        if (record.getdTypeCreateTime() != null) {
-            sql.SET("D_TYPE_CREATE_TIME = #{dTypeCreateTime,jdbcType=TIMESTAMP}");
+        if (record.getcPriceNo() != null) {
+            sql.SET("C_PRICE_NO = #{cPriceNo,jdbcType=VARCHAR}");
         }
         
-        if (record.getdTypeModifyTime() != null) {
-            sql.SET("D_TYPE_MODIFY_TIME = #{dTypeModifyTime,jdbcType=TIMESTAMP}");
+        if (record.getfBasePriceOne() != null) {
+            sql.SET("F_BASE_PRICE_ONE = #{fBasePriceOne,jdbcType=REAL}");
         }
         
-        if (record.getdTypeDeleteTime() != null) {
-            sql.SET("D_TYPE_DELETE_TIME = #{dTypeDeleteTime,jdbcType=TIMESTAMP}");
-        }
-        
-        if (record.getiTypeCreater() != null) {
-            sql.SET("I_TYPE_CREATER = #{iTypeCreater,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiTypeModifier() != null) {
-            sql.SET("I_TYPE_MODIFIER = #{iTypeModifier,jdbcType=INTEGER}");
-        }
-        
-        if (record.getiTypeDelete() != null) {
-            sql.SET("I_TYPE_DELETE = #{iTypeDelete,jdbcType=INTEGER}");
+        if (record.getfBasePriceTwo() != null) {
+            sql.SET("F_BASE_PRICE_TWO = #{fBasePriceTwo,jdbcType=REAL}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");
@@ -199,7 +157,7 @@ public class FmTradeOrderTypeEntitySqlProvider {
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, FmTradeOrderTypeEntityExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, FmTradeFeeEntityExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

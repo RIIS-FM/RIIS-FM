@@ -60,5 +60,8 @@ public class tradeConstants {
 	
 	/*选择承运方案标志位为1*/
 	public static int TRANSPORT_SCHEME_SELECT_FLAG = 1;
+	
+	/** 运费标识位 0 */
+	public static int FEE_FLAG = 0;
 
 }

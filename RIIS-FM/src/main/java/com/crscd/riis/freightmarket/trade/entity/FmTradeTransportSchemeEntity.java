@@ -2,6 +2,8 @@ package com.crscd.riis.freightmarket.trade.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class FmTradeTransportSchemeEntity {
     private Integer id;
 
@@ -69,6 +71,7 @@ public class FmTradeTransportSchemeEntity {
         this.cTradeOrderTransportSchemeCode = cTradeOrderTransportSchemeCode == null ? null : cTradeOrderTransportSchemeCode.trim();
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdTradeOrderTransportSchemeStartTime() {
         return dTradeOrderTransportSchemeStartTime;
     }
@@ -77,6 +80,7 @@ public class FmTradeTransportSchemeEntity {
         this.dTradeOrderTransportSchemeStartTime = dTradeOrderTransportSchemeStartTime;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdTradeOrderTransportSchemeEndTime() {
         return dTradeOrderTransportSchemeEndTime;
     }
@@ -133,6 +137,7 @@ public class FmTradeTransportSchemeEntity {
         this.cTradeOrderTransportSchemeTrainType = cTradeOrderTransportSchemeTrainType == null ? null : cTradeOrderTransportSchemeTrainType.trim();
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdTradeOrderTransportSchemeUnloadStartTime() {
         return dTradeOrderTransportSchemeUnloadStartTime;
     }
@@ -141,6 +146,7 @@ public class FmTradeTransportSchemeEntity {
         this.dTradeOrderTransportSchemeUnloadStartTime = dTradeOrderTransportSchemeUnloadStartTime;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdTradeOrderTransportSchemeUnloadEndTime() {
         return dTradeOrderTransportSchemeUnloadEndTime;
     }
@@ -149,6 +155,7 @@ public class FmTradeTransportSchemeEntity {
         this.dTradeOrderTransportSchemeUnloadEndTime = dTradeOrderTransportSchemeUnloadEndTime;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdTradeOrderTransportSchemeLoadStartTime() {
         return dTradeOrderTransportSchemeLoadStartTime;
     }
@@ -157,6 +164,7 @@ public class FmTradeTransportSchemeEntity {
         this.dTradeOrderTransportSchemeLoadStartTime = dTradeOrderTransportSchemeLoadStartTime;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdTradeOrderTransportSchemeLoadEndTime() {
         return dTradeOrderTransportSchemeLoadEndTime;
     }
