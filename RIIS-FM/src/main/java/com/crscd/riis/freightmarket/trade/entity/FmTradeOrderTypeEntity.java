@@ -5,7 +5,7 @@ import java.util.Date;
 public class FmTradeOrderTypeEntity {
     private Integer id;
 
-    private String iTypeLabel;
+    private Integer iTypeLabel;
 
     private String cTypeValue;
 
@@ -29,12 +29,12 @@ public class FmTradeOrderTypeEntity {
         this.id = id;
     }
 
-    public String getiTypeLabel() {
+    public Integer getiTypeLabel() {
         return iTypeLabel;
     }
 
-    public void setiTypeLabel(String iTypeLabel) {
-        this.iTypeLabel = iTypeLabel == null ? null : iTypeLabel.trim();
+    public void setiTypeLabel(Integer iTypeLabel) {
+        this.iTypeLabel = iTypeLabel;
     }
 
     public String getcTypeValue() {

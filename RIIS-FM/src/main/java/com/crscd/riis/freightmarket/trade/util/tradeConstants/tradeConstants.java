@@ -47,12 +47,24 @@ public class tradeConstants {
 	public static int WAYBILL_STATE_WAIT_ESTIMATE = 2;
 	
 	/*运单已完成标志位为3*/
-	public static int WAYBILL_STATE_WAIT_COMPLETE = 3;
+	public static int WAYBILL_STATE_COMPLETE = 3;
+	
+	/*运单已取消标志位为4*/
+	public static int WAYBILL_STATE_CANCEL = 4;
 	
 	/*审核未通过标识位 0*/
 	public static int AUDIT_NOT_PASS_FLAG = 0;
 	
 	/*审核通过标识位 1*/
 	public static int AUDIT_PASS_FLAG = 1;
+
+	/*未选择承运方案标志位为0*/
+	public static int TRANSPORT_SCHEME_NOT_SELECT_FLAG = 0;
+	
+	/*选择承运方案标志位为1*/
+	public static int TRANSPORT_SCHEME_SELECT_FLAG = 1;
+	
+	/** 运费标识位 0 */
+	public static int FEE_FLAG = 0;
 
 }

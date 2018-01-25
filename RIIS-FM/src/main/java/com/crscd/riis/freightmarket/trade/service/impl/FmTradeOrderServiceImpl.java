@@ -681,8 +681,8 @@ public class FmTradeOrderServiceImpl implements IFmTradeOrderService {
 			for ( int i = 0; i < len; i++) {
 				orderId = orderBaseList.get(i).getId();
 				orderType = orderBaseList.get(i).getiOrderTypeId();
-				
-				orderList.get(i).setFmTradeOrderInfoBaseEntity(orderBaseList.get(i));
+				orderDto orderTemp = new orderDto();
+				orderTemp.setFmTradeOrderInfoBaseEntity(orderBaseList.get(i));
 				/**
 				 * 3集装箱运输
 				 * 4-6快运
@@ -691,18 +691,21 @@ public class FmTradeOrderServiceImpl implements IFmTradeOrderService {
 				if( orderType == tradeConstants.BOX_FREIGHT_FLAG ) {
 					FmTradeOrderInfoBoxFreightEntity recordBox = new FmTradeOrderInfoBoxFreightEntity();
 					recordBox = fmTradeOrderInfoBoxFreightEntityMapper.selectByOrderId(orderId);
-					orderList.get(i).setFmTradeOrderInfoBoxFreightRecord(recordBox);
+					orderTemp.setFmTradeOrderInfoBoxFreightRecord(recordBox);
+					orderList.add(orderTemp);
 				}
 				else if( orderType >= tradeConstants.FAST_FREIGHT_FLAG_START && orderType <= tradeConstants.FAST_FREIGHT_FLAG_END) {
 					FmTradeOrderInfoFastFreightEntity recordFast = new FmTradeOrderInfoFastFreightEntity();
 					recordFast = fmTradeOrderInfoFastFreightEntityMapper.selectByOrderId(orderId);
-					orderList.get(i).setFmTradeOrderInfoFastFreightRecord(recordFast);
+					orderTemp.setFmTradeOrderInfoFastFreightRecord(recordFast);
+					orderList.add(orderTemp);
 					
 				}
 				else if( orderType >= tradeConstants.WHOLE_VEGICLE_FLAG_START && orderType <= tradeConstants.WHOLE_VEGICLE_FLAG_END ) {
 					FmTradeOrderInfoWholeVegicleFreightEntity recordWholeVegicle = new FmTradeOrderInfoWholeVegicleFreightEntity();
 					recordWholeVegicle = fmTradeOrderInfoWholeVegicleFreightEntityMapper.selectByOrderId(orderId);
-					orderList.get(i).setFmTradeOrderInfoWholeVegicleFreightRecord(recordWholeVegicle);	
+					orderTemp.setFmTradeOrderInfoWholeVegicleFreightRecord(recordWholeVegicle);
+					orderList.add(orderTemp);
 				}
 			}
 			return orderList;
@@ -737,22 +740,24 @@ public class FmTradeOrderServiceImpl implements IFmTradeOrderService {
 		public int modifyBaseOrderInfo(FmTradeOrderInfoBaseEntity record) {
 			Date time=new Date();
 			record.setdOrderAlterTime(time);
-	        /* *
-	         * 设置订单删除时间
-	         * */
-			int deleteOrder = record.getiOrderDelete();
-			if ( deleteOrder == 0) {
-				record.setdOrderDeleteTime(time);
+	       
+			/** 设置订单删除时间*/
+			if ( record.getiOrderDelete() != null) {
+				
+				int deleteOrder = record.getiOrderDelete();
+				if ( deleteOrder == 0) {
+					record.setdOrderDeleteTime(time);
+				}
 			}
 			
-			/* *
-	         * 设置订单取消时间
-	         * */
-			int temminateOrder = record.getiOrderTemminate();
-			if ( temminateOrder == 0){
-				record.setdOrderTemminateTime(time);
+			/** 设置订单取消时间 */
+			if ( record.getiOrderTemminate() != null) {
+				int temminateOrder = record.getiOrderTemminate();
+				if ( temminateOrder == 0){
+					record.setdOrderTemminateTime(time);
+				}
 			}
-			record.setdOrderAlterTime(time);
+			
 			int ret = fmTradeOrderInfoBaseEntityMapper.updateByPrimaryKey(record);
 			return ret;
 		}
@@ -764,11 +769,10 @@ public class FmTradeOrderServiceImpl implements IFmTradeOrderService {
 		 */	    
 		@Override
 		public int modifyBoxFreightOrderInfo(FmTradeOrderInfoBoxFreightEntity record) {
-			int orderId = record.getiOrderId();
-			FmTradeOrderInfoBoxFreightEntity recordInfo = fmTradeOrderInfoBoxFreightEntityMapper.selectByOrderId(orderId);
-			record.setId(recordInfo.getId());
+			
 			int ret = fmTradeOrderInfoBoxFreightEntityMapper.updateByPrimaryKey(record);
 			return ret;
+			
 		}
 		
 		/**
@@ -778,12 +782,10 @@ public class FmTradeOrderServiceImpl implements IFmTradeOrderService {
 		 */	
 		@Override
 		public int modifyFastFreightOrderInfo(FmTradeOrderInfoFastFreightEntity record) {
-			int orderId = record.getiOrderId();
-			FmTradeOrderInfoFastFreightEntity recordInfo = fmTradeOrderInfoFastFreightEntityMapper.selectByOrderId(orderId);
 			
-			record.setId(recordInfo.getId());
 			int ret = fmTradeOrderInfoFastFreightEntityMapper.updateByPrimaryKey(record);
 			return ret;
+			
 		}
 		
 		/**
@@ -793,11 +795,9 @@ public class FmTradeOrderServiceImpl implements IFmTradeOrderService {
 		 */		
 		@Override
 		public int modifyWholeVegicleFreightOrderInfo(FmTradeOrderInfoWholeVegicleFreightEntity record) {
-			int orderId = record.getiOrderId();
-			FmTradeOrderInfoWholeVegicleFreightEntity recordInfo = fmTradeOrderInfoWholeVegicleFreightEntityMapper.selectByOrderId(orderId);
 			
-			record.setId(recordInfo.getId());
 			int ret = fmTradeOrderInfoWholeVegicleFreightEntityMapper.updateByPrimaryKey(record);
 			return ret;
+			
 		}
 }

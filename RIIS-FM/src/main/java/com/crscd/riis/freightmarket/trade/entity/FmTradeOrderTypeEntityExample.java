@@ -175,62 +175,52 @@ public class FmTradeOrderTypeEntityExample {
             return (Criteria) this;
         }
 
-        public Criteria andITypeLabelEqualTo(String value) {
+        public Criteria andITypeLabelEqualTo(Integer value) {
             addCriterion("I_TYPE_LABEL =", value, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andITypeLabelNotEqualTo(String value) {
+        public Criteria andITypeLabelNotEqualTo(Integer value) {
             addCriterion("I_TYPE_LABEL <>", value, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andITypeLabelGreaterThan(String value) {
+        public Criteria andITypeLabelGreaterThan(Integer value) {
             addCriterion("I_TYPE_LABEL >", value, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andITypeLabelGreaterThanOrEqualTo(String value) {
+        public Criteria andITypeLabelGreaterThanOrEqualTo(Integer value) {
             addCriterion("I_TYPE_LABEL >=", value, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andITypeLabelLessThan(String value) {
+        public Criteria andITypeLabelLessThan(Integer value) {
             addCriterion("I_TYPE_LABEL <", value, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andITypeLabelLessThanOrEqualTo(String value) {
+        public Criteria andITypeLabelLessThanOrEqualTo(Integer value) {
             addCriterion("I_TYPE_LABEL <=", value, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andITypeLabelLike(String value) {
-            addCriterion("I_TYPE_LABEL like", value, "iTypeLabel");
-            return (Criteria) this;
-        }
-
-        public Criteria andITypeLabelNotLike(String value) {
-            addCriterion("I_TYPE_LABEL not like", value, "iTypeLabel");
-            return (Criteria) this;
-        }
-
-        public Criteria andITypeLabelIn(List<String> values) {
+        public Criteria andITypeLabelIn(List<Integer> values) {
             addCriterion("I_TYPE_LABEL in", values, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andITypeLabelNotIn(List<String> values) {
+        public Criteria andITypeLabelNotIn(List<Integer> values) {
             addCriterion("I_TYPE_LABEL not in", values, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andITypeLabelBetween(String value1, String value2) {
+        public Criteria andITypeLabelBetween(Integer value1, Integer value2) {
             addCriterion("I_TYPE_LABEL between", value1, value2, "iTypeLabel");
             return (Criteria) this;
         }
 
-        public Criteria andITypeLabelNotBetween(String value1, String value2) {
+        public Criteria andITypeLabelNotBetween(Integer value1, Integer value2) {
             addCriterion("I_TYPE_LABEL not between", value1, value2, "iTypeLabel");
             return (Criteria) this;
         }

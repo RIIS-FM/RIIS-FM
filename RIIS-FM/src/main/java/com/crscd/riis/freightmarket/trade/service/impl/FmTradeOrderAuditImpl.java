@@ -8,12 +8,22 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.crscd.riis.freightmarket.authority.entity.FmAccountEntity;
+import com.crscd.riis.freightmarket.trade.dao.FmTradeFeeEntityMapper;
+import com.crscd.riis.freightmarket.trade.dao.FmTradeGoodsEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderAuditEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderInfoBoxFreightEntityMapper;
+import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderInfoFastFreightEntityMapper;
+import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderInfoWholeVegicleFreightEntityMapper;
+import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderTypeEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeTransportSchemeEntityMapper;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeFeeEntity;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeGoodsEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderAuditEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBoxFreightEntity;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoFastFreightEntity;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoWholeVegicleFreightEntity;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderTypeEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeTransportSchemeEntity;
 import com.crscd.riis.freightmarket.trade.service.IFmTradeOrderAudit;
 import com.crscd.riis.freightmarket.trade.util.tradeConstants.tradeConstants;
@@ -30,6 +40,21 @@ public class FmTradeOrderAuditImpl implements IFmTradeOrderAudit {
 	
 	@Resource
 	private FmTradeOrderInfoBoxFreightEntityMapper fmTradeOrderInfoBoxFreightEntityMapper;
+	
+	@Resource 
+	private FmTradeFeeEntityMapper fmTradeFeeEntityMapper;
+	
+	@Resource
+	private FmTradeOrderInfoFastFreightEntityMapper fmTradeOrderInfoFastFreightEntityMapper;
+	
+	@Resource
+	private FmTradeGoodsEntityMapper fmTradeGoodsEntityMapper;
+	
+	@Resource
+	private FmTradeOrderTypeEntityMapper fmTradeOrderTypeEntityMapper;
+	
+	@Resource
+	private FmTradeOrderInfoWholeVegicleFreightEntityMapper fmTradeOrderInfoWholeVegicleFreightEntityMapper;
 	
 	/** IFmTradeOrderAudit接口的modifyAuditInfo方法实现*/
 	@Override 
@@ -71,7 +96,12 @@ public class FmTradeOrderAuditImpl implements IFmTradeOrderAudit {
 		int retSaveTransportScheme = -1;
 		int auditId = 0;
 		int orderId = 0;
+		int transportType = -1;
+		float fee = 0.0f;
 		String goodsName = null;
+		FmTradeFeeEntity feeRecord = new FmTradeFeeEntity();
+		FmTradeOrderTypeEntity orderTypeRecord = new FmTradeOrderTypeEntity();
+		
 		
 		
 		/** 插入审核结果*/
@@ -81,32 +111,80 @@ public class FmTradeOrderAuditImpl implements IFmTradeOrderAudit {
 			
 			/** 设置承运方案中订单id及运费*/
 			for (int i = 0; i < transportSchemeList.size(); i++) {
+				
+				/** 设置订单id */
 				orderId = orderInfo.getId();
 				transportSchemeList.get(i).setiOrderId(orderId);
+				
+				/** 获取运输类型的一级类别*/
+				orderTypeRecord = fmTradeOrderTypeEntityMapper.selectByPrimaryKey(orderInfo.getiOrderTypeId());
+				
 				
                 /** 查询货物的运价号
                  * 输入参数 订单id 和订单类型 查询货物名称*/
 				if (orderInfo.getiOrderTypeId() == tradeConstants.BOX_FREIGHT_FLAG) {
 					
+					transportType = orderInfo.getiOrderTypeId();
                     /** 获取集装箱个数*/
 					FmTradeOrderInfoBoxFreightEntity boxRecord = new FmTradeOrderInfoBoxFreightEntity();
 					boxRecord = fmTradeOrderInfoBoxFreightEntityMapper.selectByOrderId(orderId);
 					int boxNumber = boxRecord.getiBoxNumber();
-					int boxType = boxRecord.getiBoxType();
+					String boxType = boxRecord.getiBoxType().toString();	
+					System.out.println("transportType "+transportType);
+					/** 获取货物的基价率*/
+					feeRecord = fmTradeFeeEntityMapper.selectByFeeAndOrderType(tradeConstants.FEE_FLAG, transportType, boxType);
 					
-					/** 获取货物的运价号*/
-					
+					System.out.println("feeRecord "+feeRecord.getfBasePriceOne());
+					/** 计算运费*/
+					fee = boxNumber * (feeRecord.getfBasePriceOne() + feeRecord.getfBasePriceTwo() * 1);
+					System.out.println("fee "+fee);
+					transportSchemeList.get(i).setfTradeOrderTransportSchemeFee(fee);
 				}
 				else if (orderInfo.getiOrderTypeId() >= tradeConstants.FAST_FREIGHT_FLAG_START && 
 						orderInfo.getiOrderTypeId() <= tradeConstants.FAST_FREIGHT_FLAG_END) {
 					
+					transportType = orderTypeRecord.getiTypeLabel();
+					/** 获取货物名称 */
+					FmTradeOrderInfoFastFreightEntity fastFreightRecord = new FmTradeOrderInfoFastFreightEntity();
+					fastFreightRecord = fmTradeOrderInfoFastFreightEntityMapper.selectByOrderId(orderId);
+					goodsName = fastFreightRecord.getcGoodsName();
+					
+					/** 获取该货物快运的运价号 */
+					FmTradeGoodsEntity goodsRecord = fmTradeGoodsEntityMapper.selectByGoodsName(goodsName);
+					String cPriceNo = goodsRecord.getcGoodsFastFreightRate();
+					
+					/** 获取货物的基价率*/
+					feeRecord = fmTradeFeeEntityMapper.selectByFeeAndOrderType(tradeConstants.FEE_FLAG, transportType, cPriceNo);
+					
+					/** 计算运费*/
+					fee = fastFreightRecord.getfGoodsWeight() * (feeRecord.getfBasePriceOne() + feeRecord.getfBasePriceTwo() * 1);
+					transportSchemeList.get(i).setfTradeOrderTransportSchemeFee(fee);
 				}
 				else if (orderInfo.getiOrderTypeId() >= tradeConstants.WHOLE_VEGICLE_FLAG_START && 
 						orderInfo.getiOrderTypeId() <= tradeConstants.WHOLE_VEGICLE_FLAG_END) {
 					
+					transportType = orderTypeRecord.getiTypeLabel();
+					/** 获取货物名称 */
+					FmTradeOrderInfoWholeVegicleFreightEntity wholeVegicleFreightRecord = new FmTradeOrderInfoWholeVegicleFreightEntity();
+					wholeVegicleFreightRecord = fmTradeOrderInfoWholeVegicleFreightEntityMapper.selectByOrderId(orderId);
+					goodsName = wholeVegicleFreightRecord.getcGoodsName();
+					
+					/** 获取该货物快运的运价号 */
+					FmTradeGoodsEntity goodsRecord = fmTradeGoodsEntityMapper.selectByGoodsName(goodsName);
+					String cPriceNo = goodsRecord.getcGoodsWholeVegicleRate();
+					
+					/** 获取货物的基价率*/
+					feeRecord = fmTradeFeeEntityMapper.selectByFeeAndOrderType(tradeConstants.FEE_FLAG, transportType, cPriceNo);
+					
+					/** 计算运费*/
+					fee = wholeVegicleFreightRecord.getfGoodsWight() * (feeRecord.getfBasePriceOne() + feeRecord.getfBasePriceTwo() * 1);
+					
+					/** 将运费插入到承运方案中*/
+					transportSchemeList.get(i).setfTradeOrderTransportSchemeFee(fee);
 				}
 				else {
-					
+					ret = 0;
+					return ret;
 				}
 				
 			}
@@ -140,6 +218,7 @@ public class FmTradeOrderAuditImpl implements IFmTradeOrderAudit {
 		return notPassOrders;
 	}
 
+	/** IFmTradeOrderAudit接口的deleteAuditInfo方法实现*/
 	@Override
 	public int deleteAuditInfo(Integer id) {
 		int ret = -1;
@@ -148,6 +227,7 @@ public class FmTradeOrderAuditImpl implements IFmTradeOrderAudit {
 		return ret;
 	}
 	
+	/** IFmTradeOrderAudit接口的saveTransportScheme方法实现*/
 	@Override
 	public int saveTransportScheme(List<FmTradeTransportSchemeEntity> record) {
 		
@@ -174,15 +254,4 @@ public class FmTradeOrderAuditImpl implements IFmTradeOrderAudit {
 		
 		return ret;
 	}
-
-
-
-
-
-	
-	
-
-	
-	
-
 }

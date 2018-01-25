@@ -29,6 +29,11 @@ public class FmOrderAuditController {
 	@Resource
 	private IFmTradeOrderAudit fmTradeOrderAuditService;
 	
+	/**
+	 *  URL：http://localhost:8080/RIIS-FM/fmOrderAudit/modifyOrderAuditInfo
+	 * 功能：修改审核结果
+	 * 输入：modifyOrderAuditInfoDtoIn dto
+	 **/
 	@RequestMapping("/modifyOrderAuditInfo")
 	@ResponseBody
 	public int modifyOrderAuditInfo(@RequestBody modifyOrderAuditInfoDtoIn dto) {
@@ -55,10 +60,11 @@ public class FmOrderAuditController {
         return ret;
 	}
 	
-	/* URL：http://localhost:8080/RIIS-FM/fmOrderAudit/findAuditResult
+	/**
+	 *  URL：http://localhost:8080/RIIS-FM/fmOrderAudit/findAuditResult
 	 * 功能：查询审核结果
 	 * 输入：FmTradeOrderInfoBaseEntity 
-	 */
+	 **/
 	@RequestMapping("/findAuditResult")
 	@ResponseBody
 	public List<FmTradeOrderAuditEntity> findAuditResult() {
