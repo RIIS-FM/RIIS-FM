@@ -2,8 +2,6 @@ package com.crscd.riis.freightmarket.trade.entity;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class FmTradeOrderInfoBaseEntity {
     private Integer id;
 
@@ -90,6 +88,12 @@ public class FmTradeOrderInfoBaseEntity {
     private Float fProtectPrice;
 
     private Float fInsuranceValue;
+    
+    private FmTradeOrderInfoBoxFreightEntity fmTradeOrderInfoBoxFreightRecord;
+    
+    private FmTradeOrderInfoFastFreightEntity fmTradeOrderInfoFastFreightRecord;
+    
+    private FmTradeOrderInfoWholeVegicleFreightEntity fmTradeOrderInfoWholeVegicleFreightRecord;
 
     public Integer getId() {
         return id;
@@ -114,7 +118,7 @@ public class FmTradeOrderInfoBaseEntity {
     public void setiOrderTypeId(Integer iOrderTypeId) {
         this.iOrderTypeId = iOrderTypeId;
     }
-    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+
     public Date getdOrderDateline() {
         return dOrderDateline;
     }
@@ -234,8 +238,7 @@ public class FmTradeOrderInfoBaseEntity {
     public void setcLoadLocation(String cLoadLocation) {
         this.cLoadLocation = cLoadLocation == null ? null : cLoadLocation.trim();
     }
-    
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+
     public Date getdPredictSendTime() {
         return dPredictSendTime;
     }
@@ -243,8 +246,7 @@ public class FmTradeOrderInfoBaseEntity {
     public void setdPredictSendTime(Date dPredictSendTime) {
         this.dPredictSendTime = dPredictSendTime;
     }
-    
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+
     public Date getdPredictLoadStartTime() {
         return dPredictLoadStartTime;
     }
@@ -253,7 +255,6 @@ public class FmTradeOrderInfoBaseEntity {
         this.dPredictLoadStartTime = dPredictLoadStartTime;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdPredictLoadEndTime() {
         return dPredictLoadEndTime;
     }
@@ -350,7 +351,6 @@ public class FmTradeOrderInfoBaseEntity {
         this.iOrderSplite = iOrderSplite;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderCreateTime() {
         return dOrderCreateTime;
     }
@@ -359,7 +359,6 @@ public class FmTradeOrderInfoBaseEntity {
         this.dOrderCreateTime = dOrderCreateTime;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderEndTime() {
         return dOrderEndTime;
     }
@@ -368,7 +367,6 @@ public class FmTradeOrderInfoBaseEntity {
         this.dOrderEndTime = dOrderEndTime;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderTemminateTime() {
         return dOrderTemminateTime;
     }
@@ -393,7 +391,6 @@ public class FmTradeOrderInfoBaseEntity {
         this.iOrderDelete = iOrderDelete;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderDeleteTime() {
         return dOrderDeleteTime;
     }
@@ -402,7 +399,6 @@ public class FmTradeOrderInfoBaseEntity {
         this.dOrderDeleteTime = dOrderDeleteTime;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getdOrderAlterTime() {
         return dOrderAlterTime;
     }
@@ -442,6 +438,31 @@ public class FmTradeOrderInfoBaseEntity {
     public void setfInsuranceValue(Float fInsuranceValue) {
         this.fInsuranceValue = fInsuranceValue;
     }
+
+	public FmTradeOrderInfoBoxFreightEntity getFmTradeOrderInfoBoxFreightRecord() {
+		return fmTradeOrderInfoBoxFreightRecord;
+	}
+
+	public void setFmTradeOrderInfoBoxFreightRecord(FmTradeOrderInfoBoxFreightEntity fmTradeOrderInfoBoxFreightRecord) {
+		this.fmTradeOrderInfoBoxFreightRecord = fmTradeOrderInfoBoxFreightRecord;
+	}
+
+	public FmTradeOrderInfoFastFreightEntity getFmTradeOrderInfoFastFreightRecord() {
+		return fmTradeOrderInfoFastFreightRecord;
+	}
+
+	public void setFmTradeOrderInfoFastFreightRecord(FmTradeOrderInfoFastFreightEntity fmTradeOrderInfoFastFreightRecord) {
+		this.fmTradeOrderInfoFastFreightRecord = fmTradeOrderInfoFastFreightRecord;
+	}
+
+	public FmTradeOrderInfoWholeVegicleFreightEntity getFmTradeOrderInfoWholeVegicleFreightRecord() {
+		return fmTradeOrderInfoWholeVegicleFreightRecord;
+	}
+
+	public void setFmTradeOrderInfoWholeVegicleFreightRecord(
+			FmTradeOrderInfoWholeVegicleFreightEntity fmTradeOrderInfoWholeVegicleFreightRecord) {
+		this.fmTradeOrderInfoWholeVegicleFreightRecord = fmTradeOrderInfoWholeVegicleFreightRecord;
+	}
     
     
 }
