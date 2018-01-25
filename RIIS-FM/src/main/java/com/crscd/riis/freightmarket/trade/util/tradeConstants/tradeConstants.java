@@ -55,4 +55,10 @@ public class tradeConstants {
 	/*审核通过标识位 1*/
 	public static int AUDIT_PASS_FLAG = 1;
 
+	/*未选择承运方案标志位为0*/
+	public static int TRANSPORT_SCHEME_NOT_SELECT_FLAG = 0;
+	
+	/*选择承运方案标志位为1*/
+	public static int TRANSPORT_SCHEME_SELECT_FLAG = 1;
+
 }
