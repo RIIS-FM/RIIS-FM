@@ -14,15 +14,12 @@ import com.crscd.riis.freightmarket.authority.entity.FmAccountEntity;
 import com.crscd.riis.freightmarket.trade.util.page.PageModel;
 import com.crscd.riis.freightmarket.trade.dto.findOrderDtoIn;
 import com.crscd.riis.freightmarket.trade.dto.findOrderDtoOut;
+import com.crscd.riis.freightmarket.trade.dto.orderDto;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
-import com.crscd.riis.freightmarket.trade.service.IFmTradeOrderInfoBaseService;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoFastFreightEntity;
-import com.crscd.riis.freightmarket.trade.service.IFmTradeOrderInfoFastFreightService;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBoxFreightEntity;
-import com.crscd.riis.freightmarket.trade.service.IFmBaseOrderService;
-import com.crscd.riis.freightmarket.trade.service.IFmTradeOrderBoxFreightService;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoWholeVegicleFreightEntity;
-import com.crscd.riis.freightmarket.trade.service.IFmWholeVegicleOrderService;
+import com.crscd.riis.freightmarket.trade.service.IFmTradeOrderService;
 import com.crscd.riis.freightmarket.trade.util.tradeConstants.tradeConstants;
 
 @Controller
@@ -30,32 +27,23 @@ import com.crscd.riis.freightmarket.trade.util.tradeConstants.tradeConstants;
 public class FmTradeOrderController {
 
 	@Resource
-	private IFmBaseOrderService fmBaseOrderService;
-
-	@Resource
-	private IFmTradeOrderInfoBaseService tradeOrderInfoBaseService;
-	
-	@Resource
-	private IFmWholeVegicleOrderService fmWholeVegicleOrderService;
-	
-	@Resource
-	private IFmTradeOrderBoxFreightService  tradeOrderBoxFreightService;
-	
-	@Resource
-	private IFmTradeOrderInfoFastFreightService fmTradeOrderInfoFastFreightService;
+	private IFmTradeOrderService fmTradeOrderService;
 	
 	/**
 	 * URL：http://localhost:8080/RIIS-FM/fmTradeOrder/insertTradeOrder
 	 * 功能：新增运输需求
-	 * @param：FmTradeOrderInfoBaseEntity 基本订单信息
+	 * @param：orderDto
 	 * @return：保存或者提交成功标识符
 	 */
 	@RequestMapping(value="/insertTradeOrder")
 	@ResponseBody
 	
-	public String insertTradeOrder(@RequestBody FmTradeOrderInfoBaseEntity record) {
-
-		int orderType = record.getiOrderTypeId();
+	public int insertTradeOrder(@RequestBody orderDto record) {
+		
+		FmTradeOrderInfoBaseEntity recordBase = record.getFmTradeOrderInfoBaseEntity();	
+		int orderType = recordBase.getiOrderTypeId();
+		int ret = 1;
+		
 		/**
 		 * 判定运输类型
 		 * 3集装箱运输
@@ -63,60 +51,53 @@ public class FmTradeOrderController {
 		 * 7-10整车
 		 * */
 		if (orderType == tradeConstants.BOX_FREIGHT_FLAG){
-			tradeOrderBoxFreightService.saveOrderBoxInfo(record);
+			FmTradeOrderInfoBoxFreightEntity recordBox = record.getFmTradeOrderInfoBoxFreightRecord();
+			fmTradeOrderService.saveBoxFreightOrderInfo(recordBox,recordBase);
 		}
 		else if (orderType >= tradeConstants.FAST_FREIGHT_FLAG_START && orderType <= tradeConstants.FAST_FREIGHT_FLAG_END) {
 			FmTradeOrderInfoFastFreightEntity recordFast=record.getFmTradeOrderInfoFastFreightRecord();
-			long countRecord = tradeOrderInfoBaseService.countOrderNumber(record);
-			long countRecordFast = fmTradeOrderInfoFastFreightService.countOrderNumber(recordFast);
+			long countRecord = fmTradeOrderService.countBaseOrderNumber(recordBase);
+			long countRecordFast = fmTradeOrderService.countFastFreightOrderNumber(recordFast);
 			
 			if(countRecord != 0 && countRecordFast!= 0) {
-				if(record.getiOrderState() == 0)
-					return "defeat";
-				else if(record.getiOrderState() == 1)
-					return "defeat";
+				if(recordBase.getiOrderState() == 0)
+					ret = 0;
+				else if(recordBase.getiOrderState() == 1)
+					ret = 0;
 			}
 			else{
-				fmBaseOrderService.saveBasicOrder(record);
-				FmTradeOrderInfoBaseEntity fastOrder = fmBaseOrderService.getOrderId(record.getcOrderCode());
-				int orderId = fastOrder.getId();
-				
-				recordFast.setiOrderId(orderId);
-				fmTradeOrderInfoFastFreightService.saveFmTradeOrderInfoFastFreight(recordFast);
+				fmTradeOrderService.saveOrderInfo(recordBase);
+				fmTradeOrderService.saveFastFreightOrderInfo(recordFast);
 			}
 		}
 		else if (orderType >= tradeConstants.WHOLE_VEGICLE_FLAG_START && orderType <= tradeConstants.WHOLE_VEGICLE_FLAG_END) {
 			FmTradeOrderInfoWholeVegicleFreightEntity recordWhole=record.getFmTradeOrderInfoWholeVegicleFreightRecord();
-			long countRecord=tradeOrderInfoBaseService.countOrderNumber(record);
-			long countRecordWhole=fmWholeVegicleOrderService.countOrderNumber(recordWhole);
+			long countRecord=fmTradeOrderService.countBaseOrderNumber(recordBase);
+			long countRecordWhole=fmTradeOrderService.countWholeVegicleFreightOrderNumber(recordWhole);
 			
 			if(countRecord != 0 && countRecordWhole!= 0) {
-				if(record.getiOrderState() == 0)
-					return "defeat";
-				else if(record.getiOrderState() == 1)
-					return "defeat";
+				if(recordBase.getiOrderState() == 0)
+					ret = 0;
+				else if(recordBase.getiOrderState() == 1)
+					ret = 0;
 			}
 			else{
-				fmBaseOrderService.saveBasicOrder(record);
-				FmTradeOrderInfoBaseEntity wholeOrder = fmBaseOrderService.getOrderId(record.getcOrderCode());
-				int orderId = wholeOrder.getId();
-				
-				recordWhole.setiOrderId(orderId);
-				fmWholeVegicleOrderService.saveFmWholeVegicleOrder(recordWhole);
+				fmTradeOrderService.saveOrderInfo(recordBase);
+				fmTradeOrderService.saveWholeVegicleFreightOrderInfo(recordWhole);
 			}
 		}
-		return "success";
+		return ret;
 	}
 	
 	/**
 	 * URL：http://localhost:8080/RIIS-FM/fmTradeOrder/getOrderInfo
 	 * 功能：查看运输需求
-	 * @param：FmTradeOrderInfoBaseEntity 基本订单信息
+	 * @param：orderDto
 	 * @return：运输需求信息
 	 */
 	@RequestMapping(value="/getOrderInfo")
 	@ResponseBody
-	public FmTradeOrderInfoBaseEntity getOrderInfo(@RequestBody FmTradeOrderInfoBaseEntity record) {
+	public orderDto getOrderInfo(@RequestBody orderDto record) {
 		
 		/**
 		 * id 订单ID
@@ -124,10 +105,13 @@ public class FmTradeOrderController {
 		 */
 		int id = 0;
 		int orderType = 0;
+		orderDto recordOrder = new orderDto();
 		
-		id = record.getId();
-		FmTradeOrderInfoBaseEntity orderInfoBase = fmBaseOrderService.getBaseOrder(id);
+		id = record.getFmTradeOrderInfoBaseEntity().getId();
+		FmTradeOrderInfoBaseEntity orderInfoBase = fmTradeOrderService.getFmBaseOrder(id);
 		orderType = orderInfoBase.getiOrderTypeId();
+		
+		recordOrder.setFmTradeOrderInfoBaseEntity(orderInfoBase);
 		
 		/**
 		 * 判定运输类型分别查询
@@ -136,29 +120,29 @@ public class FmTradeOrderController {
 		 * 7-10整车
 		 * */
 		if (orderType == tradeConstants.BOX_FREIGHT_FLAG) {
-			orderInfoBase.setFmTradeOrderInfoBoxFreightRecord(tradeOrderBoxFreightService.getFmBoxFreightOrder(id).get(0));
+			recordOrder.setFmTradeOrderInfoBoxFreightRecord(fmTradeOrderService.getFmBoxFreightOrder(id));
 		}
 		else if (orderType >= tradeConstants.FAST_FREIGHT_FLAG_START && orderType <= tradeConstants.FAST_FREIGHT_FLAG_END) {
-			orderInfoBase.setFmTradeOrderInfoFastFreightRecord(fmTradeOrderInfoFastFreightService.getFmFastFreightOrder(id).get(0));
+			recordOrder.setFmTradeOrderInfoFastFreightRecord(fmTradeOrderService.getFmFastFreightOrder(id));
 		}
 		else if (orderType >= tradeConstants.WHOLE_VEGICLE_FLAG_START && orderType <= tradeConstants.WHOLE_VEGICLE_FLAG_END) {
-			orderInfoBase.setFmTradeOrderInfoWholeVegicleFreightRecord(fmWholeVegicleOrderService.getFmWholeVegicleOrder(id).get(0));
+			recordOrder.setFmTradeOrderInfoWholeVegicleFreightRecord(fmTradeOrderService.getFmWholeVegicleFreightOrder(id));
 		}
-		return orderInfoBase;
+		return recordOrder;
 	}
 	
 	/**
 	 * URL：http://localhost:8080/RIIS-FM/fmTradeOrder/modifyTradeOrder 
 	 * 功能：修改运输需求
-	 * @param：FmTradeOrderInfoBaseEntity 基本订单信息
+	 * @param：orderDto
 	 * @return：修改运输需求信息
 	 */
 	@RequestMapping(value="/modifyTradeOrder")
 	@ResponseBody
-	public int modifyTradeOrder(@RequestBody FmTradeOrderInfoBaseEntity record) {
+	public int modifyTradeOrder(@RequestBody orderDto record) {
 		int ret = -1;
-		int orderType = record.getiOrderTypeId();
-		int retBaseInfo = tradeOrderInfoBaseService.modifyOrderInfo(record);
+		int orderType = record.getFmTradeOrderInfoBaseEntity().getiOrderTypeId();
+		int retBaseInfo = fmTradeOrderService.modifyBaseOrderInfo(record.getFmTradeOrderInfoBaseEntity());
 		/**
 		 * 判定运输类型分别查询
 		 * 3集装箱运输
@@ -167,23 +151,23 @@ public class FmTradeOrderController {
 		 * */
 		if (orderType == tradeConstants.BOX_FREIGHT_FLAG) {
 			FmTradeOrderInfoBoxFreightEntity recordBox = record.getFmTradeOrderInfoBoxFreightRecord();
-			int retBoxInfo = tradeOrderBoxFreightService.modifyOrderInfo(recordBox);
+			int retBoxInfo = fmTradeOrderService.modifyBoxFreightOrderInfo(recordBox);
 
 			if(retBaseInfo == 1 && retBoxInfo == 1) {
 				ret = 1;
 			}
 		}
 		else if (orderType >= tradeConstants.FAST_FREIGHT_FLAG_START && orderType <= tradeConstants.FAST_FREIGHT_FLAG_END){
-			FmTradeOrderInfoFastFreightEntity recordBox = record.getFmTradeOrderInfoFastFreightRecord();
-			int retFastInfo = fmTradeOrderInfoFastFreightService.modifyOrderInfo(recordBox);
+			FmTradeOrderInfoFastFreightEntity recordFast = record.getFmTradeOrderInfoFastFreightRecord();
+			int retFastInfo = fmTradeOrderService.modifyFastFreightOrderInfo(recordFast);
 
 			if(retBaseInfo == 1 && retFastInfo == 1) {
 				ret = 1;
 			}
 		}
 		else if (orderType >= tradeConstants.WHOLE_VEGICLE_FLAG_START && orderType <= tradeConstants.WHOLE_VEGICLE_FLAG_END) {
-			FmTradeOrderInfoWholeVegicleFreightEntity recordBox = record.getFmTradeOrderInfoWholeVegicleFreightRecord();
-			int retWholeVegicleInfo = fmWholeVegicleOrderService.modifyOrderInfo(recordBox);
+			FmTradeOrderInfoWholeVegicleFreightEntity recordWhole = record.getFmTradeOrderInfoWholeVegicleFreightRecord();
+			int retWholeVegicleInfo = fmTradeOrderService.modifyWholeVegicleFreightOrderInfo(recordWhole);
 
 			if(retBaseInfo == 1 && retWholeVegicleInfo == 1) {
 				ret = 1;
@@ -208,7 +192,7 @@ public class FmTradeOrderController {
 
 		Map<String, Object>  requirement = dto.getRequirement();
 		
-		List<FmTradeOrderInfoBaseEntity> order = tradeOrderInfoBaseService.findOrder(user, requirement, pageModel);
+		List<orderDto> order = fmTradeOrderService.findOrder(user, requirement, pageModel);
 		System.out.println("pageModel.getTotalSize(): "+pageModel.getTotalSize());
 		System.out.println("pageModel.getRecordCount(): "+pageModel.getRecordCount());
 		
