@@ -121,6 +121,46 @@ public interface FmTradeTransportSchemeEntityMapper {
         @Result(column="I_IS_SELECT", property="iIsSelect", jdbcType=JdbcType.INTEGER)
     })
     FmTradeTransportSchemeEntity selectByPrimaryKey(Integer id);
+    
+    /**
+     * 通过订单id查表
+     * @param Integer orderId 订单id
+     * @return FmTradeTransportSchemeEntity
+     * */
+    
+    @Select({
+        "select",
+        "id, I_ORDER_ID, F_TRADE_ORDER_TRANSPORT_SCHEME_FEE, C_TRADE_ORDER_TRANSPORT_SCHEME_CODE, ",
+        "D_TRADE_ORDER_TRANSPORT_SCHEME_START_TIME, D_TRADE_ORDER_TRANSPORT_SCHEME_END_TIME, ",
+        "C_TRADE_ORDER_TRANSPORT_SCHEME_LOAD_STATION, C_TRADE_ORDER_TRANSPORT_SCHEME_UNLOAD_STATION, ",
+        "C_TRADE_ORDER_TRANSPORT_SCHEME_LOAD_LOCATION, C_TRADE_ORDER_TRANSPORT_SCHEME_UNLOAD_LOCATION, ",
+        "C_TRADE_ORDER_TRANSPORT_SCHEME_TRAIN_NUM, C_TRADE_ORDER_TRANSPORT_SCHEME_TRAIN_TYPE, ",
+        "D_TRADE_ORDER_TRANSPORT_SCHEME_UNLOAD_START_TIME, D_TRADE_ORDER_TRANSPORT_SCHEME_UNLOAD_END_TIME, ",
+        "D_TRADE_ORDER_TRANSPORT_SCHEME_LOAD_START_TIME, D_TRADE_ORDER_TRANSPORT_SCHEME_LOAD_END_TIME, ",
+        "I_IS_SELECT",
+        "from fm_trade_transport_scheme",
+        "where I_ORDER_ID = #{I_ORDER_ID,jdbcType=INTEGER}"
+    })
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="I_ORDER_ID", property="iOrderId", jdbcType=JdbcType.INTEGER),
+        @Result(column="F_TRADE_ORDER_TRANSPORT_SCHEME_FEE", property="fTradeOrderTransportSchemeFee", jdbcType=JdbcType.REAL),
+        @Result(column="C_TRADE_ORDER_TRANSPORT_SCHEME_CODE", property="cTradeOrderTransportSchemeCode", jdbcType=JdbcType.VARCHAR),
+        @Result(column="D_TRADE_ORDER_TRANSPORT_SCHEME_START_TIME", property="dTradeOrderTransportSchemeStartTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="D_TRADE_ORDER_TRANSPORT_SCHEME_END_TIME", property="dTradeOrderTransportSchemeEndTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="C_TRADE_ORDER_TRANSPORT_SCHEME_LOAD_STATION", property="cTradeOrderTransportSchemeLoadStation", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_TRADE_ORDER_TRANSPORT_SCHEME_UNLOAD_STATION", property="cTradeOrderTransportSchemeUnloadStation", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_TRADE_ORDER_TRANSPORT_SCHEME_LOAD_LOCATION", property="cTradeOrderTransportSchemeLoadLocation", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_TRADE_ORDER_TRANSPORT_SCHEME_UNLOAD_LOCATION", property="cTradeOrderTransportSchemeUnloadLocation", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_TRADE_ORDER_TRANSPORT_SCHEME_TRAIN_NUM", property="cTradeOrderTransportSchemeTrainNum", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_TRADE_ORDER_TRANSPORT_SCHEME_TRAIN_TYPE", property="cTradeOrderTransportSchemeTrainType", jdbcType=JdbcType.VARCHAR),
+        @Result(column="D_TRADE_ORDER_TRANSPORT_SCHEME_UNLOAD_START_TIME", property="dTradeOrderTransportSchemeUnloadStartTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="D_TRADE_ORDER_TRANSPORT_SCHEME_UNLOAD_END_TIME", property="dTradeOrderTransportSchemeUnloadEndTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="D_TRADE_ORDER_TRANSPORT_SCHEME_LOAD_START_TIME", property="dTradeOrderTransportSchemeLoadStartTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="D_TRADE_ORDER_TRANSPORT_SCHEME_LOAD_END_TIME", property="dTradeOrderTransportSchemeLoadEndTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="I_IS_SELECT", property="iIsSelect", jdbcType=JdbcType.INTEGER)
+    })
+    FmTradeTransportSchemeEntity selectByOrderId(Integer orderId);
 
     @UpdateProvider(type=FmTradeTransportSchemeEntitySqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") FmTradeTransportSchemeEntity record, @Param("example") FmTradeTransportSchemeEntityExample example);
