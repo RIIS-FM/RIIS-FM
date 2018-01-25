@@ -47,7 +47,10 @@ public class tradeConstants {
 	public static int WAYBILL_STATE_WAIT_ESTIMATE = 2;
 	
 	/*运单已完成标志位为3*/
-	public static int WAYBILL_STATE_WAIT_COMPLETE = 3;
+	public static int WAYBILL_STATE_COMPLETE = 3;
+	
+	/*运单已取消标志位为4*/
+	public static int WAYBILL_STATE_CANCEL = 4;
 	
 	/*审核未通过标识位 0*/
 	public static int AUDIT_NOT_PASS_FLAG = 0;
