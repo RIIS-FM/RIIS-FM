@@ -67,6 +67,8 @@ public class FmTradeOrderController {
 			}
 			else{
 				fmTradeOrderService.saveOrderInfo(recordBase);
+				String orderCode = recordBase.getcOrderCode();
+				recordFast.setiOrderId(fmTradeOrderService.getOrderIdByOrderCode(orderCode));
 				fmTradeOrderService.saveFastFreightOrderInfo(recordFast);
 			}
 		}
@@ -83,6 +85,8 @@ public class FmTradeOrderController {
 			}
 			else{
 				fmTradeOrderService.saveOrderInfo(recordBase);
+				String orderCode = recordBase.getcOrderCode();
+				recordWhole.setiOrderId(fmTradeOrderService.getOrderIdByOrderCode(orderCode));
 				fmTradeOrderService.saveWholeVegicleFreightOrderInfo(recordWhole);
 			}
 		}
