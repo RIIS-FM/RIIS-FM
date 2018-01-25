@@ -2,18 +2,16 @@ package com.crscd.riis.freightmarket.trade.dto;
 
 import java.util.List;
 
-
-import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
-import com.crscd.riis.freightmarket.trade.page.PageModel;
+import com.crscd.riis.freightmarket.trade.util.page.PageModel;
 
 public class findOrderDtoOut {
 	
-	private List<FmTradeOrderInfoBaseEntity> orderList;
+	private List<orderDto> orderList;
 	private PageModel pageModel;
-	public List<FmTradeOrderInfoBaseEntity> getOrderList() {
+	public List<orderDto> getOrderList() {
 		return orderList;
 	}
-	public void setOrderList(List<FmTradeOrderInfoBaseEntity> orderList) {
+	public void setOrderList(List<orderDto> orderList) {
 		this.orderList = orderList;
 	}
 	public PageModel getPageModel() {

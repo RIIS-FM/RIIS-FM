@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">    
 <generatorConfiguration>    
 <!-- 数据库驱动-->    
-    <classPathEntry  location="E:\repo\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar"/>    
+    <classPathEntry  location="E:\JAVA\repository\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar"/>    
     <context id="DB2Tables"  targetRuntime="MyBatis3" defaultModelType="flat">   
         <commentGenerator>    
             <property name="suppressDate" value="true"/>    
@@ -12,7 +12,7 @@
             <property name="suppressAllComments" value="true"/>    
         </commentGenerator>    
         <!--数据库链接URL，用户名、密码 -->    
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://172.168.1.190:3306/riis" userId="root" password="1234">    
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://172.168.0.222:3306/riis" userId="root" password="1234">    
         </jdbcConnection>    
         <javaTypeResolver>    
             <property name="forceBigDecimals" value="false"/>    

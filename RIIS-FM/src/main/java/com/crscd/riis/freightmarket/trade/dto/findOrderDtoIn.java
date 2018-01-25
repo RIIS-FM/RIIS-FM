@@ -3,7 +3,8 @@ package com.crscd.riis.freightmarket.trade.dto;
 import java.util.Map;
 
 import com.crscd.riis.freightmarket.authority.entity.FmAccountEntity;
-import com.crscd.riis.freightmarket.trade.page.PageModel;
+import com.crscd.riis.freightmarket.trade.util.page.PageModel;
+
 
 public class findOrderDtoIn {
 	private Map<String, Object> requirement;
