@@ -44,8 +44,8 @@ public class FmTradeOrderAuditEntitySqlProvider {
             sql.VALUES("I_AUDIT_TYPE", "#{iAuditType,jdbcType=INTEGER}");
         }
         
-        if (record.getiAuditAuditorId() != null) {
-            sql.VALUES("I_AUDIT_AUDITOR_ID", "#{iAuditAuditorId,jdbcType=INTEGER}");
+        if (record.getiAuditorId() != null) {
+            sql.VALUES("I_AUDITOR_ID", "#{iAuditorId,jdbcType=INTEGER}");
         }
         
         if (record.getdAuditStartTime() != null) {
@@ -56,8 +56,12 @@ public class FmTradeOrderAuditEntitySqlProvider {
             sql.VALUES("D_AUDIT_END_TIME", "#{dAuditEndTime,jdbcType=TIMESTAMP}");
         }
         
-        if (record.getcAuditSuggestion() != null) {
-            sql.VALUES("C_AUDIT_SUGGESTION", "#{cAuditSuggestion,jdbcType=VARCHAR}");
+        if (record.getcPeopleAuditSuggestion() != null) {
+            sql.VALUES("C_PEOPLE__AUDIT_SUGGESTION", "#{cPeopleAuditSuggestion,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getcSysAuditSuggestion() != null) {
+            sql.VALUES("C_SYS_AUDIT_SUGGESTION", "#{cSysAuditSuggestion,jdbcType=VARCHAR}");
         }
         
         if (record.getiAuditResult() != null) {
@@ -77,10 +81,11 @@ public class FmTradeOrderAuditEntitySqlProvider {
         sql.SELECT("I_ORDER_ID");
         sql.SELECT("I_ORDER_TYPE_ID");
         sql.SELECT("I_AUDIT_TYPE");
-        sql.SELECT("I_AUDIT_AUDITOR_ID");
+        sql.SELECT("I_AUDITOR_ID");
         sql.SELECT("D_AUDIT_START_TIME");
         sql.SELECT("D_AUDIT_END_TIME");
-        sql.SELECT("C_AUDIT_SUGGESTION");
+        sql.SELECT("C_PEOPLE__AUDIT_SUGGESTION");
+        sql.SELECT("C_SYS_AUDIT_SUGGESTION");
         sql.SELECT("I_AUDIT_RESULT");
         sql.FROM("fm_trade_order_audit");
         applyWhere(sql, example, false);
@@ -115,8 +120,8 @@ public class FmTradeOrderAuditEntitySqlProvider {
             sql.SET("I_AUDIT_TYPE = #{record.iAuditType,jdbcType=INTEGER}");
         }
         
-        if (record.getiAuditAuditorId() != null) {
-            sql.SET("I_AUDIT_AUDITOR_ID = #{record.iAuditAuditorId,jdbcType=INTEGER}");
+        if (record.getiAuditorId() != null) {
+            sql.SET("I_AUDITOR_ID = #{record.iAuditorId,jdbcType=INTEGER}");
         }
         
         if (record.getdAuditStartTime() != null) {
@@ -127,8 +132,12 @@ public class FmTradeOrderAuditEntitySqlProvider {
             sql.SET("D_AUDIT_END_TIME = #{record.dAuditEndTime,jdbcType=TIMESTAMP}");
         }
         
-        if (record.getcAuditSuggestion() != null) {
-            sql.SET("C_AUDIT_SUGGESTION = #{record.cAuditSuggestion,jdbcType=VARCHAR}");
+        if (record.getcPeopleAuditSuggestion() != null) {
+            sql.SET("C_PEOPLE__AUDIT_SUGGESTION = #{record.cPeopleAuditSuggestion,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getcSysAuditSuggestion() != null) {
+            sql.SET("C_SYS_AUDIT_SUGGESTION = #{record.cSysAuditSuggestion,jdbcType=VARCHAR}");
         }
         
         if (record.getiAuditResult() != null) {
@@ -147,10 +156,11 @@ public class FmTradeOrderAuditEntitySqlProvider {
         sql.SET("I_ORDER_ID = #{record.iOrderId,jdbcType=INTEGER}");
         sql.SET("I_ORDER_TYPE_ID = #{record.iOrderTypeId,jdbcType=INTEGER}");
         sql.SET("I_AUDIT_TYPE = #{record.iAuditType,jdbcType=INTEGER}");
-        sql.SET("I_AUDIT_AUDITOR_ID = #{record.iAuditAuditorId,jdbcType=INTEGER}");
+        sql.SET("I_AUDITOR_ID = #{record.iAuditorId,jdbcType=INTEGER}");
         sql.SET("D_AUDIT_START_TIME = #{record.dAuditStartTime,jdbcType=TIMESTAMP}");
         sql.SET("D_AUDIT_END_TIME = #{record.dAuditEndTime,jdbcType=TIMESTAMP}");
-        sql.SET("C_AUDIT_SUGGESTION = #{record.cAuditSuggestion,jdbcType=VARCHAR}");
+        sql.SET("C_PEOPLE__AUDIT_SUGGESTION = #{record.cPeopleAuditSuggestion,jdbcType=VARCHAR}");
+        sql.SET("C_SYS_AUDIT_SUGGESTION = #{record.cSysAuditSuggestion,jdbcType=VARCHAR}");
         sql.SET("I_AUDIT_RESULT = #{record.iAuditResult,jdbcType=INTEGER}");
         
         FmTradeOrderAuditEntityExample example = (FmTradeOrderAuditEntityExample) parameter.get("example");
@@ -174,8 +184,8 @@ public class FmTradeOrderAuditEntitySqlProvider {
             sql.SET("I_AUDIT_TYPE = #{iAuditType,jdbcType=INTEGER}");
         }
         
-        if (record.getiAuditAuditorId() != null) {
-            sql.SET("I_AUDIT_AUDITOR_ID = #{iAuditAuditorId,jdbcType=INTEGER}");
+        if (record.getiAuditorId() != null) {
+            sql.SET("I_AUDITOR_ID = #{iAuditorId,jdbcType=INTEGER}");
         }
         
         if (record.getdAuditStartTime() != null) {
@@ -186,8 +196,12 @@ public class FmTradeOrderAuditEntitySqlProvider {
             sql.SET("D_AUDIT_END_TIME = #{dAuditEndTime,jdbcType=TIMESTAMP}");
         }
         
-        if (record.getcAuditSuggestion() != null) {
-            sql.SET("C_AUDIT_SUGGESTION = #{cAuditSuggestion,jdbcType=VARCHAR}");
+        if (record.getcPeopleAuditSuggestion() != null) {
+            sql.SET("C_PEOPLE__AUDIT_SUGGESTION = #{cPeopleAuditSuggestion,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getcSysAuditSuggestion() != null) {
+            sql.SET("C_SYS_AUDIT_SUGGESTION = #{cSysAuditSuggestion,jdbcType=VARCHAR}");
         }
         
         if (record.getiAuditResult() != null) {

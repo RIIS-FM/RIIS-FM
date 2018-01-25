@@ -11,13 +11,15 @@ public class FmTradeOrderAuditEntity {
 
     private Integer iAuditType;
 
-    private Integer iAuditAuditorId;
+    private Integer iAuditorId;
 
     private Date dAuditStartTime;
 
     private Date dAuditEndTime;
 
-    private String cAuditSuggestion;
+    private String cPeopleAuditSuggestion;
+
+    private String cSysAuditSuggestion;
 
     private Integer iAuditResult;
 
@@ -53,12 +55,12 @@ public class FmTradeOrderAuditEntity {
         this.iAuditType = iAuditType;
     }
 
-    public Integer getiAuditAuditorId() {
-        return iAuditAuditorId;
+    public Integer getiAuditorId() {
+        return iAuditorId;
     }
 
-    public void setiAuditAuditorId(Integer iAuditAuditorId) {
-        this.iAuditAuditorId = iAuditAuditorId;
+    public void setiAuditorId(Integer iAuditorId) {
+        this.iAuditorId = iAuditorId;
     }
 
     public Date getdAuditStartTime() {
@@ -77,12 +79,20 @@ public class FmTradeOrderAuditEntity {
         this.dAuditEndTime = dAuditEndTime;
     }
 
-    public String getcAuditSuggestion() {
-        return cAuditSuggestion;
+    public String getcPeopleAuditSuggestion() {
+        return cPeopleAuditSuggestion;
     }
 
-    public void setcAuditSuggestion(String cAuditSuggestion) {
-        this.cAuditSuggestion = cAuditSuggestion == null ? null : cAuditSuggestion.trim();
+    public void setcPeopleAuditSuggestion(String cPeopleAuditSuggestion) {
+        this.cPeopleAuditSuggestion = cPeopleAuditSuggestion == null ? null : cPeopleAuditSuggestion.trim();
+    }
+
+    public String getcSysAuditSuggestion() {
+        return cSysAuditSuggestion;
+    }
+
+    public void setcSysAuditSuggestion(String cSysAuditSuggestion) {
+        this.cSysAuditSuggestion = cSysAuditSuggestion == null ? null : cSysAuditSuggestion.trim();
     }
 
     public Integer getiAuditResult() {

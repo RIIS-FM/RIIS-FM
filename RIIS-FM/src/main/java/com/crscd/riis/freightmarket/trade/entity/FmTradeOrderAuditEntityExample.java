@@ -345,63 +345,63 @@ public class FmTradeOrderAuditEntityExample {
             return (Criteria) this;
         }
 
-        public Criteria andIAuditAuditorIdIsNull() {
-            addCriterion("I_AUDIT_AUDITOR_ID is null");
+        public Criteria andIAuditorIdIsNull() {
+            addCriterion("I_AUDITOR_ID is null");
             return (Criteria) this;
         }
 
-        public Criteria andIAuditAuditorIdIsNotNull() {
-            addCriterion("I_AUDIT_AUDITOR_ID is not null");
+        public Criteria andIAuditorIdIsNotNull() {
+            addCriterion("I_AUDITOR_ID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIAuditAuditorIdEqualTo(Integer value) {
-            addCriterion("I_AUDIT_AUDITOR_ID =", value, "iAuditAuditorId");
+        public Criteria andIAuditorIdEqualTo(Integer value) {
+            addCriterion("I_AUDITOR_ID =", value, "iAuditorId");
             return (Criteria) this;
         }
 
-        public Criteria andIAuditAuditorIdNotEqualTo(Integer value) {
-            addCriterion("I_AUDIT_AUDITOR_ID <>", value, "iAuditAuditorId");
+        public Criteria andIAuditorIdNotEqualTo(Integer value) {
+            addCriterion("I_AUDITOR_ID <>", value, "iAuditorId");
             return (Criteria) this;
         }
 
-        public Criteria andIAuditAuditorIdGreaterThan(Integer value) {
-            addCriterion("I_AUDIT_AUDITOR_ID >", value, "iAuditAuditorId");
+        public Criteria andIAuditorIdGreaterThan(Integer value) {
+            addCriterion("I_AUDITOR_ID >", value, "iAuditorId");
             return (Criteria) this;
         }
 
-        public Criteria andIAuditAuditorIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("I_AUDIT_AUDITOR_ID >=", value, "iAuditAuditorId");
+        public Criteria andIAuditorIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("I_AUDITOR_ID >=", value, "iAuditorId");
             return (Criteria) this;
         }
 
-        public Criteria andIAuditAuditorIdLessThan(Integer value) {
-            addCriterion("I_AUDIT_AUDITOR_ID <", value, "iAuditAuditorId");
+        public Criteria andIAuditorIdLessThan(Integer value) {
+            addCriterion("I_AUDITOR_ID <", value, "iAuditorId");
             return (Criteria) this;
         }
 
-        public Criteria andIAuditAuditorIdLessThanOrEqualTo(Integer value) {
-            addCriterion("I_AUDIT_AUDITOR_ID <=", value, "iAuditAuditorId");
+        public Criteria andIAuditorIdLessThanOrEqualTo(Integer value) {
+            addCriterion("I_AUDITOR_ID <=", value, "iAuditorId");
             return (Criteria) this;
         }
 
-        public Criteria andIAuditAuditorIdIn(List<Integer> values) {
-            addCriterion("I_AUDIT_AUDITOR_ID in", values, "iAuditAuditorId");
+        public Criteria andIAuditorIdIn(List<Integer> values) {
+            addCriterion("I_AUDITOR_ID in", values, "iAuditorId");
             return (Criteria) this;
         }
 
-        public Criteria andIAuditAuditorIdNotIn(List<Integer> values) {
-            addCriterion("I_AUDIT_AUDITOR_ID not in", values, "iAuditAuditorId");
+        public Criteria andIAuditorIdNotIn(List<Integer> values) {
+            addCriterion("I_AUDITOR_ID not in", values, "iAuditorId");
             return (Criteria) this;
         }
 
-        public Criteria andIAuditAuditorIdBetween(Integer value1, Integer value2) {
-            addCriterion("I_AUDIT_AUDITOR_ID between", value1, value2, "iAuditAuditorId");
+        public Criteria andIAuditorIdBetween(Integer value1, Integer value2) {
+            addCriterion("I_AUDITOR_ID between", value1, value2, "iAuditorId");
             return (Criteria) this;
         }
 
-        public Criteria andIAuditAuditorIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("I_AUDIT_AUDITOR_ID not between", value1, value2, "iAuditAuditorId");
+        public Criteria andIAuditorIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("I_AUDITOR_ID not between", value1, value2, "iAuditorId");
             return (Criteria) this;
         }
 
@@ -525,73 +525,143 @@ public class FmTradeOrderAuditEntityExample {
             return (Criteria) this;
         }
 
-        public Criteria andCAuditSuggestionIsNull() {
-            addCriterion("C_AUDIT_SUGGESTION is null");
+        public Criteria andCPeopleAuditSuggestionIsNull() {
+            addCriterion("C_PEOPLE__AUDIT_SUGGESTION is null");
             return (Criteria) this;
         }
 
-        public Criteria andCAuditSuggestionIsNotNull() {
-            addCriterion("C_AUDIT_SUGGESTION is not null");
+        public Criteria andCPeopleAuditSuggestionIsNotNull() {
+            addCriterion("C_PEOPLE__AUDIT_SUGGESTION is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCAuditSuggestionEqualTo(String value) {
-            addCriterion("C_AUDIT_SUGGESTION =", value, "cAuditSuggestion");
+        public Criteria andCPeopleAuditSuggestionEqualTo(String value) {
+            addCriterion("C_PEOPLE__AUDIT_SUGGESTION =", value, "cPeopleAuditSuggestion");
             return (Criteria) this;
         }
 
-        public Criteria andCAuditSuggestionNotEqualTo(String value) {
-            addCriterion("C_AUDIT_SUGGESTION <>", value, "cAuditSuggestion");
+        public Criteria andCPeopleAuditSuggestionNotEqualTo(String value) {
+            addCriterion("C_PEOPLE__AUDIT_SUGGESTION <>", value, "cPeopleAuditSuggestion");
             return (Criteria) this;
         }
 
-        public Criteria andCAuditSuggestionGreaterThan(String value) {
-            addCriterion("C_AUDIT_SUGGESTION >", value, "cAuditSuggestion");
+        public Criteria andCPeopleAuditSuggestionGreaterThan(String value) {
+            addCriterion("C_PEOPLE__AUDIT_SUGGESTION >", value, "cPeopleAuditSuggestion");
             return (Criteria) this;
         }
 
-        public Criteria andCAuditSuggestionGreaterThanOrEqualTo(String value) {
-            addCriterion("C_AUDIT_SUGGESTION >=", value, "cAuditSuggestion");
+        public Criteria andCPeopleAuditSuggestionGreaterThanOrEqualTo(String value) {
+            addCriterion("C_PEOPLE__AUDIT_SUGGESTION >=", value, "cPeopleAuditSuggestion");
             return (Criteria) this;
         }
 
-        public Criteria andCAuditSuggestionLessThan(String value) {
-            addCriterion("C_AUDIT_SUGGESTION <", value, "cAuditSuggestion");
+        public Criteria andCPeopleAuditSuggestionLessThan(String value) {
+            addCriterion("C_PEOPLE__AUDIT_SUGGESTION <", value, "cPeopleAuditSuggestion");
             return (Criteria) this;
         }
 
-        public Criteria andCAuditSuggestionLessThanOrEqualTo(String value) {
-            addCriterion("C_AUDIT_SUGGESTION <=", value, "cAuditSuggestion");
+        public Criteria andCPeopleAuditSuggestionLessThanOrEqualTo(String value) {
+            addCriterion("C_PEOPLE__AUDIT_SUGGESTION <=", value, "cPeopleAuditSuggestion");
             return (Criteria) this;
         }
 
-        public Criteria andCAuditSuggestionLike(String value) {
-            addCriterion("C_AUDIT_SUGGESTION like", value, "cAuditSuggestion");
+        public Criteria andCPeopleAuditSuggestionLike(String value) {
+            addCriterion("C_PEOPLE__AUDIT_SUGGESTION like", value, "cPeopleAuditSuggestion");
             return (Criteria) this;
         }
 
-        public Criteria andCAuditSuggestionNotLike(String value) {
-            addCriterion("C_AUDIT_SUGGESTION not like", value, "cAuditSuggestion");
+        public Criteria andCPeopleAuditSuggestionNotLike(String value) {
+            addCriterion("C_PEOPLE__AUDIT_SUGGESTION not like", value, "cPeopleAuditSuggestion");
             return (Criteria) this;
         }
 
-        public Criteria andCAuditSuggestionIn(List<String> values) {
-            addCriterion("C_AUDIT_SUGGESTION in", values, "cAuditSuggestion");
+        public Criteria andCPeopleAuditSuggestionIn(List<String> values) {
+            addCriterion("C_PEOPLE__AUDIT_SUGGESTION in", values, "cPeopleAuditSuggestion");
             return (Criteria) this;
         }
 
-        public Criteria andCAuditSuggestionNotIn(List<String> values) {
-            addCriterion("C_AUDIT_SUGGESTION not in", values, "cAuditSuggestion");
+        public Criteria andCPeopleAuditSuggestionNotIn(List<String> values) {
+            addCriterion("C_PEOPLE__AUDIT_SUGGESTION not in", values, "cPeopleAuditSuggestion");
             return (Criteria) this;
         }
 
-        public Criteria andCAuditSuggestionBetween(String value1, String value2) {
-            addCriterion("C_AUDIT_SUGGESTION between", value1, value2, "cAuditSuggestion");
+        public Criteria andCPeopleAuditSuggestionBetween(String value1, String value2) {
+            addCriterion("C_PEOPLE__AUDIT_SUGGESTION between", value1, value2, "cPeopleAuditSuggestion");
             return (Criteria) this;
         }
 
-        public Criteria andCAuditSuggestionNotBetween(String value1, String value2) {
-            addCriterion("C_AUDIT_SUGGESTION not between", value1, value2, "cAuditSuggestion");
+        public Criteria andCPeopleAuditSuggestionNotBetween(String value1, String value2) {
+            addCriterion("C_PEOPLE__AUDIT_SUGGESTION not between", value1, value2, "cPeopleAuditSuggestion");
+            return (Criteria) this;
+        }
+
+        public Criteria andCSysAuditSuggestionIsNull() {
+            addCriterion("C_SYS_AUDIT_SUGGESTION is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCSysAuditSuggestionIsNotNull() {
+            addCriterion("C_SYS_AUDIT_SUGGESTION is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCSysAuditSuggestionEqualTo(String value) {
+            addCriterion("C_SYS_AUDIT_SUGGESTION =", value, "cSysAuditSuggestion");
+            return (Criteria) this;
+        }
+
+        public Criteria andCSysAuditSuggestionNotEqualTo(String value) {
+            addCriterion("C_SYS_AUDIT_SUGGESTION <>", value, "cSysAuditSuggestion");
+            return (Criteria) this;
+        }
+
+        public Criteria andCSysAuditSuggestionGreaterThan(String value) {
+            addCriterion("C_SYS_AUDIT_SUGGESTION >", value, "cSysAuditSuggestion");
+            return (Criteria) this;
+        }
+
+        public Criteria andCSysAuditSuggestionGreaterThanOrEqualTo(String value) {
+            addCriterion("C_SYS_AUDIT_SUGGESTION >=", value, "cSysAuditSuggestion");
+            return (Criteria) this;
+        }
+
+        public Criteria andCSysAuditSuggestionLessThan(String value) {
+            addCriterion("C_SYS_AUDIT_SUGGESTION <", value, "cSysAuditSuggestion");
+            return (Criteria) this;
+        }
+
+        public Criteria andCSysAuditSuggestionLessThanOrEqualTo(String value) {
+            addCriterion("C_SYS_AUDIT_SUGGESTION <=", value, "cSysAuditSuggestion");
+            return (Criteria) this;
+        }
+
+        public Criteria andCSysAuditSuggestionLike(String value) {
+            addCriterion("C_SYS_AUDIT_SUGGESTION like", value, "cSysAuditSuggestion");
+            return (Criteria) this;
+        }
+
+        public Criteria andCSysAuditSuggestionNotLike(String value) {
+            addCriterion("C_SYS_AUDIT_SUGGESTION not like", value, "cSysAuditSuggestion");
+            return (Criteria) this;
+        }
+
+        public Criteria andCSysAuditSuggestionIn(List<String> values) {
+            addCriterion("C_SYS_AUDIT_SUGGESTION in", values, "cSysAuditSuggestion");
+            return (Criteria) this;
+        }
+
+        public Criteria andCSysAuditSuggestionNotIn(List<String> values) {
+            addCriterion("C_SYS_AUDIT_SUGGESTION not in", values, "cSysAuditSuggestion");
+            return (Criteria) this;
+        }
+
+        public Criteria andCSysAuditSuggestionBetween(String value1, String value2) {
+            addCriterion("C_SYS_AUDIT_SUGGESTION between", value1, value2, "cSysAuditSuggestion");
+            return (Criteria) this;
+        }
+
+        public Criteria andCSysAuditSuggestionNotBetween(String value1, String value2) {
+            addCriterion("C_SYS_AUDIT_SUGGESTION not between", value1, value2, "cSysAuditSuggestion");
             return (Criteria) this;
         }
 
