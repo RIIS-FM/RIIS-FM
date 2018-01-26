@@ -3,6 +3,8 @@ package com.crscd.riis.freightmarket.trade.dao;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderAuditEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderAuditEntityExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.DeleteProvider;
 import org.apache.ibatis.annotations.Insert;
@@ -135,6 +137,27 @@ public interface FmTradeOrderAuditEntityMapper {
     })
     List<FmTradeOrderAuditEntity> selectByAuditResultAndAuditType(@Param("auditResult") Integer auditResult,
     		@Param("auditType") Integer auditType);
+    
+    /* *
+     * 分页查询订单
+     * @param Map<String, Object> params 
+     * @return List<FmTradeOrderInfoBaseEntity>订单对象列表
+     *   */
+    @SelectProvider(type=FmTradeOrderAuditEntitySqlProvider.class,method="selectWhitParam")
+    @Results({
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="I_ORDER_ID", property="iOrderId", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_ORDER_TYPE_ID", property="iOrderTypeId", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_AUDIT_TYPE", property="iAuditType", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_AUDITOR_ID", property="iAuditorId", jdbcType=JdbcType.INTEGER),
+        @Result(column="D_AUDIT_START_TIME", property="dAuditStartTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="D_AUDIT_END_TIME", property="dAuditEndTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="C_PEOPLE__AUDIT_SUGGESTION", property="cPeopleAuditSuggestion", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_SYS_AUDIT_SUGGESTION", property="cSysAuditSuggestion", jdbcType=JdbcType.VARCHAR),
+        @Result(column="I_AUDIT_RESULT", property="iAuditResult", jdbcType=JdbcType.INTEGER)
+    })
+    List<FmTradeOrderAuditEntity> selectByPage(Map<String, Object> params);
+    
 
     @UpdateProvider(type=FmTradeOrderAuditEntitySqlProvider.class, method="updateByExampleSelective")
     int updateByExampleSelective(@Param("record") FmTradeOrderAuditEntity record, @Param("example") FmTradeOrderAuditEntityExample example);

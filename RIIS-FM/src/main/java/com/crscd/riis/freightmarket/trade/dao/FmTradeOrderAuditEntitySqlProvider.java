@@ -16,6 +16,36 @@ public class FmTradeOrderAuditEntitySqlProvider {
         applyWhere(sql, example, false);
         return sql.toString();
     }
+    
+    /* *分页动态查询   */
+    public String selectWhitParam(Map<String, Object> params){
+    	String sql =  new SQL() {
+    		{
+			SELECT("id");
+			SELECT("I_ORDER_ID");
+	        SELECT("I_ORDER_TYPE_ID");
+	        SELECT("I_AUDIT_TYPE");
+	        SELECT("I_AUDITOR_ID");
+	        SELECT("D_AUDIT_START_TIME");
+	        SELECT("D_AUDIT_END_TIME");
+	        SELECT("C_PEOPLE__AUDIT_SUGGESTION");
+	        SELECT("C_SYS_AUDIT_SUGGESTION");
+	        SELECT("I_AUDIT_RESULT");
+		    FROM("fm_trade_order_audit");
+		    	
+		    if(params.get("iOrderTypeId") != null) {
+				WHERE("I_ORDER_TYPE_ID = #{iOrderTypeId}");
+			}	
+		    WHERE("I_AUDIT_RESULT = #{iAuditResult,jdbcType=INTEGER} and I_AUDIT_TYPE = #{iAuditType,jdbcType=INTEGER}");
+		}
+		}.toString();
+		
+		if(params.get("pageModel") != null){
+			sql += " limit #{pageModel.firstLimitParam} , #{pageModel.pageSize}  ";
+		}
+		System.out.println(sql);
+		return sql;
+    }
 
     public String deleteByExample(FmTradeOrderAuditEntityExample example) {
         SQL sql = new SQL();

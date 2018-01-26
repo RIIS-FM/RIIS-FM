@@ -90,12 +90,6 @@ public class FmTradeOrderInfoBaseEntity {
     private Float fProtectPrice;
 
     private Float fInsuranceValue;
-    
-    private FmTradeOrderInfoBoxFreightEntity fmTradeOrderInfoBoxFreightRecord;
-    
-    private FmTradeOrderInfoFastFreightEntity fmTradeOrderInfoFastFreightRecord;
-    
-    private FmTradeOrderInfoWholeVegicleFreightEntity fmTradeOrderInfoWholeVegicleFreightRecord;
 
     public Integer getId() {
         return id;
@@ -449,31 +443,5 @@ public class FmTradeOrderInfoBaseEntity {
     public void setfInsuranceValue(Float fInsuranceValue) {
         this.fInsuranceValue = fInsuranceValue;
     }
-
-	public FmTradeOrderInfoBoxFreightEntity getFmTradeOrderInfoBoxFreightRecord() {
-		return fmTradeOrderInfoBoxFreightRecord;
-	}
-
-	public void setFmTradeOrderInfoBoxFreightRecord(FmTradeOrderInfoBoxFreightEntity fmTradeOrderInfoBoxFreightRecord) {
-		this.fmTradeOrderInfoBoxFreightRecord = fmTradeOrderInfoBoxFreightRecord;
-	}
-
-	public FmTradeOrderInfoFastFreightEntity getFmTradeOrderInfoFastFreightRecord() {
-		return fmTradeOrderInfoFastFreightRecord;
-	}
-
-	public void setFmTradeOrderInfoFastFreightRecord(FmTradeOrderInfoFastFreightEntity fmTradeOrderInfoFastFreightRecord) {
-		this.fmTradeOrderInfoFastFreightRecord = fmTradeOrderInfoFastFreightRecord;
-	}
-
-	public FmTradeOrderInfoWholeVegicleFreightEntity getFmTradeOrderInfoWholeVegicleFreightRecord() {
-		return fmTradeOrderInfoWholeVegicleFreightRecord;
-	}
-
-	public void setFmTradeOrderInfoWholeVegicleFreightRecord(
-			FmTradeOrderInfoWholeVegicleFreightEntity fmTradeOrderInfoWholeVegicleFreightRecord) {
-		this.fmTradeOrderInfoWholeVegicleFreightRecord = fmTradeOrderInfoWholeVegicleFreightRecord;
-	}
-    
     
 }
