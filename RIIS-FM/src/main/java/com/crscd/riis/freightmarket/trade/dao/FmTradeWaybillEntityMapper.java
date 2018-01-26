@@ -34,7 +34,7 @@ public interface FmTradeWaybillEntityMapper {
         "I_ORDER_TYPE_ID, I_ORDER_TYPE_NUM, ",
         "C_WAYBILL_CODE, D_WAYBILL_CREATE_TIME, ",
         "I_WAYBILL_STATE, D_WAYBILL_TIME, ",
-        "I_WAYBILL_DATELINE, D_WAYBILL_PREDICT_ARRIVE_TIME, ",
+        "D_WAYBILL_DATELINE, D_WAYBILL_PREDICT_ARRIVE_TIME, ",
         "D_WAYBILL_PREDICT_UNLOAD_START_TIME, D_WAYBILL_PREDICT_UNLOAD_END_TIME, ",
         "D_WAYBILL_PREDICT_SENDER_TIME, D_WAYBILL_PREDICT_LOAD_START_TIME, ",
         "D_WAYBILL_PREDICT_LOAD_END_TIME, I_WAYBILL_BOX_SEAL_NUM, ",
@@ -46,12 +46,16 @@ public interface FmTradeWaybillEntityMapper {
         "I_PRICE_NO, F_PRICE_RATE, ",
         "F_WAYBILL_INCIDENTALS_PAID, F_WAYBILL_ELECTRICT_FEE, ",
         "F_WAYBILL_CONSTRUCT_FEE, I_WAYBILL_PAYMENT_METHOD, ",
-        "I_WAYBILL_PAYMENT_STATE)",
+        "I_WAYBILL_PAYMENT_STATE, F_WAYBILL_SENDER_REPORT_WEIGHT, ",
+        "F_WAYBILL_RECVER_REPORT_WEIGHT, F_WAYBILL_WEIGHT_CHARGE, ",
+        "I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER, I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER, ",
+        "I_WAYBILL_SENDER_REPORT_BOX_NUMBER, I_WAYBILL_RECVER_REPORT_BOX_NUMBER, ",
+        "I_WAYBILL_SENDER_REPORT_GOODS_NUMBER, I_WAYBILL_RECVER_REPORT_GOODS_NUMBER)",
         "values (#{id,jdbcType=INTEGER}, #{iOrderId,jdbcType=INTEGER}, ",
         "#{iOrderTypeId,jdbcType=INTEGER}, #{iOrderTypeNum,jdbcType=INTEGER}, ",
         "#{cWaybillCode,jdbcType=VARCHAR}, #{dWaybillCreateTime,jdbcType=TIMESTAMP}, ",
         "#{iWaybillState,jdbcType=INTEGER}, #{dWaybillTime,jdbcType=TIMESTAMP}, ",
-        "#{iWaybillDateline,jdbcType=INTEGER}, #{dWaybillPredictArriveTime,jdbcType=TIMESTAMP}, ",
+        "#{dWaybillDateline,jdbcType=TIMESTAMP}, #{dWaybillPredictArriveTime,jdbcType=TIMESTAMP}, ",
         "#{dWaybillPredictUnloadStartTime,jdbcType=TIMESTAMP}, #{dWaybillPredictUnloadEndTime,jdbcType=TIMESTAMP}, ",
         "#{dWaybillPredictSenderTime,jdbcType=TIMESTAMP}, #{dWaybillPredictLoadStartTime,jdbcType=TIMESTAMP}, ",
         "#{dWaybillPredictLoadEndTime,jdbcType=TIMESTAMP}, #{iWaybillBoxSealNum,jdbcType=INTEGER}, ",
@@ -63,7 +67,11 @@ public interface FmTradeWaybillEntityMapper {
         "#{iPriceNo,jdbcType=INTEGER}, #{fPriceRate,jdbcType=REAL}, ",
         "#{fWaybillIncidentalsPaid,jdbcType=REAL}, #{fWaybillElectrictFee,jdbcType=REAL}, ",
         "#{fWaybillConstructFee,jdbcType=REAL}, #{iWaybillPaymentMethod,jdbcType=INTEGER}, ",
-        "#{iWaybillPaymentState,jdbcType=INTEGER})"
+        "#{iWaybillPaymentState,jdbcType=INTEGER}, #{fWaybillSenderReportWeight,jdbcType=REAL}, ",
+        "#{fWaybillRecverReportWeight,jdbcType=REAL}, #{fWaybillWeightCharge,jdbcType=REAL}, ",
+        "#{iWaybillSenderReportTrainNumber,jdbcType=INTEGER}, #{iWaybillRecverReportTrainNumber,jdbcType=INTEGER}, ",
+        "#{iWaybillSenderReportBoxNumber,jdbcType=INTEGER}, #{iWaybillRecverReportBoxNumber,jdbcType=INTEGER}, ",
+        "#{iWaybillSenderReportGoodsNumber,jdbcType=INTEGER}, #{iWaybillRecverReportGoodsNumber,jdbcType=INTEGER})"
     })
     int insert(FmTradeWaybillEntity record);
 
@@ -80,7 +88,7 @@ public interface FmTradeWaybillEntityMapper {
         @Result(column="D_WAYBILL_CREATE_TIME", property="dWaybillCreateTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="I_WAYBILL_STATE", property="iWaybillState", jdbcType=JdbcType.INTEGER),
         @Result(column="D_WAYBILL_TIME", property="dWaybillTime", jdbcType=JdbcType.TIMESTAMP),
-        @Result(column="I_WAYBILL_DATELINE", property="iWaybillDateline", jdbcType=JdbcType.INTEGER),
+        @Result(column="D_WAYBILL_DATELINE", property="dWaybillDateline", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="D_WAYBILL_PREDICT_ARRIVE_TIME", property="dWaybillPredictArriveTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="D_WAYBILL_PREDICT_UNLOAD_START_TIME", property="dWaybillPredictUnloadStartTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="D_WAYBILL_PREDICT_UNLOAD_END_TIME", property="dWaybillPredictUnloadEndTime", jdbcType=JdbcType.TIMESTAMP),
@@ -104,21 +112,33 @@ public interface FmTradeWaybillEntityMapper {
         @Result(column="F_WAYBILL_ELECTRICT_FEE", property="fWaybillElectrictFee", jdbcType=JdbcType.REAL),
         @Result(column="F_WAYBILL_CONSTRUCT_FEE", property="fWaybillConstructFee", jdbcType=JdbcType.REAL),
         @Result(column="I_WAYBILL_PAYMENT_METHOD", property="iWaybillPaymentMethod", jdbcType=JdbcType.INTEGER),
-        @Result(column="I_WAYBILL_PAYMENT_STATE", property="iWaybillPaymentState", jdbcType=JdbcType.INTEGER)
+        @Result(column="I_WAYBILL_PAYMENT_STATE", property="iWaybillPaymentState", jdbcType=JdbcType.INTEGER),
+        @Result(column="F_WAYBILL_SENDER_REPORT_WEIGHT", property="fWaybillSenderReportWeight", jdbcType=JdbcType.REAL),
+        @Result(column="F_WAYBILL_RECVER_REPORT_WEIGHT", property="fWaybillRecverReportWeight", jdbcType=JdbcType.REAL),
+        @Result(column="F_WAYBILL_WEIGHT_CHARGE", property="fWaybillWeightCharge", jdbcType=JdbcType.REAL),
+        @Result(column="I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER", property="iWaybillSenderReportTrainNumber", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER", property="iWaybillRecverReportTrainNumber", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_WAYBILL_SENDER_REPORT_BOX_NUMBER", property="iWaybillSenderReportBoxNumber", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_WAYBILL_RECVER_REPORT_BOX_NUMBER", property="iWaybillRecverReportBoxNumber", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_WAYBILL_SENDER_REPORT_GOODS_NUMBER", property="iWaybillSenderReportGoodsNumber", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_WAYBILL_RECVER_REPORT_GOODS_NUMBER", property="iWaybillRecverReportGoodsNumber", jdbcType=JdbcType.INTEGER)
     })
     List<FmTradeWaybillEntity> selectByExample(FmTradeWaybillEntityExample example);
 
     @Select({
         "select",
         "id, I_ORDER_ID, I_ORDER_TYPE_ID, I_ORDER_TYPE_NUM, C_WAYBILL_CODE, D_WAYBILL_CREATE_TIME, ",
-        "I_WAYBILL_STATE, D_WAYBILL_TIME, I_WAYBILL_DATELINE, D_WAYBILL_PREDICT_ARRIVE_TIME, ",
+        "I_WAYBILL_STATE, D_WAYBILL_TIME, D_WAYBILL_DATELINE, D_WAYBILL_PREDICT_ARRIVE_TIME, ",
         "D_WAYBILL_PREDICT_UNLOAD_START_TIME, D_WAYBILL_PREDICT_UNLOAD_END_TIME, D_WAYBILL_PREDICT_SENDER_TIME, ",
         "D_WAYBILL_PREDICT_LOAD_START_TIME, D_WAYBILL_PREDICT_LOAD_END_TIME, I_WAYBILL_BOX_SEAL_NUM, ",
         "I_WAYBILL_BOX_TYPE, I_WAYBILL_BOX_NUM, I_WAYBILL_GOODS_REINFORCE, I_WAYBILL_GOODS_WRAPPER, ",
         "F_WAYBILL_CANVAS_NUMBER, F_WAYBILL_TRAIN_TYPE, C_WAYBILL_TRAIN_NUM, I_WAYBILL_TRAIN_NUMBER_CHARGE, ",
         "I_WAYBILL_BOX_NUMBER_CHARGE, I_WAYBILL_GOODS_NUMBER_CHARGE, I_PRICE_NO, F_PRICE_RATE, ",
         "F_WAYBILL_INCIDENTALS_PAID, F_WAYBILL_ELECTRICT_FEE, F_WAYBILL_CONSTRUCT_FEE, ",
-        "I_WAYBILL_PAYMENT_METHOD, I_WAYBILL_PAYMENT_STATE",
+        "I_WAYBILL_PAYMENT_METHOD, I_WAYBILL_PAYMENT_STATE, F_WAYBILL_SENDER_REPORT_WEIGHT, ",
+        "F_WAYBILL_RECVER_REPORT_WEIGHT, F_WAYBILL_WEIGHT_CHARGE, I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER, ",
+        "I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER, I_WAYBILL_SENDER_REPORT_BOX_NUMBER, I_WAYBILL_RECVER_REPORT_BOX_NUMBER, ",
+        "I_WAYBILL_SENDER_REPORT_GOODS_NUMBER, I_WAYBILL_RECVER_REPORT_GOODS_NUMBER",
         "from fm_trade_waybill",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -131,7 +151,7 @@ public interface FmTradeWaybillEntityMapper {
         @Result(column="D_WAYBILL_CREATE_TIME", property="dWaybillCreateTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="I_WAYBILL_STATE", property="iWaybillState", jdbcType=JdbcType.INTEGER),
         @Result(column="D_WAYBILL_TIME", property="dWaybillTime", jdbcType=JdbcType.TIMESTAMP),
-        @Result(column="I_WAYBILL_DATELINE", property="iWaybillDateline", jdbcType=JdbcType.INTEGER),
+        @Result(column="D_WAYBILL_DATELINE", property="dWaybillDateline", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="D_WAYBILL_PREDICT_ARRIVE_TIME", property="dWaybillPredictArriveTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="D_WAYBILL_PREDICT_UNLOAD_START_TIME", property="dWaybillPredictUnloadStartTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="D_WAYBILL_PREDICT_UNLOAD_END_TIME", property="dWaybillPredictUnloadEndTime", jdbcType=JdbcType.TIMESTAMP),
@@ -155,7 +175,16 @@ public interface FmTradeWaybillEntityMapper {
         @Result(column="F_WAYBILL_ELECTRICT_FEE", property="fWaybillElectrictFee", jdbcType=JdbcType.REAL),
         @Result(column="F_WAYBILL_CONSTRUCT_FEE", property="fWaybillConstructFee", jdbcType=JdbcType.REAL),
         @Result(column="I_WAYBILL_PAYMENT_METHOD", property="iWaybillPaymentMethod", jdbcType=JdbcType.INTEGER),
-        @Result(column="I_WAYBILL_PAYMENT_STATE", property="iWaybillPaymentState", jdbcType=JdbcType.INTEGER)
+        @Result(column="I_WAYBILL_PAYMENT_STATE", property="iWaybillPaymentState", jdbcType=JdbcType.INTEGER),
+        @Result(column="F_WAYBILL_SENDER_REPORT_WEIGHT", property="fWaybillSenderReportWeight", jdbcType=JdbcType.REAL),
+        @Result(column="F_WAYBILL_RECVER_REPORT_WEIGHT", property="fWaybillRecverReportWeight", jdbcType=JdbcType.REAL),
+        @Result(column="F_WAYBILL_WEIGHT_CHARGE", property="fWaybillWeightCharge", jdbcType=JdbcType.REAL),
+        @Result(column="I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER", property="iWaybillSenderReportTrainNumber", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER", property="iWaybillRecverReportTrainNumber", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_WAYBILL_SENDER_REPORT_BOX_NUMBER", property="iWaybillSenderReportBoxNumber", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_WAYBILL_RECVER_REPORT_BOX_NUMBER", property="iWaybillRecverReportBoxNumber", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_WAYBILL_SENDER_REPORT_GOODS_NUMBER", property="iWaybillSenderReportGoodsNumber", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_WAYBILL_RECVER_REPORT_GOODS_NUMBER", property="iWaybillRecverReportGoodsNumber", jdbcType=JdbcType.INTEGER)
     })
     FmTradeWaybillEntity selectByPrimaryKey(Integer id);
 
@@ -177,7 +206,7 @@ public interface FmTradeWaybillEntityMapper {
           "D_WAYBILL_CREATE_TIME = #{dWaybillCreateTime,jdbcType=TIMESTAMP},",
           "I_WAYBILL_STATE = #{iWaybillState,jdbcType=INTEGER},",
           "D_WAYBILL_TIME = #{dWaybillTime,jdbcType=TIMESTAMP},",
-          "I_WAYBILL_DATELINE = #{iWaybillDateline,jdbcType=INTEGER},",
+          "D_WAYBILL_DATELINE = #{dWaybillDateline,jdbcType=TIMESTAMP},",
           "D_WAYBILL_PREDICT_ARRIVE_TIME = #{dWaybillPredictArriveTime,jdbcType=TIMESTAMP},",
           "D_WAYBILL_PREDICT_UNLOAD_START_TIME = #{dWaybillPredictUnloadStartTime,jdbcType=TIMESTAMP},",
           "D_WAYBILL_PREDICT_UNLOAD_END_TIME = #{dWaybillPredictUnloadEndTime,jdbcType=TIMESTAMP},",
@@ -201,7 +230,16 @@ public interface FmTradeWaybillEntityMapper {
           "F_WAYBILL_ELECTRICT_FEE = #{fWaybillElectrictFee,jdbcType=REAL},",
           "F_WAYBILL_CONSTRUCT_FEE = #{fWaybillConstructFee,jdbcType=REAL},",
           "I_WAYBILL_PAYMENT_METHOD = #{iWaybillPaymentMethod,jdbcType=INTEGER},",
-          "I_WAYBILL_PAYMENT_STATE = #{iWaybillPaymentState,jdbcType=INTEGER}",
+          "I_WAYBILL_PAYMENT_STATE = #{iWaybillPaymentState,jdbcType=INTEGER},",
+          "F_WAYBILL_SENDER_REPORT_WEIGHT = #{fWaybillSenderReportWeight,jdbcType=REAL},",
+          "F_WAYBILL_RECVER_REPORT_WEIGHT = #{fWaybillRecverReportWeight,jdbcType=REAL},",
+          "F_WAYBILL_WEIGHT_CHARGE = #{fWaybillWeightCharge,jdbcType=REAL},",
+          "I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER = #{iWaybillSenderReportTrainNumber,jdbcType=INTEGER},",
+          "I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER = #{iWaybillRecverReportTrainNumber,jdbcType=INTEGER},",
+          "I_WAYBILL_SENDER_REPORT_BOX_NUMBER = #{iWaybillSenderReportBoxNumber,jdbcType=INTEGER},",
+          "I_WAYBILL_RECVER_REPORT_BOX_NUMBER = #{iWaybillRecverReportBoxNumber,jdbcType=INTEGER},",
+          "I_WAYBILL_SENDER_REPORT_GOODS_NUMBER = #{iWaybillSenderReportGoodsNumber,jdbcType=INTEGER},",
+          "I_WAYBILL_RECVER_REPORT_GOODS_NUMBER = #{iWaybillRecverReportGoodsNumber,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(FmTradeWaybillEntity record);

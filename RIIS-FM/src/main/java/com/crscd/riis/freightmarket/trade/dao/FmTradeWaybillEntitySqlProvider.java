@@ -60,8 +60,8 @@ public class FmTradeWaybillEntitySqlProvider {
             sql.VALUES("D_WAYBILL_TIME", "#{dWaybillTime,jdbcType=TIMESTAMP}");
         }
         
-        if (record.getiWaybillDateline() != null) {
-            sql.VALUES("I_WAYBILL_DATELINE", "#{iWaybillDateline,jdbcType=INTEGER}");
+        if (record.getdWaybillDateline() != null) {
+            sql.VALUES("D_WAYBILL_DATELINE", "#{dWaybillDateline,jdbcType=TIMESTAMP}");
         }
         
         if (record.getdWaybillPredictArriveTime() != null) {
@@ -160,6 +160,42 @@ public class FmTradeWaybillEntitySqlProvider {
             sql.VALUES("I_WAYBILL_PAYMENT_STATE", "#{iWaybillPaymentState,jdbcType=INTEGER}");
         }
         
+        if (record.getfWaybillSenderReportWeight() != null) {
+            sql.VALUES("F_WAYBILL_SENDER_REPORT_WEIGHT", "#{fWaybillSenderReportWeight,jdbcType=REAL}");
+        }
+        
+        if (record.getfWaybillRecverReportWeight() != null) {
+            sql.VALUES("F_WAYBILL_RECVER_REPORT_WEIGHT", "#{fWaybillRecverReportWeight,jdbcType=REAL}");
+        }
+        
+        if (record.getfWaybillWeightCharge() != null) {
+            sql.VALUES("F_WAYBILL_WEIGHT_CHARGE", "#{fWaybillWeightCharge,jdbcType=REAL}");
+        }
+        
+        if (record.getiWaybillSenderReportTrainNumber() != null) {
+            sql.VALUES("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER", "#{iWaybillSenderReportTrainNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillRecverReportTrainNumber() != null) {
+            sql.VALUES("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER", "#{iWaybillRecverReportTrainNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillSenderReportBoxNumber() != null) {
+            sql.VALUES("I_WAYBILL_SENDER_REPORT_BOX_NUMBER", "#{iWaybillSenderReportBoxNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillRecverReportBoxNumber() != null) {
+            sql.VALUES("I_WAYBILL_RECVER_REPORT_BOX_NUMBER", "#{iWaybillRecverReportBoxNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillSenderReportGoodsNumber() != null) {
+            sql.VALUES("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER", "#{iWaybillSenderReportGoodsNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillRecverReportGoodsNumber() != null) {
+            sql.VALUES("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER", "#{iWaybillRecverReportGoodsNumber,jdbcType=INTEGER}");
+        }
+        
         return sql.toString();
     }
 
@@ -177,7 +213,7 @@ public class FmTradeWaybillEntitySqlProvider {
         sql.SELECT("D_WAYBILL_CREATE_TIME");
         sql.SELECT("I_WAYBILL_STATE");
         sql.SELECT("D_WAYBILL_TIME");
-        sql.SELECT("I_WAYBILL_DATELINE");
+        sql.SELECT("D_WAYBILL_DATELINE");
         sql.SELECT("D_WAYBILL_PREDICT_ARRIVE_TIME");
         sql.SELECT("D_WAYBILL_PREDICT_UNLOAD_START_TIME");
         sql.SELECT("D_WAYBILL_PREDICT_UNLOAD_END_TIME");
@@ -202,6 +238,15 @@ public class FmTradeWaybillEntitySqlProvider {
         sql.SELECT("F_WAYBILL_CONSTRUCT_FEE");
         sql.SELECT("I_WAYBILL_PAYMENT_METHOD");
         sql.SELECT("I_WAYBILL_PAYMENT_STATE");
+        sql.SELECT("F_WAYBILL_SENDER_REPORT_WEIGHT");
+        sql.SELECT("F_WAYBILL_RECVER_REPORT_WEIGHT");
+        sql.SELECT("F_WAYBILL_WEIGHT_CHARGE");
+        sql.SELECT("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER");
+        sql.SELECT("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER");
+        sql.SELECT("I_WAYBILL_SENDER_REPORT_BOX_NUMBER");
+        sql.SELECT("I_WAYBILL_RECVER_REPORT_BOX_NUMBER");
+        sql.SELECT("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER");
+        sql.SELECT("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER");
         sql.FROM("fm_trade_waybill");
         applyWhere(sql, example, false);
         
@@ -251,8 +296,8 @@ public class FmTradeWaybillEntitySqlProvider {
             sql.SET("D_WAYBILL_TIME = #{record.dWaybillTime,jdbcType=TIMESTAMP}");
         }
         
-        if (record.getiWaybillDateline() != null) {
-            sql.SET("I_WAYBILL_DATELINE = #{record.iWaybillDateline,jdbcType=INTEGER}");
+        if (record.getdWaybillDateline() != null) {
+            sql.SET("D_WAYBILL_DATELINE = #{record.dWaybillDateline,jdbcType=TIMESTAMP}");
         }
         
         if (record.getdWaybillPredictArriveTime() != null) {
@@ -351,6 +396,42 @@ public class FmTradeWaybillEntitySqlProvider {
             sql.SET("I_WAYBILL_PAYMENT_STATE = #{record.iWaybillPaymentState,jdbcType=INTEGER}");
         }
         
+        if (record.getfWaybillSenderReportWeight() != null) {
+            sql.SET("F_WAYBILL_SENDER_REPORT_WEIGHT = #{record.fWaybillSenderReportWeight,jdbcType=REAL}");
+        }
+        
+        if (record.getfWaybillRecverReportWeight() != null) {
+            sql.SET("F_WAYBILL_RECVER_REPORT_WEIGHT = #{record.fWaybillRecverReportWeight,jdbcType=REAL}");
+        }
+        
+        if (record.getfWaybillWeightCharge() != null) {
+            sql.SET("F_WAYBILL_WEIGHT_CHARGE = #{record.fWaybillWeightCharge,jdbcType=REAL}");
+        }
+        
+        if (record.getiWaybillSenderReportTrainNumber() != null) {
+            sql.SET("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER = #{record.iWaybillSenderReportTrainNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillRecverReportTrainNumber() != null) {
+            sql.SET("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER = #{record.iWaybillRecverReportTrainNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillSenderReportBoxNumber() != null) {
+            sql.SET("I_WAYBILL_SENDER_REPORT_BOX_NUMBER = #{record.iWaybillSenderReportBoxNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillRecverReportBoxNumber() != null) {
+            sql.SET("I_WAYBILL_RECVER_REPORT_BOX_NUMBER = #{record.iWaybillRecverReportBoxNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillSenderReportGoodsNumber() != null) {
+            sql.SET("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER = #{record.iWaybillSenderReportGoodsNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillRecverReportGoodsNumber() != null) {
+            sql.SET("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER = #{record.iWaybillRecverReportGoodsNumber,jdbcType=INTEGER}");
+        }
+        
         applyWhere(sql, example, true);
         return sql.toString();
     }
@@ -367,7 +448,7 @@ public class FmTradeWaybillEntitySqlProvider {
         sql.SET("D_WAYBILL_CREATE_TIME = #{record.dWaybillCreateTime,jdbcType=TIMESTAMP}");
         sql.SET("I_WAYBILL_STATE = #{record.iWaybillState,jdbcType=INTEGER}");
         sql.SET("D_WAYBILL_TIME = #{record.dWaybillTime,jdbcType=TIMESTAMP}");
-        sql.SET("I_WAYBILL_DATELINE = #{record.iWaybillDateline,jdbcType=INTEGER}");
+        sql.SET("D_WAYBILL_DATELINE = #{record.dWaybillDateline,jdbcType=TIMESTAMP}");
         sql.SET("D_WAYBILL_PREDICT_ARRIVE_TIME = #{record.dWaybillPredictArriveTime,jdbcType=TIMESTAMP}");
         sql.SET("D_WAYBILL_PREDICT_UNLOAD_START_TIME = #{record.dWaybillPredictUnloadStartTime,jdbcType=TIMESTAMP}");
         sql.SET("D_WAYBILL_PREDICT_UNLOAD_END_TIME = #{record.dWaybillPredictUnloadEndTime,jdbcType=TIMESTAMP}");
@@ -392,6 +473,15 @@ public class FmTradeWaybillEntitySqlProvider {
         sql.SET("F_WAYBILL_CONSTRUCT_FEE = #{record.fWaybillConstructFee,jdbcType=REAL}");
         sql.SET("I_WAYBILL_PAYMENT_METHOD = #{record.iWaybillPaymentMethod,jdbcType=INTEGER}");
         sql.SET("I_WAYBILL_PAYMENT_STATE = #{record.iWaybillPaymentState,jdbcType=INTEGER}");
+        sql.SET("F_WAYBILL_SENDER_REPORT_WEIGHT = #{record.fWaybillSenderReportWeight,jdbcType=REAL}");
+        sql.SET("F_WAYBILL_RECVER_REPORT_WEIGHT = #{record.fWaybillRecverReportWeight,jdbcType=REAL}");
+        sql.SET("F_WAYBILL_WEIGHT_CHARGE = #{record.fWaybillWeightCharge,jdbcType=REAL}");
+        sql.SET("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER = #{record.iWaybillSenderReportTrainNumber,jdbcType=INTEGER}");
+        sql.SET("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER = #{record.iWaybillRecverReportTrainNumber,jdbcType=INTEGER}");
+        sql.SET("I_WAYBILL_SENDER_REPORT_BOX_NUMBER = #{record.iWaybillSenderReportBoxNumber,jdbcType=INTEGER}");
+        sql.SET("I_WAYBILL_RECVER_REPORT_BOX_NUMBER = #{record.iWaybillRecverReportBoxNumber,jdbcType=INTEGER}");
+        sql.SET("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER = #{record.iWaybillSenderReportGoodsNumber,jdbcType=INTEGER}");
+        sql.SET("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER = #{record.iWaybillRecverReportGoodsNumber,jdbcType=INTEGER}");
         
         FmTradeWaybillEntityExample example = (FmTradeWaybillEntityExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -430,8 +520,8 @@ public class FmTradeWaybillEntitySqlProvider {
             sql.SET("D_WAYBILL_TIME = #{dWaybillTime,jdbcType=TIMESTAMP}");
         }
         
-        if (record.getiWaybillDateline() != null) {
-            sql.SET("I_WAYBILL_DATELINE = #{iWaybillDateline,jdbcType=INTEGER}");
+        if (record.getdWaybillDateline() != null) {
+            sql.SET("D_WAYBILL_DATELINE = #{dWaybillDateline,jdbcType=TIMESTAMP}");
         }
         
         if (record.getdWaybillPredictArriveTime() != null) {
@@ -528,6 +618,42 @@ public class FmTradeWaybillEntitySqlProvider {
         
         if (record.getiWaybillPaymentState() != null) {
             sql.SET("I_WAYBILL_PAYMENT_STATE = #{iWaybillPaymentState,jdbcType=INTEGER}");
+        }
+        
+        if (record.getfWaybillSenderReportWeight() != null) {
+            sql.SET("F_WAYBILL_SENDER_REPORT_WEIGHT = #{fWaybillSenderReportWeight,jdbcType=REAL}");
+        }
+        
+        if (record.getfWaybillRecverReportWeight() != null) {
+            sql.SET("F_WAYBILL_RECVER_REPORT_WEIGHT = #{fWaybillRecverReportWeight,jdbcType=REAL}");
+        }
+        
+        if (record.getfWaybillWeightCharge() != null) {
+            sql.SET("F_WAYBILL_WEIGHT_CHARGE = #{fWaybillWeightCharge,jdbcType=REAL}");
+        }
+        
+        if (record.getiWaybillSenderReportTrainNumber() != null) {
+            sql.SET("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER = #{iWaybillSenderReportTrainNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillRecverReportTrainNumber() != null) {
+            sql.SET("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER = #{iWaybillRecverReportTrainNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillSenderReportBoxNumber() != null) {
+            sql.SET("I_WAYBILL_SENDER_REPORT_BOX_NUMBER = #{iWaybillSenderReportBoxNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillRecverReportBoxNumber() != null) {
+            sql.SET("I_WAYBILL_RECVER_REPORT_BOX_NUMBER = #{iWaybillRecverReportBoxNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillSenderReportGoodsNumber() != null) {
+            sql.SET("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER = #{iWaybillSenderReportGoodsNumber,jdbcType=INTEGER}");
+        }
+        
+        if (record.getiWaybillRecverReportGoodsNumber() != null) {
+            sql.SET("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER = #{iWaybillRecverReportGoodsNumber,jdbcType=INTEGER}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");

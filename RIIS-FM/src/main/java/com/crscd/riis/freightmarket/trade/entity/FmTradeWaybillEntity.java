@@ -19,7 +19,7 @@ public class FmTradeWaybillEntity {
 
     private Date dWaybillTime;
 
-    private Integer iWaybillDateline;
+    private Date dWaybillDateline;
 
     private Date dWaybillPredictArriveTime;
 
@@ -68,6 +68,24 @@ public class FmTradeWaybillEntity {
     private Integer iWaybillPaymentMethod;
 
     private Integer iWaybillPaymentState;
+
+    private Float fWaybillSenderReportWeight;
+
+    private Float fWaybillRecverReportWeight;
+
+    private Float fWaybillWeightCharge;
+
+    private Integer iWaybillSenderReportTrainNumber;
+
+    private Integer iWaybillRecverReportTrainNumber;
+
+    private Integer iWaybillSenderReportBoxNumber;
+
+    private Integer iWaybillRecverReportBoxNumber;
+
+    private Integer iWaybillSenderReportGoodsNumber;
+
+    private Integer iWaybillRecverReportGoodsNumber;
 
     public Integer getId() {
         return id;
@@ -133,12 +151,12 @@ public class FmTradeWaybillEntity {
         this.dWaybillTime = dWaybillTime;
     }
 
-    public Integer getiWaybillDateline() {
-        return iWaybillDateline;
+    public Date getdWaybillDateline() {
+        return dWaybillDateline;
     }
 
-    public void setiWaybillDateline(Integer iWaybillDateline) {
-        this.iWaybillDateline = iWaybillDateline;
+    public void setdWaybillDateline(Date dWaybillDateline) {
+        this.dWaybillDateline = dWaybillDateline;
     }
 
     public Date getdWaybillPredictArriveTime() {
@@ -331,5 +349,77 @@ public class FmTradeWaybillEntity {
 
     public void setiWaybillPaymentState(Integer iWaybillPaymentState) {
         this.iWaybillPaymentState = iWaybillPaymentState;
+    }
+
+    public Float getfWaybillSenderReportWeight() {
+        return fWaybillSenderReportWeight;
+    }
+
+    public void setfWaybillSenderReportWeight(Float fWaybillSenderReportWeight) {
+        this.fWaybillSenderReportWeight = fWaybillSenderReportWeight;
+    }
+
+    public Float getfWaybillRecverReportWeight() {
+        return fWaybillRecverReportWeight;
+    }
+
+    public void setfWaybillRecverReportWeight(Float fWaybillRecverReportWeight) {
+        this.fWaybillRecverReportWeight = fWaybillRecverReportWeight;
+    }
+
+    public Float getfWaybillWeightCharge() {
+        return fWaybillWeightCharge;
+    }
+
+    public void setfWaybillWeightCharge(Float fWaybillWeightCharge) {
+        this.fWaybillWeightCharge = fWaybillWeightCharge;
+    }
+
+    public Integer getiWaybillSenderReportTrainNumber() {
+        return iWaybillSenderReportTrainNumber;
+    }
+
+    public void setiWaybillSenderReportTrainNumber(Integer iWaybillSenderReportTrainNumber) {
+        this.iWaybillSenderReportTrainNumber = iWaybillSenderReportTrainNumber;
+    }
+
+    public Integer getiWaybillRecverReportTrainNumber() {
+        return iWaybillRecverReportTrainNumber;
+    }
+
+    public void setiWaybillRecverReportTrainNumber(Integer iWaybillRecverReportTrainNumber) {
+        this.iWaybillRecverReportTrainNumber = iWaybillRecverReportTrainNumber;
+    }
+
+    public Integer getiWaybillSenderReportBoxNumber() {
+        return iWaybillSenderReportBoxNumber;
+    }
+
+    public void setiWaybillSenderReportBoxNumber(Integer iWaybillSenderReportBoxNumber) {
+        this.iWaybillSenderReportBoxNumber = iWaybillSenderReportBoxNumber;
+    }
+
+    public Integer getiWaybillRecverReportBoxNumber() {
+        return iWaybillRecverReportBoxNumber;
+    }
+
+    public void setiWaybillRecverReportBoxNumber(Integer iWaybillRecverReportBoxNumber) {
+        this.iWaybillRecverReportBoxNumber = iWaybillRecverReportBoxNumber;
+    }
+
+    public Integer getiWaybillSenderReportGoodsNumber() {
+        return iWaybillSenderReportGoodsNumber;
+    }
+
+    public void setiWaybillSenderReportGoodsNumber(Integer iWaybillSenderReportGoodsNumber) {
+        this.iWaybillSenderReportGoodsNumber = iWaybillSenderReportGoodsNumber;
+    }
+
+    public Integer getiWaybillRecverReportGoodsNumber() {
+        return iWaybillRecverReportGoodsNumber;
+    }
+
+    public void setiWaybillRecverReportGoodsNumber(Integer iWaybillRecverReportGoodsNumber) {
+        this.iWaybillRecverReportGoodsNumber = iWaybillRecverReportGoodsNumber;
     }
 }

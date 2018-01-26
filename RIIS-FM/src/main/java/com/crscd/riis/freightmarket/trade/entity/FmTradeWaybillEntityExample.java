@@ -595,63 +595,63 @@ public class FmTradeWaybillEntityExample {
             return (Criteria) this;
         }
 
-        public Criteria andIWaybillDatelineIsNull() {
-            addCriterion("I_WAYBILL_DATELINE is null");
+        public Criteria andDWaybillDatelineIsNull() {
+            addCriterion("D_WAYBILL_DATELINE is null");
             return (Criteria) this;
         }
 
-        public Criteria andIWaybillDatelineIsNotNull() {
-            addCriterion("I_WAYBILL_DATELINE is not null");
+        public Criteria andDWaybillDatelineIsNotNull() {
+            addCriterion("D_WAYBILL_DATELINE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIWaybillDatelineEqualTo(Integer value) {
-            addCriterion("I_WAYBILL_DATELINE =", value, "iWaybillDateline");
+        public Criteria andDWaybillDatelineEqualTo(Date value) {
+            addCriterion("D_WAYBILL_DATELINE =", value, "dWaybillDateline");
             return (Criteria) this;
         }
 
-        public Criteria andIWaybillDatelineNotEqualTo(Integer value) {
-            addCriterion("I_WAYBILL_DATELINE <>", value, "iWaybillDateline");
+        public Criteria andDWaybillDatelineNotEqualTo(Date value) {
+            addCriterion("D_WAYBILL_DATELINE <>", value, "dWaybillDateline");
             return (Criteria) this;
         }
 
-        public Criteria andIWaybillDatelineGreaterThan(Integer value) {
-            addCriterion("I_WAYBILL_DATELINE >", value, "iWaybillDateline");
+        public Criteria andDWaybillDatelineGreaterThan(Date value) {
+            addCriterion("D_WAYBILL_DATELINE >", value, "dWaybillDateline");
             return (Criteria) this;
         }
 
-        public Criteria andIWaybillDatelineGreaterThanOrEqualTo(Integer value) {
-            addCriterion("I_WAYBILL_DATELINE >=", value, "iWaybillDateline");
+        public Criteria andDWaybillDatelineGreaterThanOrEqualTo(Date value) {
+            addCriterion("D_WAYBILL_DATELINE >=", value, "dWaybillDateline");
             return (Criteria) this;
         }
 
-        public Criteria andIWaybillDatelineLessThan(Integer value) {
-            addCriterion("I_WAYBILL_DATELINE <", value, "iWaybillDateline");
+        public Criteria andDWaybillDatelineLessThan(Date value) {
+            addCriterion("D_WAYBILL_DATELINE <", value, "dWaybillDateline");
             return (Criteria) this;
         }
 
-        public Criteria andIWaybillDatelineLessThanOrEqualTo(Integer value) {
-            addCriterion("I_WAYBILL_DATELINE <=", value, "iWaybillDateline");
+        public Criteria andDWaybillDatelineLessThanOrEqualTo(Date value) {
+            addCriterion("D_WAYBILL_DATELINE <=", value, "dWaybillDateline");
             return (Criteria) this;
         }
 
-        public Criteria andIWaybillDatelineIn(List<Integer> values) {
-            addCriterion("I_WAYBILL_DATELINE in", values, "iWaybillDateline");
+        public Criteria andDWaybillDatelineIn(List<Date> values) {
+            addCriterion("D_WAYBILL_DATELINE in", values, "dWaybillDateline");
             return (Criteria) this;
         }
 
-        public Criteria andIWaybillDatelineNotIn(List<Integer> values) {
-            addCriterion("I_WAYBILL_DATELINE not in", values, "iWaybillDateline");
+        public Criteria andDWaybillDatelineNotIn(List<Date> values) {
+            addCriterion("D_WAYBILL_DATELINE not in", values, "dWaybillDateline");
             return (Criteria) this;
         }
 
-        public Criteria andIWaybillDatelineBetween(Integer value1, Integer value2) {
-            addCriterion("I_WAYBILL_DATELINE between", value1, value2, "iWaybillDateline");
+        public Criteria andDWaybillDatelineBetween(Date value1, Date value2) {
+            addCriterion("D_WAYBILL_DATELINE between", value1, value2, "dWaybillDateline");
             return (Criteria) this;
         }
 
-        public Criteria andIWaybillDatelineNotBetween(Integer value1, Integer value2) {
-            addCriterion("I_WAYBILL_DATELINE not between", value1, value2, "iWaybillDateline");
+        public Criteria andDWaybillDatelineNotBetween(Date value1, Date value2) {
+            addCriterion("D_WAYBILL_DATELINE not between", value1, value2, "dWaybillDateline");
             return (Criteria) this;
         }
 
@@ -2102,6 +2102,546 @@ public class FmTradeWaybillEntityExample {
 
         public Criteria andIWaybillPaymentStateNotBetween(Integer value1, Integer value2) {
             addCriterion("I_WAYBILL_PAYMENT_STATE not between", value1, value2, "iWaybillPaymentState");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillSenderReportWeightIsNull() {
+            addCriterion("F_WAYBILL_SENDER_REPORT_WEIGHT is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillSenderReportWeightIsNotNull() {
+            addCriterion("F_WAYBILL_SENDER_REPORT_WEIGHT is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillSenderReportWeightEqualTo(Float value) {
+            addCriterion("F_WAYBILL_SENDER_REPORT_WEIGHT =", value, "fWaybillSenderReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillSenderReportWeightNotEqualTo(Float value) {
+            addCriterion("F_WAYBILL_SENDER_REPORT_WEIGHT <>", value, "fWaybillSenderReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillSenderReportWeightGreaterThan(Float value) {
+            addCriterion("F_WAYBILL_SENDER_REPORT_WEIGHT >", value, "fWaybillSenderReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillSenderReportWeightGreaterThanOrEqualTo(Float value) {
+            addCriterion("F_WAYBILL_SENDER_REPORT_WEIGHT >=", value, "fWaybillSenderReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillSenderReportWeightLessThan(Float value) {
+            addCriterion("F_WAYBILL_SENDER_REPORT_WEIGHT <", value, "fWaybillSenderReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillSenderReportWeightLessThanOrEqualTo(Float value) {
+            addCriterion("F_WAYBILL_SENDER_REPORT_WEIGHT <=", value, "fWaybillSenderReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillSenderReportWeightIn(List<Float> values) {
+            addCriterion("F_WAYBILL_SENDER_REPORT_WEIGHT in", values, "fWaybillSenderReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillSenderReportWeightNotIn(List<Float> values) {
+            addCriterion("F_WAYBILL_SENDER_REPORT_WEIGHT not in", values, "fWaybillSenderReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillSenderReportWeightBetween(Float value1, Float value2) {
+            addCriterion("F_WAYBILL_SENDER_REPORT_WEIGHT between", value1, value2, "fWaybillSenderReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillSenderReportWeightNotBetween(Float value1, Float value2) {
+            addCriterion("F_WAYBILL_SENDER_REPORT_WEIGHT not between", value1, value2, "fWaybillSenderReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillRecverReportWeightIsNull() {
+            addCriterion("F_WAYBILL_RECVER_REPORT_WEIGHT is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillRecverReportWeightIsNotNull() {
+            addCriterion("F_WAYBILL_RECVER_REPORT_WEIGHT is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillRecverReportWeightEqualTo(Float value) {
+            addCriterion("F_WAYBILL_RECVER_REPORT_WEIGHT =", value, "fWaybillRecverReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillRecverReportWeightNotEqualTo(Float value) {
+            addCriterion("F_WAYBILL_RECVER_REPORT_WEIGHT <>", value, "fWaybillRecverReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillRecverReportWeightGreaterThan(Float value) {
+            addCriterion("F_WAYBILL_RECVER_REPORT_WEIGHT >", value, "fWaybillRecverReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillRecverReportWeightGreaterThanOrEqualTo(Float value) {
+            addCriterion("F_WAYBILL_RECVER_REPORT_WEIGHT >=", value, "fWaybillRecverReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillRecverReportWeightLessThan(Float value) {
+            addCriterion("F_WAYBILL_RECVER_REPORT_WEIGHT <", value, "fWaybillRecverReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillRecverReportWeightLessThanOrEqualTo(Float value) {
+            addCriterion("F_WAYBILL_RECVER_REPORT_WEIGHT <=", value, "fWaybillRecverReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillRecverReportWeightIn(List<Float> values) {
+            addCriterion("F_WAYBILL_RECVER_REPORT_WEIGHT in", values, "fWaybillRecverReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillRecverReportWeightNotIn(List<Float> values) {
+            addCriterion("F_WAYBILL_RECVER_REPORT_WEIGHT not in", values, "fWaybillRecverReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillRecverReportWeightBetween(Float value1, Float value2) {
+            addCriterion("F_WAYBILL_RECVER_REPORT_WEIGHT between", value1, value2, "fWaybillRecverReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillRecverReportWeightNotBetween(Float value1, Float value2) {
+            addCriterion("F_WAYBILL_RECVER_REPORT_WEIGHT not between", value1, value2, "fWaybillRecverReportWeight");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillWeightChargeIsNull() {
+            addCriterion("F_WAYBILL_WEIGHT_CHARGE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillWeightChargeIsNotNull() {
+            addCriterion("F_WAYBILL_WEIGHT_CHARGE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillWeightChargeEqualTo(Float value) {
+            addCriterion("F_WAYBILL_WEIGHT_CHARGE =", value, "fWaybillWeightCharge");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillWeightChargeNotEqualTo(Float value) {
+            addCriterion("F_WAYBILL_WEIGHT_CHARGE <>", value, "fWaybillWeightCharge");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillWeightChargeGreaterThan(Float value) {
+            addCriterion("F_WAYBILL_WEIGHT_CHARGE >", value, "fWaybillWeightCharge");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillWeightChargeGreaterThanOrEqualTo(Float value) {
+            addCriterion("F_WAYBILL_WEIGHT_CHARGE >=", value, "fWaybillWeightCharge");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillWeightChargeLessThan(Float value) {
+            addCriterion("F_WAYBILL_WEIGHT_CHARGE <", value, "fWaybillWeightCharge");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillWeightChargeLessThanOrEqualTo(Float value) {
+            addCriterion("F_WAYBILL_WEIGHT_CHARGE <=", value, "fWaybillWeightCharge");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillWeightChargeIn(List<Float> values) {
+            addCriterion("F_WAYBILL_WEIGHT_CHARGE in", values, "fWaybillWeightCharge");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillWeightChargeNotIn(List<Float> values) {
+            addCriterion("F_WAYBILL_WEIGHT_CHARGE not in", values, "fWaybillWeightCharge");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillWeightChargeBetween(Float value1, Float value2) {
+            addCriterion("F_WAYBILL_WEIGHT_CHARGE between", value1, value2, "fWaybillWeightCharge");
+            return (Criteria) this;
+        }
+
+        public Criteria andFWaybillWeightChargeNotBetween(Float value1, Float value2) {
+            addCriterion("F_WAYBILL_WEIGHT_CHARGE not between", value1, value2, "fWaybillWeightCharge");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportTrainNumberIsNull() {
+            addCriterion("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportTrainNumberIsNotNull() {
+            addCriterion("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportTrainNumberEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER =", value, "iWaybillSenderReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportTrainNumberNotEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER <>", value, "iWaybillSenderReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportTrainNumberGreaterThan(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER >", value, "iWaybillSenderReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportTrainNumberGreaterThanOrEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER >=", value, "iWaybillSenderReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportTrainNumberLessThan(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER <", value, "iWaybillSenderReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportTrainNumberLessThanOrEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER <=", value, "iWaybillSenderReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportTrainNumberIn(List<Integer> values) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER in", values, "iWaybillSenderReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportTrainNumberNotIn(List<Integer> values) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER not in", values, "iWaybillSenderReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportTrainNumberBetween(Integer value1, Integer value2) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER between", value1, value2, "iWaybillSenderReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportTrainNumberNotBetween(Integer value1, Integer value2) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER not between", value1, value2, "iWaybillSenderReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportTrainNumberIsNull() {
+            addCriterion("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportTrainNumberIsNotNull() {
+            addCriterion("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportTrainNumberEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER =", value, "iWaybillRecverReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportTrainNumberNotEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER <>", value, "iWaybillRecverReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportTrainNumberGreaterThan(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER >", value, "iWaybillRecverReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportTrainNumberGreaterThanOrEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER >=", value, "iWaybillRecverReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportTrainNumberLessThan(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER <", value, "iWaybillRecverReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportTrainNumberLessThanOrEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER <=", value, "iWaybillRecverReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportTrainNumberIn(List<Integer> values) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER in", values, "iWaybillRecverReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportTrainNumberNotIn(List<Integer> values) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER not in", values, "iWaybillRecverReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportTrainNumberBetween(Integer value1, Integer value2) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER between", value1, value2, "iWaybillRecverReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportTrainNumberNotBetween(Integer value1, Integer value2) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER not between", value1, value2, "iWaybillRecverReportTrainNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportBoxNumberIsNull() {
+            addCriterion("I_WAYBILL_SENDER_REPORT_BOX_NUMBER is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportBoxNumberIsNotNull() {
+            addCriterion("I_WAYBILL_SENDER_REPORT_BOX_NUMBER is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportBoxNumberEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_BOX_NUMBER =", value, "iWaybillSenderReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportBoxNumberNotEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_BOX_NUMBER <>", value, "iWaybillSenderReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportBoxNumberGreaterThan(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_BOX_NUMBER >", value, "iWaybillSenderReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportBoxNumberGreaterThanOrEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_BOX_NUMBER >=", value, "iWaybillSenderReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportBoxNumberLessThan(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_BOX_NUMBER <", value, "iWaybillSenderReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportBoxNumberLessThanOrEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_BOX_NUMBER <=", value, "iWaybillSenderReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportBoxNumberIn(List<Integer> values) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_BOX_NUMBER in", values, "iWaybillSenderReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportBoxNumberNotIn(List<Integer> values) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_BOX_NUMBER not in", values, "iWaybillSenderReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportBoxNumberBetween(Integer value1, Integer value2) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_BOX_NUMBER between", value1, value2, "iWaybillSenderReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportBoxNumberNotBetween(Integer value1, Integer value2) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_BOX_NUMBER not between", value1, value2, "iWaybillSenderReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportBoxNumberIsNull() {
+            addCriterion("I_WAYBILL_RECVER_REPORT_BOX_NUMBER is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportBoxNumberIsNotNull() {
+            addCriterion("I_WAYBILL_RECVER_REPORT_BOX_NUMBER is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportBoxNumberEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_BOX_NUMBER =", value, "iWaybillRecverReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportBoxNumberNotEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_BOX_NUMBER <>", value, "iWaybillRecverReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportBoxNumberGreaterThan(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_BOX_NUMBER >", value, "iWaybillRecverReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportBoxNumberGreaterThanOrEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_BOX_NUMBER >=", value, "iWaybillRecverReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportBoxNumberLessThan(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_BOX_NUMBER <", value, "iWaybillRecverReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportBoxNumberLessThanOrEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_BOX_NUMBER <=", value, "iWaybillRecverReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportBoxNumberIn(List<Integer> values) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_BOX_NUMBER in", values, "iWaybillRecverReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportBoxNumberNotIn(List<Integer> values) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_BOX_NUMBER not in", values, "iWaybillRecverReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportBoxNumberBetween(Integer value1, Integer value2) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_BOX_NUMBER between", value1, value2, "iWaybillRecverReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportBoxNumberNotBetween(Integer value1, Integer value2) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_BOX_NUMBER not between", value1, value2, "iWaybillRecverReportBoxNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportGoodsNumberIsNull() {
+            addCriterion("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportGoodsNumberIsNotNull() {
+            addCriterion("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportGoodsNumberEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER =", value, "iWaybillSenderReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportGoodsNumberNotEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER <>", value, "iWaybillSenderReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportGoodsNumberGreaterThan(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER >", value, "iWaybillSenderReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportGoodsNumberGreaterThanOrEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER >=", value, "iWaybillSenderReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportGoodsNumberLessThan(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER <", value, "iWaybillSenderReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportGoodsNumberLessThanOrEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER <=", value, "iWaybillSenderReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportGoodsNumberIn(List<Integer> values) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER in", values, "iWaybillSenderReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportGoodsNumberNotIn(List<Integer> values) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER not in", values, "iWaybillSenderReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportGoodsNumberBetween(Integer value1, Integer value2) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER between", value1, value2, "iWaybillSenderReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillSenderReportGoodsNumberNotBetween(Integer value1, Integer value2) {
+            addCriterion("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER not between", value1, value2, "iWaybillSenderReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportGoodsNumberIsNull() {
+            addCriterion("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportGoodsNumberIsNotNull() {
+            addCriterion("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportGoodsNumberEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER =", value, "iWaybillRecverReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportGoodsNumberNotEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER <>", value, "iWaybillRecverReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportGoodsNumberGreaterThan(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER >", value, "iWaybillRecverReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportGoodsNumberGreaterThanOrEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER >=", value, "iWaybillRecverReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportGoodsNumberLessThan(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER <", value, "iWaybillRecverReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportGoodsNumberLessThanOrEqualTo(Integer value) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER <=", value, "iWaybillRecverReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportGoodsNumberIn(List<Integer> values) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER in", values, "iWaybillRecverReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportGoodsNumberNotIn(List<Integer> values) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER not in", values, "iWaybillRecverReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportGoodsNumberBetween(Integer value1, Integer value2) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER between", value1, value2, "iWaybillRecverReportGoodsNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andIWaybillRecverReportGoodsNumberNotBetween(Integer value1, Integer value2) {
+            addCriterion("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER not between", value1, value2, "iWaybillRecverReportGoodsNumber");
             return (Criteria) this;
         }
     }
