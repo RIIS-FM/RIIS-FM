@@ -16,6 +16,186 @@ public class FmTradeWaybillEntitySqlProvider {
         applyWhere(sql, example, false);
         return sql.toString();
     }
+    
+    /*运单分页动态查询*/
+    public String selectWithParam(Map<String, Object> params) {
+    	String sql = new SQL() {
+    		{
+    			SELECT("id");
+    			SELECT("I_ORDER_ID");
+    			SELECT("I_ORDER_TYPE_ID");
+    			SELECT("I_ORDER_TYPE_NUM");
+    			SELECT("C_WAYBILL_CODE");
+    			SELECT("D_WAYBILL_CREATE_TIME");
+    			SELECT("I_WAYBILL_STATE");
+    			SELECT("D_WAYBILL_TIME");
+    			SELECT("D_WAYBILL_DATELINE");
+    			SELECT("D_WAYBILL_PREDICT_ARRIVE_TIME");
+    			SELECT("D_WAYBILL_PREDICT_UNLOAD_START_TIME");
+    			SELECT("D_WAYBILL_PREDICT_UNLOAD_END_TIME");
+    			SELECT("D_WAYBILL_PREDICT_SENDER_TIME");
+    			SELECT("D_WAYBILL_PREDICT_LOAD_START_TIME");
+    			SELECT("D_WAYBILL_PREDICT_LOAD_END_TIME");
+    			SELECT("I_WAYBILL_BOX_SEAL_NUM");
+    			SELECT("I_WAYBILL_BOX_TYPE");
+    			SELECT("I_WAYBILL_BOX_NUM");
+    			SELECT("I_WAYBILL_GOODS_REINFORCE");
+    			SELECT("I_WAYBILL_GOODS_WRAPPER");
+    			SELECT("F_WAYBILL_CANVAS_NUMBER");
+    			SELECT("F_WAYBILL_TRAIN_TYPE");
+    			SELECT("C_WAYBILL_TRAIN_NUM");
+    			SELECT("I_WAYBILL_TRAIN_NUMBER_CHARGE");
+    			SELECT("I_WAYBILL_BOX_NUMBER_CHARGE");
+    			SELECT("I_WAYBILL_GOODS_NUMBER_CHARGE");
+    			SELECT("I_PRICE_NO");
+    			SELECT("F_PRICE_RATE");
+    			SELECT("F_WAYBILL_INCIDENTALS_PAID");
+    			SELECT("F_WAYBILL_ELECTRICT_FEE");
+    			SELECT("F_WAYBILL_CONSTRUCT_FEE");
+    			SELECT("I_WAYBILL_PAYMENT_METHOD");
+    			SELECT("I_WAYBILL_PAYMENT_STATE");
+    			SELECT("F_WAYBILL_SENDER_REPORT_WEIGHT");
+    			SELECT("F_WAYBILL_RECVER_REPORT_WEIGHT");
+    			SELECT("F_WAYBILL_WEIGHT_CHARGE");
+    			SELECT("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER");
+    			SELECT("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER");
+    			SELECT("I_WAYBILL_SENDER_REPORT_BOX_NUMBER");
+    			SELECT("I_WAYBILL_RECVER_REPORT_BOX_NUMBER");
+    			SELECT("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER");
+    			SELECT("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER");
+    			
+    			if(params.get("iOrderId") != null) {
+    				WHERE("I_ORDER_ID = #{iOrderId}");
+    			}
+    			if(params.get("iOrderTypeId") != null) {
+    				WHERE("I_ORDER_TYPE_ID = #{iOrderTypeId}");
+    			}
+    			if(params.get("iOrderTypeNum") != null) {
+    				WHERE("I_ORDER_TYPE_NUM = #{iOrderTypeNum}");
+    			}
+    			if(params.get("cWaybillCode") != null) {
+    				WHERE("C_WAYBILL_CODE = #{cWaybillCode}");
+    			}
+    			if(params.get("dWaybillCreateTimeStart") != null && params.get("dWaybillCreateTimeEnd") != null) {
+    				WHERE("D_WAYBILL_CREATE_TIME >= #{dWaybillCreateTimeStart} AND D_WAYBILL_CREATE_TIME <= #{dWaybillCreateTimeEnd}");
+    			}
+    			if(params.get("iWaybillState") != null) {
+    				WHERE("I_WAYBILL_STATE = #{iWaybillState}");
+    			}
+    			if(params.get("iWaybillBoxSealNum") != null) {
+    				WHERE("I_WAYBILL_BOX_SEAL_NUM = #{iWaybillBoxSealNum}");
+    			}
+    			if(params.get("iWaybillBoxType") != null) {
+    				WHERE("I_WAYBILL_BOX_TYPE = #{iWaybillBoxType}");
+    			}
+    			if(params.get("iWaybillBoxNum") != null) {
+    				WHERE("I_WAYBILL_BOX_NUM = #{iWaybillBoxNum}");
+    			}
+    			if(params.get("iWaybillGoodsReinforce") != null) {
+    				WHERE("I_WAYBILL_GOODS_REINFORCE = #{iWaybillGoodsReinforce}");
+    			}
+    			if(params.get("iWaybillGoodsWrapper") != null) {
+    				WHERE("I_WAYBILL_GOODS_WRAPPER = #{iWaybillGoodsWrapper}");
+    			}
+    			if(params.get("fWaybillCanvasNumber") != null) {
+    				WHERE("F_WAYBILL_CANVAS_NUMBER = #{fWaybillCanvasNumber}");
+    			}
+    			if(params.get("fWaybillTrainType") != null) {
+    				WHERE("F_WAYBILL_TRAIN_TYPE = #{fWaybillTrainType}");
+    			}
+    			if(params.get("cWaybillTrainNum") != null) {
+    				WHERE("C_WAYBILL_TRAIN_NUM = #{cWaybillTrainNum}");
+    			}
+    			if(params.get("iWaybillTrainNumberCharge") != null) {
+    				WHERE("I_WAYBILL_TRAIN_NUMBER_CHARGE = #{iWaybillTrainNumberCharge}");
+    			}
+    			if(params.get("iWaybillBoxNumberCharge") != null) {
+    				WHERE("I_WAYBILL_BOX_NUMBER_CHARGE = #{iWaybillBoxNumberCharge}");
+    			}
+    			if(params.get("iWaybillGoodsNumberCharge") != null) {
+    				WHERE("I_WAYBILL_GOODS_NUMBER_CHARGE = #{iWaybillGoodsNumberCharge}");
+    			}
+    			if(params.get("iPriceNo") != null) {
+    				WHERE("I_PRICE_NO = #{iPriceNo}");
+    			}
+    			if(params.get("fPriceRate") != null) {
+    				WHERE("F_PRICE_RATE = #{fPriceRate}");
+    			}
+    			if(params.get("fWaybillIncidentalsPaid") != null) {
+    				WHERE("F_WAYBILL_INCIDENTALS_PAID = #{fWaybillIncidentalsPaid}");
+    			}
+    			if(params.get("fWaybillElectrictFee") != null) {
+    				WHERE("F_WAYBILL_ELECTRICT_FEE = #{fWaybillElectrictFee}");
+    			}
+    			if(params.get("fWaybillConstructFee") != null) {
+    				WHERE("F_WAYBILL_CONSTRUCT_FEE = #{fWaybillConstructFee}");
+    			}
+    			if(params.get("iWaybillPaymentMethod") != null) {
+    				WHERE("I_WAYBILL_PAYMENT_METHOD = #{iWaybillPaymentMethod}");
+    			}
+    			if(params.get("iWaybillPaymentState") != null) {
+    				WHERE("I_WAYBILL_PAYMENT_STATE = #{iWaybillPaymentState}");
+    			}
+    			if(params.get("fWaybillSenderReportWeight") != null) {
+    				WHERE("F_WAYBILL_SENDER_REPORT_WEIGHT = #{fWaybillSenderReportWeight}");
+    			}
+    			if(params.get("fWaybillRecverReportWeight") != null) {
+    				WHERE("F_WAYBILL_RECVER_REPORT_WEIGHT = #{fWaybillRecverReportWeight}");
+    			}
+    			if(params.get("fWaybillWeightCharge") != null) {
+    				WHERE("F_WAYBILL_WEIGHT_CHARGE = #{fWaybillWeightCharge}");
+    			}
+    			if(params.get("iWaybillSenderReportTrainNumber") != null) {
+    				WHERE("I_WAYBILL_SENDER_REPORT_TRAIN_NUMBER = #{iWaybillSenderReportTrainNumber}");
+    			}
+    			if(params.get("iWaybillRecverReportTrainNumber") != null) {
+    				WHERE("I_WAYBILL_RECVER_REPORT_TRAIN_NUMBER = #{iWaybillRecverReportTrainNumber}");
+    			}
+    			if(params.get("iWaybillSenderReportBoxNumber") != null) {
+    				WHERE("I_WAYBILL_SENDER_REPORT_BOX_NUMBER = #{iWaybillSenderReportBoxNumber}");
+    			}
+    			if(params.get("iWaybillRecverReportBoxNumber") != null) {
+    				WHERE("I_WAYBILL_RECVER_REPORT_BOX_NUMBER = #{iWaybillRecverReportBoxNumber}");
+    			}
+    			if(params.get("iWaybillSenderReportGoodsNumber") != null) {
+    				WHERE("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER = #{iWaybillSenderReportGoodsNumber}");
+    			}
+    			if(params.get("iWaybillRecverReportGoodsNumber") != null) {
+    				WHERE("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER = #{iWaybillRecverReportGoodsNumber}");
+    			}
+    			if(params.get("dWaybillTimeStart") != null && params.get("dWaybillTimeEnd") != null) {
+    				WHERE("D_WAYBILL_TIME >= #{dWaybillTimeStart} AND D_WAYBILL_TIME <= #{dWaybillTimeEnd}");
+    			}
+    			if(params.get("dWaybillDatelineStart") != null && params.get("dWaybillDatelineEnd") != null) {
+    				WHERE("D_WAYBILL_DATELINE >= #{dWaybillDatelineStart} AND D_WAYBILL_DATELINE <= #{dWaybillDatelineEnd}");
+    			}
+    			if(params.get("dWaybillPredictArriveTimeStart") != null && params.get("dWaybillPredictArriveTimeEnd") != null) {
+    				WHERE("D_WAYBILL_PREDICT_ARRIVE_TIME >= #{dWaybillPredictArriveTimeStart} AND D_WAYBILL_PREDICT_ARRIVE_TIME <= #{dWaybillPredictArriveTimeEnd}");
+    			}
+    			if(params.get("dWaybillPredictUnloadStartTimeStart") != null && params.get("dWaybillPredictUnloadStartTimeEnd") != null) {
+    				WHERE("D_WAYBILL_PREDICT_UNLOAD_START_TIME >= #{dWaybillPredictUnloadStartTimeStart} AND D_WAYBILL_PREDICT_UNLOAD_START_TIME <= #{dWaybillPredictUnloadStartTimeEnd}");
+    			}
+    			if(params.get("dWaybillPredictUnloadEndTimeStart") != null && params.get("dWaybillPredictUnloadEndTimeEnd") != null) {
+    				WHERE("D_WAYBILL_PREDICT_UNLOAD_END_TIME >= #{dWaybillPredictUnloadEndTimeStart} AND D_WAYBILL_PREDICT_UNLOAD_END_TIME <= #{dWaybillPredictUnloadEndTimeEnd}");
+    			}
+    			if(params.get("dWaybillPredictSenderTimeStart") != null && params.get("dWaybillPredictSenderTimeEnd") != null) {
+    				WHERE("D_WAYBILL_PREDICT_SENDER_TIME >= #{dWaybillPredictSenderTimeStart} AND D_WAYBILL_PREDICT_SENDER_TIME <= #{dWaybillPredictSenderTimeEnd}");
+    			}
+    			if(params.get("dWaybillPredictLoadStartTimeStart") != null && params.get("dWaybillPredictLoadStartTimeEnd") != null) {
+    				WHERE("D_WAYBILL_PREDICT_LOAD_START_TIME >= #{dWaybillPredictLoadStartTimeStart} AND D_WAYBILL_PREDICT_LOAD_START_TIME <= #{dWaybillPredictLoadStartTimeEnd}");
+    			}
+    			if(params.get("dWaybillPredictLoadEndTimeStart") != null && params.get("dWaybillPredictLoadEndTimeEnd") != null) {
+    				WHERE("D_WAYBILL_PREDICT_LOAD_END_TIME >= #{dWaybillPredictLoadEndTimeStart} AND D_WAYBILL_PREDICT_LOAD_END_TIME <= #{dWaybillPredictLoadEndTimeEnd}");
+    			}
+    		}
+    	}.toString();
+    	if(params.get("pageModel") != null){
+			sql += " limit #{pageModel.firstLimitParam} , #{pageModel.pageSize}  ";
+		}
+		System.out.println(sql);
+		return sql;
+    }
+
 
     public String deleteByExample(FmTradeWaybillEntityExample example) {
         SQL sql = new SQL();
