@@ -34,14 +34,14 @@ public interface IFmTradeOrderService {
 	 * @param FmTradeOrderInfoFastFreightEntity record
 	 * @return  插入成功返回1， 插入失败返回0
 	 */
-	int saveFastFreightOrderInfo(FmTradeOrderInfoFastFreightEntity record);
+	int saveFastFreightOrderInfo(FmTradeOrderInfoFastFreightEntity record,FmTradeOrderInfoBaseEntity recordBase);
 	 
 	/**
 	 * 插入整车运输订单的信息
 	 * @param FmTradeOrderInfoWholeVegicleFreightEntity record
 	 * @return  插入成功返回1， 插入失败返回0
 	 */
-	int saveWholeVegicleFreightOrderInfo(FmTradeOrderInfoWholeVegicleFreightEntity record);
+	int saveWholeVegicleFreightOrderInfo(FmTradeOrderInfoWholeVegicleFreightEntity record,FmTradeOrderInfoBaseEntity recordBase);
 	  
 	/**
 	 * 生成订单编号

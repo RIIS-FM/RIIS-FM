@@ -527,14 +527,65 @@ public class FmTradeOrderServiceImpl implements IFmTradeOrderService {
 	   * @param FmTradeOrderInfoFastFreightEntity record
 	   * @return  插入成功返回1， 插入失败返回0
 	   */
-	  public int saveFastFreightOrderInfo(FmTradeOrderInfoFastFreightEntity record) {
-		  /*
-		   * 根据货物名称获得货物代码
-		   */
-		  FmTradeGoodsEntity cGoodsEntity = fmTradeGoodsEntityMapper.selectByGoodsName(record.getcGoodsName());
+	  public int saveFastFreightOrderInfo(FmTradeOrderInfoFastFreightEntity record,FmTradeOrderInfoBaseEntity recordBase) {
+			int retStr = -1;
+			int retiOrderId = 0;
+			int orderState = -1;
 			
-		  record.setcGoodsCode(cGoodsEntity.getcGoodsCategoryCode());
-		  return fmTradeOrderInfoFastFreightEntityMapper.insert(record);
+	        /**
+	         * 判断是否插入重复的订单信息 	
+	         */
+			long countRecord = countBaseOrderNumber(recordBase);
+			long countRecordFast = countFastFreightOrderNumber(record);
+			System.out.println("countRecord: "+countRecord);
+			System.out.println("countRecordBox: "+countRecordFast);
+			
+			if ( countRecord != 0 && countRecordFast != 0) {
+				orderState = recordBase.getiOrderState();
+				if (orderState == 0) {
+					retStr = 1;//1已保存
+				}
+				else if (orderState == 1) {
+					retStr = 2;//2已提交
+				}
+			}
+			else {
+				int retSaveRecord =saveOrderInfo(recordBase);
+				if ( retSaveRecord == 1 ) {
+					String orderCode = recordBase.getcOrderCode();
+					retiOrderId = getOrderIdByOrderCode(orderCode);
+					record.setiOrderId(retiOrderId);
+					/**
+				     * 设置订单中的货物代码
+				     */
+					FmTradeGoodsEntity cGoodsInfo = fmTradeGoodsEntityMapper.selectByGoodsName(record.getcGoodsName());
+			    	record.setcGoodsCode(cGoodsInfo.getcGoodsCategoryCode());
+					int retSaveRecordFast =fmTradeOrderInfoFastFreightEntityMapper.insertSelective(record);
+					if ( retSaveRecordFast == 1) {
+						orderState = recordBase.getiOrderState();
+						if( retSaveRecord == 1 && retSaveRecordFast == 1) {
+							if (orderState == 0) {
+								retStr = 3;//3保存成功
+							}
+							else if (orderState == 1) {
+								retStr = 4;//4提交成功
+							}
+						}
+					}
+					else {
+						/* *
+						 * 删除已插入的订单基本信息
+						 */
+						while (true) {
+							int retDel = fmTradeOrderInfoBaseEntityMapper.deleteByPrimaryKey(retiOrderId);
+							if ( retDel == 1) {
+								break;
+							}
+						}
+					}
+				}
+			}
+	        return retStr;
 	  }
 		 
 	  /**
@@ -542,14 +593,65 @@ public class FmTradeOrderServiceImpl implements IFmTradeOrderService {
 	   * @param FmTradeOrderInfoWholeVegicleFreightEntity record
 	   * @return  插入成功返回1， 插入失败返回0
 	   */
-	  public int saveWholeVegicleFreightOrderInfo(FmTradeOrderInfoWholeVegicleFreightEntity record) {
-		  /*
-		   * 根据货物名称获得货物代码
-		   */
-		  FmTradeGoodsEntity cGoodsEntity = fmTradeGoodsEntityMapper.selectByGoodsName(record.getcGoodsName());
+	  public int saveWholeVegicleFreightOrderInfo(FmTradeOrderInfoWholeVegicleFreightEntity record,FmTradeOrderInfoBaseEntity recordBase) {
+			int retStr = -1;
+			int retiOrderId = 0;
+			int orderState = -1;
 			
-		  record.setcGoodsCode(cGoodsEntity.getcGoodsCategoryCode());
-		  return fmTradeOrderInfoWholeVegicleFreightEntityMapper.insert(record);
+	        /**
+	         * 判断是否插入重复的订单信息 	
+	         */
+			long countRecord = countBaseOrderNumber(recordBase);
+			long countRecordWhole = countWholeVegicleFreightOrderNumber(record);
+			System.out.println("countRecord: "+countRecord);
+			System.out.println("countRecordBox: "+countRecordWhole);
+			
+			if ( countRecord != 0 && countRecordWhole != 0) {
+				orderState = recordBase.getiOrderState();
+				if (orderState == 0) {
+					retStr = 1;//1已保存
+				}
+				else if (orderState == 1) {
+					retStr = 2;//2已提交
+				}
+			}
+			else {
+				int retSaveRecord =saveOrderInfo(recordBase);
+				if ( retSaveRecord == 1 ) {
+					String orderCode = recordBase.getcOrderCode();
+					retiOrderId = getOrderIdByOrderCode(orderCode);
+					record.setiOrderId(retiOrderId);
+					/**
+				     * 设置订单中的货物代码
+				     */
+					FmTradeGoodsEntity cGoodsInfo = fmTradeGoodsEntityMapper.selectByGoodsName(record.getcGoodsName());
+			    	record.setcGoodsCode(cGoodsInfo.getcGoodsCategoryCode());
+					int retSaveRecordWhole =fmTradeOrderInfoWholeVegicleFreightEntityMapper.insertSelective(record);
+					if ( retSaveRecordWhole == 1) {
+						orderState = recordBase.getiOrderState();
+						if( retSaveRecord == 1 && retSaveRecordWhole == 1) {
+							if (orderState == 0) {
+								retStr = 3;//3保存成功
+							}
+							else if (orderState == 1) {
+								retStr = 4;//4提交成功
+							}
+						}
+					}
+					else {
+						/* *
+						 * 删除已插入的订单基本信息
+						 */
+						while (true) {
+							int retDel = fmTradeOrderInfoBaseEntityMapper.deleteByPrimaryKey(retiOrderId);
+							if ( retDel == 1) {
+								break;
+							}
+						}
+					}
+				}
+			}
+	        return retStr;
 	  }	 
 	  
 	  /**

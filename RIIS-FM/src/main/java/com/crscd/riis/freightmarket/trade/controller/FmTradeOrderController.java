@@ -60,11 +60,11 @@ public class FmTradeOrderController {
 		}
 		else if (orderType >= tradeConstants.FAST_FREIGHT_FLAG_START && orderType <= tradeConstants.FAST_FREIGHT_FLAG_END) {
 			FmTradeOrderInfoFastFreightEntity recordFast=record.getFmTradeOrderInfoFastFreightRecord();
-			ret = fmTradeOrderService.saveFastFreightOrderInfo(recordFast);
+			ret = fmTradeOrderService.saveFastFreightOrderInfo(recordFast,recordBase);
 		}
 		else if (orderType >= tradeConstants.WHOLE_VEGICLE_FLAG_START && orderType <= tradeConstants.WHOLE_VEGICLE_FLAG_END) {
 			FmTradeOrderInfoWholeVegicleFreightEntity recordWhole=record.getFmTradeOrderInfoWholeVegicleFreightRecord();
-			fmTradeOrderService.saveWholeVegicleFreightOrderInfo(recordWhole);
+			fmTradeOrderService.saveWholeVegicleFreightOrderInfo(recordWhole,recordBase);
 		}
 		return ret;
 	}
