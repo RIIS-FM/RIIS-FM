@@ -64,7 +64,25 @@ public class FmTradeOrderController {
 		}
 		else if (orderType >= tradeConstants.WHOLE_VEGICLE_FLAG_START && orderType <= tradeConstants.WHOLE_VEGICLE_FLAG_END) {
 			FmTradeOrderInfoWholeVegicleFreightEntity recordWhole=record.getFmTradeOrderInfoWholeVegicleFreightRecord();
+<<<<<<< HEAD
 			fmTradeOrderService.saveWholeVegicleFreightOrderInfo(recordWhole);
+=======
+			long countRecord=fmTradeOrderService.countBaseOrderNumber(recordBase);
+			long countRecordWhole=fmTradeOrderService.countWholeVegicleFreightOrderNumber(recordWhole);
+			
+			if(countRecord != 0 && countRecordWhole != 0) {
+				if(recordBase.getiOrderState() == 0)
+					ret = 0;
+				else if(recordBase.getiOrderState() == 1)
+					ret = 0;
+			}
+			else{
+				fmTradeOrderService.saveOrderInfo(recordBase);
+				String orderCode = recordBase.getcOrderCode();
+				recordWhole.setiOrderId(fmTradeOrderService.getOrderIdByOrderCode(orderCode));
+				fmTradeOrderService.saveWholeVegicleFreightOrderInfo(recordWhole);
+			}
+>>>>>>> cd2e1413dd918efc542d37e20805ffa3e4f8a4c0
 		}
 		return ret;
 	}
