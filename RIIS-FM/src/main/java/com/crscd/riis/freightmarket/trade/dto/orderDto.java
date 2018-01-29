@@ -15,6 +15,11 @@ public class orderDto {
     
     private FmTradeOrderInfoWholeVegicleFreightEntity fmTradeOrderInfoWholeVegicleFreightRecord;
     
+    /** 
+     * 阶段运输订单 和日运输订单标识位
+     * 0 为日运输
+     * 1 为阶段运输
+     **/
     private int flag;
 
 	public FmTradeOrderInfoBaseEntity getFmTradeOrderInfoBaseEntity() {

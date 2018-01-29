@@ -46,26 +46,31 @@ public class FmTradeOrderController {
 		
 		FmTradeOrderInfoBaseEntity recordBase = record.getFmTradeOrderInfoBaseEntity();	
 		int orderType = recordBase.getiOrderTypeId();
-		int ret = 1;
+		int ret = -1;
+		int flag = record.getFlag();
 		
 		/**
 		 * 判定运输类型
 		 * 3集装箱运输
 		 * 4-6快运
 		 * 7-10整车
-		 * */
-		if (orderType == tradeConstants.BOX_FREIGHT_FLAG){
-			FmTradeOrderInfoBoxFreightEntity recordBox = record.getFmTradeOrderInfoBoxFreightRecord();
-			ret = fmTradeOrderService.saveBoxFreightOrderInfo(recordBox,recordBase);
+		 **/
+		if ( flag == tradeConstants.TRANSFER_INFO) {
+			
+			if (orderType == tradeConstants.BOX_FREIGHT_FLAG){
+				FmTradeOrderInfoBoxFreightEntity recordBox = record.getFmTradeOrderInfoBoxFreightRecord();
+				ret = fmTradeOrderService.saveBoxFreightOrderInfo(recordBox,recordBase);
+			}
+			else if (orderType >= tradeConstants.FAST_FREIGHT_FLAG_START && orderType <= tradeConstants.FAST_FREIGHT_FLAG_END) {
+				FmTradeOrderInfoFastFreightEntity recordFast=record.getFmTradeOrderInfoFastFreightRecord();
+				ret = fmTradeOrderService.saveFastFreightOrderInfo(recordFast,recordBase);
+			}
+			else if (orderType >= tradeConstants.WHOLE_VEGICLE_FLAG_START && orderType <= tradeConstants.WHOLE_VEGICLE_FLAG_END) {
+				FmTradeOrderInfoWholeVegicleFreightEntity recordWhole=record.getFmTradeOrderInfoWholeVegicleFreightRecord();
+				ret = fmTradeOrderService.saveWholeVegicleFreightOrderInfo(recordWhole,recordBase);
+			}
 		}
-		else if (orderType >= tradeConstants.FAST_FREIGHT_FLAG_START && orderType <= tradeConstants.FAST_FREIGHT_FLAG_END) {
-			FmTradeOrderInfoFastFreightEntity recordFast=record.getFmTradeOrderInfoFastFreightRecord();
-			ret = fmTradeOrderService.saveFastFreightOrderInfo(recordFast,recordBase);
-		}
-		else if (orderType >= tradeConstants.WHOLE_VEGICLE_FLAG_START && orderType <= tradeConstants.WHOLE_VEGICLE_FLAG_END) {
-			FmTradeOrderInfoWholeVegicleFreightEntity recordWhole=record.getFmTradeOrderInfoWholeVegicleFreightRecord();
-			fmTradeOrderService.saveWholeVegicleFreightOrderInfo(recordWhole,recordBase);
-		}
+		
 		return ret;
 	}
 	

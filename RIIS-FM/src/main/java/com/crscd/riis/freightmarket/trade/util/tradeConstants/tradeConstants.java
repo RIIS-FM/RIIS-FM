@@ -94,5 +94,11 @@ public class tradeConstants {
 	/** 订单已取消标志位为8*/
 	public static int ORDER_CANCEL = 8;
 	
+	/** 日运输订单标识位 0*/
+	public static int  TRANSFER_INFO= 0;
+	
+	/** 阶段运输标识位 1*/
+	public static int   STAGE_PLAN_ORDER = 1;
+	
 
 }
