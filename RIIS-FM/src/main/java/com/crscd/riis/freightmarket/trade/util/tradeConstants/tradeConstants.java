@@ -37,34 +37,62 @@ public class tradeConstants {
 	/** 运单已支付标志为1*/
 	public static int WAYBILL_STATE_PAYMENT = 1;
 	
-	/*运单待发货标志位为0*/
+	/** 运单待发货标志位为0*/
 	public static int WAYBILL_STATE_WAIT_SEND = 0;
 	
-	/*运单待收货标志位为1*/
+	/** 运单待收货标志位为1*/
 	public static int WAYBILL_STATE_WAIT_RECEIVE = 1;
 	
-	/*运单待评价标志位为2*/
+	/** 运单待评价标志位为2*/
 	public static int WAYBILL_STATE_WAIT_ESTIMATE = 2;
 	
-	/*运单已完成标志位为3*/
+	/** 运单已完成标志位为3*/
 	public static int WAYBILL_STATE_COMPLETE = 3;
 	
-	/*运单已取消标志位为4*/
+	/** 运单已取消标志位为4*/
 	public static int WAYBILL_STATE_CANCEL = 4;
 	
-	/*审核未通过标识位 0*/
+	/** 审核未通过标识位 0*/
 	public static int AUDIT_NOT_PASS_FLAG = 0;
 	
-	/*审核通过标识位 1*/
+	/** 审核通过标识位 1*/
 	public static int AUDIT_PASS_FLAG = 1;
 
-	/*未选择承运方案标志位为0*/
+	/** 未选择承运方案标志位为0*/
 	public static int TRANSPORT_SCHEME_NOT_SELECT_FLAG = 0;
 	
-	/*选择承运方案标志位为1*/
+	/** 选择承运方案标志位为1*/
 	public static int TRANSPORT_SCHEME_SELECT_FLAG = 1;
 	
 	/** 运费标识位 0 */
 	public static int FEE_FLAG = 0;
+	
+	/** 订单草稿标志位为0*/
+	public static int ORDER_DRAFT = 0;
+	
+	/** 订单待审核标志位为1*/
+	public static int ORDER_WAIT_AUDIT = 1;
+	
+	/** 订单确认承运方案标志位为2*/
+	public static int ORDER_COMMIT_TRANSPORT_SCHEME = 2;
+	
+	/** 订单已审核未通过标志位为3*/
+	public static int ORDER_AUDIT_NOT_PASS = 3;
+	
+	/** 订单待付款标志位为4*/
+	public static int ORDER_WAIT_PAYMENT = 4;
+	
+	/** 订单运输中标志位为5*/
+	public static int ORDER_IN_TRANSIT = 5;
+	
+	/** 订单待评价标志位为6*/
+	public static int ORDER_WAIT_ESTIMATE = 6;
+	
+	/** 订单已完成标志位为7*/
+	public static int ORDER_COMPLETE = 7;
+	
+	/** 订单已取消标志位为8*/
+	public static int ORDER_CANCEL = 8;
+	
 
 }
