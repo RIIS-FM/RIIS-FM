@@ -5,10 +5,12 @@ import java.util.Map;
 
 import com.crscd.riis.freightmarket.authority.entity.FmAccountEntity;
 import com.crscd.riis.freightmarket.trade.dto.orderDto;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderAuditEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBoxFreightEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoFastFreightEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoWholeVegicleFreightEntity;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeTransportSchemeEntity;
 import com.crscd.riis.freightmarket.trade.util.page.PageModel;
 
 public interface IFmTradeOrderService {
@@ -89,10 +91,13 @@ public interface IFmTradeOrderService {
 	 int getOrderIdByOrderCode(String orderCode);
 
 	 /**
-	  * 根据ID查找订单
+	  * 根据要求查找订单
+	  * @param FmAccountEntity user 用户账号
+	  *        Map<String, Object> requirement 查询要求
+	  *        PageModel pageModel 分页标准  
 	  * @return 成功订单实体，修改失败返回空
 	  */
-	 List<orderDto> findOrder(FmAccountEntity user, Map<String, Object> requirement,PageModel pageModel);
+	 List<orderDto> findOrder(FmAccountEntity user, Map<String, Object> requirement, PageModel pageModel);
 	 
 	 /**
 	  * 查询订单信息
@@ -148,4 +153,53 @@ public interface IFmTradeOrderService {
 	  * @return 修改成功返回1，修改失败返回0
 	  */
 	 int modifyWholeVegicleFreightOrderInfo(FmTradeOrderInfoWholeVegicleFreightEntity record);
+	 
+	 /**
+	     * 修改审核结果,审核结果不通过
+	     * @param FmAccountEntity user 审核人信息  
+	     *        FmTradeOrderInfoBaseEntity OrderInfo 订单信息
+	     *        FmTradeOrderAuditEntity record 审核结果信息
+	     * @return 插入成功返回1， 插入失败返回0
+	     **/
+		int modifyAuditInfo(FmAccountEntity user, FmTradeOrderInfoBaseEntity orderInfo, FmTradeOrderAuditEntity record);
+		
+		/**
+	     * 修改审核结果，审核结果通过
+	     * @param FmAccountEntity user 审核人信息  
+	     *        FmTradeOrderInfoBaseEntity OrderInfo 订单信息
+	     *        FmTradeOrderAuditEntity record 审核结果信息
+	     *        List<FmTradeTransportSchemeEntity> transportSchemeList 承运方案列表
+	     * @return 插入成功返回1， 插入失败返回0
+	     **/
+		int modifyAuditInfo(FmAccountEntity user, FmTradeOrderInfoBaseEntity orderInfo, FmTradeOrderAuditEntity record,
+				List<FmTradeTransportSchemeEntity> transportSchemeList);
+		
+		/**
+	     * 删除人工审核结果
+	     * @param Integer id 主键id
+	     * @return 删除成功返回1， 插入失败返回0
+	     **/
+		int deleteAuditInfo(Integer id);
+		
+		/**
+	     * 查找系统审核未通过的订单详情和系统审核结果
+	     * @param Integer id 主键id
+	     * @return 删除成功返回1， 插入失败返回0
+	     **/
+		List<orderDto> findAuditResult(Map<String, Object> requirement, PageModel pageModel);
+		
+		/**
+	     * 插入提交的承运方案
+	     * @param FmTradeTransportSchemeEntity record 承运方案实体列表
+	     * @return 插入成功返回1， 插入失败返回0
+	     * 	*/
+		int saveTransportScheme(List<FmTradeTransportSchemeEntity> record);
+		
+		
+		/**
+		 * 获取满足条件的审核信息记录总个数
+		 * @param 搜索要求
+		 * @return 成功返回总审核实体个数
+		 */
+		long countAuditInfoNumber(Map<String, Object> requirement);
 }
