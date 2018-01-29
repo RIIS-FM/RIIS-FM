@@ -65,8 +65,8 @@ public class FmTradeOrderInfoBaseEntitySqlProvider {
 	        SELECT("F_PROTECT_PRICE");
 	        SELECT("F_INSURANCE_VALUE");
 		    FROM("fm_trade_order_info_base");
-		    
-			if(params.get("iOrderTypeId") != null) {
+		    	
+		    if(params.get("iOrderTypeId") != null) {
 				WHERE("I_ORDER_TYPE_ID = #{iOrderTypeId}");
 			}	
 			if(params.get("cOrderCode") != null) {
