@@ -68,10 +68,10 @@ public class FmTradeWaybillEntitySqlProvider {
     			FROM("fm_trade_waybill");
     			
     			/*循环查询所有iOrderId的记录*/
-    			if(params.get("iOrderId") != null) {
+    			if(params.get("iOrderIdList") != null) {
     				
     				List<Object> waybillList = new ArrayList<Object>();
-    				waybillList = (List<Object>) params.get("iOrderId");
+    				waybillList = (List<Object>) params.get("iOrderIdList");
     				
     				for (int i = 0; i<waybillList.size(); i++) {
     					String code = String.valueOf(i);
