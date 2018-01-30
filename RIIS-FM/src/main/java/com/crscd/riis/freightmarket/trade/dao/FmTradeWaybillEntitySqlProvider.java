@@ -68,18 +68,9 @@ public class FmTradeWaybillEntitySqlProvider {
     			FROM("fm_trade_waybill");
     			
     			/*循环查询所有iOrderId的记录*/
-    			if(params.get("iOrderIdList") != null) {
+    			if(params.get("iOrderId") != null) {
     				
-    				List<Object> waybillList = new ArrayList<Object>();
-    				waybillList = (List<Object>) params.get("iOrderIdList");
-    				
-    				for (int i = 0; i<waybillList.size(); i++) {
-    					String code = String.valueOf(i);
-    					String orderId = "iOrderId"+code;
-    					params.put(orderId, waybillList.get(i));
-    					OR();
-    					WHERE("I_ORDER_ID = #{"+"iOrderId"+code+"}");
-    				}
+    				WHERE("I_ORDER_ID IN "+"("+params.get("iOrderId")+")");
     			}
     			if(params.get("iOrderTypeId") != null) {
     				WHERE("I_ORDER_TYPE_ID = #{iOrderTypeId}");
