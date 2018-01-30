@@ -5,7 +5,6 @@ import com.crscd.riis.freightmarket.trade.entity.FmTradeWaybillEntityExample.Cri
 import com.crscd.riis.freightmarket.trade.entity.FmTradeWaybillEntityExample.Criterion;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeWaybillEntityExample;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
