@@ -4,6 +4,8 @@ import com.crscd.riis.freightmarket.trade.entity.FmTradeWaybillEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeWaybillEntityExample.Criteria;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeWaybillEntityExample.Criterion;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeWaybillEntityExample;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
@@ -63,9 +65,21 @@ public class FmTradeWaybillEntitySqlProvider {
     			SELECT("I_WAYBILL_RECVER_REPORT_BOX_NUMBER");
     			SELECT("I_WAYBILL_SENDER_REPORT_GOODS_NUMBER");
     			SELECT("I_WAYBILL_RECVER_REPORT_GOODS_NUMBER");
+    			FROM("fm_trade_waybill");
     			
+    			/*循环查询所有iOrderId的记录*/
     			if(params.get("iOrderId") != null) {
-    				WHERE("I_ORDER_ID = #{iOrderId}");
+    				
+    				List<Object> waybillList = new ArrayList<Object>();
+    				waybillList = (List<Object>) params.get("iOrderId");
+    				
+    				for (int i = 0; i<waybillList.size(); i++) {
+    					String code = String.valueOf(i);
+    					String orderId = "iOrderId"+code;
+    					params.put(orderId, waybillList.get(i));
+    					OR();
+    					WHERE("I_ORDER_ID = #{"+"iOrderId"+code+"}");
+    				}
     			}
     			if(params.get("iOrderTypeId") != null) {
     				WHERE("I_ORDER_TYPE_ID = #{iOrderTypeId}");
