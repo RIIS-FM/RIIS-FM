@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.crscd.riis.freightmarket.authority.entity.FmAccountEntity;
 import com.crscd.riis.freightmarket.trade.dto.findWaybillDtoIn;
 import com.crscd.riis.freightmarket.trade.dto.findWaybillDtoOut;
+import com.crscd.riis.freightmarket.trade.dto.waybillInfoDto;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeWaybillEntity;
 import com.crscd.riis.freightmarket.trade.service.IFmTradeWaybillService;
@@ -95,8 +96,8 @@ public class FmTradeWaybillController {
 		
 		findWaybillDtoOut retWaybillDto = new findWaybillDtoOut();
 		
-		List<FmTradeWaybillEntity> waybillList = fmTradeWaybillService.findWaybill(user, orderRequirement, waybillRequirement, pageModel);
-		retWaybillDto.setWaybillList(waybillList);
+		List<waybillInfoDto> waybillInfoList = fmTradeWaybillService.findWaybill(user, orderRequirement, waybillRequirement, pageModel);
+		retWaybillDto.setWaybillInfoList(waybillInfoList);
 		retWaybillDto.setPageModel(pageModel);
 		
 		return retWaybillDto;

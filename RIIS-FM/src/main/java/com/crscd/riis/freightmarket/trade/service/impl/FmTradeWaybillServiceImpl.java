@@ -19,6 +19,7 @@ import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderInfoFastFreightEntityM
 import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderInfoWholeVegicleFreightEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeTransportSchemeEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeWaybillEntityMapper;
+import com.crscd.riis.freightmarket.trade.dto.waybillInfoDto;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBoxFreightEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoFastFreightEntity;
@@ -547,7 +548,7 @@ public class FmTradeWaybillServiceImpl implements IFmTradeWaybillService{
 	 * IFmTradeWaybillService接口的findWaybill方法实现
 	 * */
 	@Override
-	public List<FmTradeWaybillEntity> findWaybill(FmAccountEntity user, Map<String, Object> orderRequirement,
+	public List<waybillInfoDto> findWaybill(FmAccountEntity user, Map<String, Object> orderRequirement,
 			Map<String, Object> waybillRequirement, PageModel pageModel){
 		/**
 		 * 定义基础变量
@@ -555,11 +556,16 @@ public class FmTradeWaybillServiceImpl implements IFmTradeWaybillService{
 		 * */
 		int recordCount = 0;
 		
+		FmTradeTransportSchemeEntity retTransportScheme = new FmTradeTransportSchemeEntity();
+		FmTradeOrderInfoBaseEntity retOrderBaseInfo = new FmTradeOrderInfoBaseEntity();
+		waybillInfoDto retWaybillInfo = new waybillInfoDto();
+		
 		Map<String, Object> orderParams = new HashMap<String, Object>();
 		Map<String, Object> waybillParams = new HashMap<String, Object>();
 		List<FmTradeOrderInfoBaseEntity> orderList = new ArrayList<FmTradeOrderInfoBaseEntity>();
 		List<Object> orderIdList = new ArrayList<Object>();
 		List<FmTradeWaybillEntity> waybillList = new ArrayList<FmTradeWaybillEntity>();
+		List<waybillInfoDto> waybillInfoList = new ArrayList<waybillInfoDto>();
 		
 		/**
 		 * 通过iSenderId和订单确认承运方案的标志位
@@ -573,8 +579,8 @@ public class FmTradeWaybillServiceImpl implements IFmTradeWaybillService{
 		}
 		orderList = fmTradeOrderInfoBaseEntityMapper.selectByPage(orderParams);
 		System.out.println(orderList);
-		
 		System.out.println("waybillRequirement.get(\"iOrderId\")"+waybillRequirement.get("iOrderId"));
+		
 		/*定义每个订单的Map*/
 		if (waybillRequirement.get("iOrderId") != null) {
 			waybillParams.put("iOrderId", waybillRequirement.get("iOrderId"));
@@ -762,7 +768,20 @@ public class FmTradeWaybillServiceImpl implements IFmTradeWaybillService{
 		pageModel.setRecordCount(recordCount);
 		waybillList = fmTradeWaybillEntityMapper.selectByPage(waybillParams);
 		
-        return waybillList;
+		for (int i = 0; i < waybillList.size(); i++) {
+			
+			/*获得用于运单查看详情的承运方案和订单基本信息*/
+			retTransportScheme = fmTradeTransportSchemeEntityMapper.selectByOrderId(waybillList.get(i).getiOrderId());
+			retOrderBaseInfo = fmTradeOrderInfoBaseEntityMapper.selectByPrimaryKey(waybillList.get(i).getiOrderId());
+			retWaybillInfo.setFmTradeOrderInfoBaseEntity(retOrderBaseInfo);
+			retWaybillInfo.setFmTradeTransportSchemeEntity(retTransportScheme);
+			retWaybillInfo.setFmTradeWaybillEntity(waybillList.get(i));
+			waybillInfoList.add(retWaybillInfo);
+		}
+		
+		
+        return waybillInfoList;
 	}
-
+	
+	
 }

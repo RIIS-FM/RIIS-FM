@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.crscd.riis.freightmarket.authority.entity.FmAccountEntity;
+import com.crscd.riis.freightmarket.trade.dto.waybillInfoDto;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeWaybillEntity;
 import com.crscd.riis.freightmarket.trade.util.page.PageModel;
 
@@ -57,7 +58,8 @@ public interface IFmTradeWaybillService {
 	 *        PageModel pageModel 分页
 	 * @return List<FmTradeWaybillEntity> 运单实体列表
 	 * */
-	public List<FmTradeWaybillEntity> findWaybill(FmAccountEntity user, Map<String, Object> orderRequirement, 
+	public List<waybillInfoDto> findWaybill(FmAccountEntity user, Map<String, Object> orderRequirement, 
             Map<String, Object> waybillRequirement,PageModel pageModel);
+	
 
 }
