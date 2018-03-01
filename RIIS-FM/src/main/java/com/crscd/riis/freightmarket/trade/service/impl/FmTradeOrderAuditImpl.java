@@ -1,7 +1,10 @@
 package com.crscd.riis.freightmarket.trade.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -11,21 +14,26 @@ import com.crscd.riis.freightmarket.authority.entity.FmAccountEntity;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeFeeEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeGoodsEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderAuditEntityMapper;
+import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderInfoBaseEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderInfoBoxFreightEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderInfoFastFreightEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderInfoWholeVegicleFreightEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderTypeEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeTransportSchemeEntityMapper;
+import com.crscd.riis.freightmarket.trade.dto.orderDto;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeFeeEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeGoodsEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderAuditEntity;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderAuditEntityExample;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntityExample;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBoxFreightEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoFastFreightEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoWholeVegicleFreightEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderTypeEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeTransportSchemeEntity;
 import com.crscd.riis.freightmarket.trade.service.IFmTradeOrderAudit;
+import com.crscd.riis.freightmarket.trade.util.page.PageModel;
 import com.crscd.riis.freightmarket.trade.util.tradeConstants.tradeConstants;
 
 
@@ -55,6 +63,9 @@ public class FmTradeOrderAuditImpl implements IFmTradeOrderAudit {
 	
 	@Resource
 	private FmTradeOrderInfoWholeVegicleFreightEntityMapper fmTradeOrderInfoWholeVegicleFreightEntityMapper;
+	
+	@Resource
+	private FmTradeOrderInfoBaseEntityMapper fmTradeOrderInfoBaseEntityMapper;
 	
 	/** IFmTradeOrderAudit接口的modifyAuditInfo方法实现*/
 	@Override 
@@ -210,12 +221,67 @@ public class FmTradeOrderAuditImpl implements IFmTradeOrderAudit {
 	
 	/** IFmTradeOrderAudit接口的findAuditResult方法实现*/
 	@Override
-	public List<FmTradeOrderAuditEntity> findAuditResult() {
+	public List<orderDto> findAuditResult(Map<String, Object> requirement, PageModel pageModel) {
 		
-		List<FmTradeOrderAuditEntity> notPassOrders = 
-				fmTradeOrderAuditEntityMapper.selectByAuditResultAndAuditType(tradeConstants.AUDIT_NOT_PASS_FLAG, 
-						tradeConstants.SYS_AUDIT_TYPE_FLAG);
-		return notPassOrders;
+		Map<String, Object> params = new HashMap<String, Object>();
+		List<orderDto> orderList = new ArrayList<orderDto>();
+		orderDto orderTemp = new orderDto();
+		int orderId = 0;
+		
+
+		/** 设置查找条件 */
+		int recordCount = (int)countAuditInfoNumber(requirement);
+		pageModel.setRecordCount(recordCount);
+		params.put("pageModel", pageModel);
+		
+		if ( requirement.get("iOrderTypeId") != null) {
+			
+			params.put("iOrderTypeId",requirement.get("iOrderTypeId"));
+		}
+		
+		params.put("iAuditResult", tradeConstants.AUDIT_NOT_PASS_FLAG);
+		params.put("iAuditType", tradeConstants.SYS_AUDIT_TYPE_FLAG);
+		
+		/** 获取满足条件的审核列表 */
+		List<FmTradeOrderAuditEntity> notPassOrders = fmTradeOrderAuditEntityMapper.selectByPage(params);
+		
+		for ( int i = 0; i < notPassOrders.size(); i++) {
+			
+			/** 获取订单id */
+			orderId = notPassOrders.get(i).getiOrderId();
+			
+			/** 设置基本订单信息 */
+			orderTemp.setFmTradeOrderInfoBaseEntity(
+					fmTradeOrderInfoBaseEntityMapper.selectByPrimaryKey(orderId));
+			
+			/** 设置订单详情信息 */
+			if (notPassOrders.get(i).getiOrderTypeId() == tradeConstants.BOX_FREIGHT_FLAG ) {
+				
+				orderTemp.setFmTradeOrderInfoBoxFreightRecord(
+						fmTradeOrderInfoBoxFreightEntityMapper.selectByOrderId(orderId));
+				orderList.add(orderTemp);	
+			}
+			else if (notPassOrders.get(i).getiOrderTypeId() >= tradeConstants.FAST_FREIGHT_FLAG_START &&
+					notPassOrders.get(i).getiOrderTypeId() >= tradeConstants.FAST_FREIGHT_FLAG_END) {
+				
+				orderTemp.setFmTradeOrderInfoFastFreightRecord(
+						fmTradeOrderInfoFastFreightEntityMapper.selectByOrderId(orderId));
+				orderList.add(orderTemp);
+			}
+			else if (notPassOrders.get(i).getiOrderTypeId() >= tradeConstants.WHOLE_VEGICLE_FLAG_START &&
+					notPassOrders.get(i).getiOrderTypeId() >= tradeConstants.WHOLE_VEGICLE_FLAG_END) {
+				
+				orderTemp.setFmTradeOrderInfoWholeVegicleFreightRecord(
+						fmTradeOrderInfoWholeVegicleFreightEntityMapper.selectByOrderId(orderId));
+				orderList.add(orderTemp);
+			}
+			else {
+				orderList = null;
+				return orderList;
+			}
+		}
+		
+		return orderList;
 	}
 
 	/** IFmTradeOrderAudit接口的deleteAuditInfo方法实现*/
@@ -253,5 +319,23 @@ public class FmTradeOrderAuditImpl implements IFmTradeOrderAudit {
 		}
 		
 		return ret;
+	}
+
+	@Override
+	public long countAuditInfoNumber(Map<String, Object> requirement) {
+		// TODO Auto-generated method stub
+		long orderNumber = -1;
+		FmTradeOrderAuditEntityExample example = new FmTradeOrderAuditEntityExample();
+	    FmTradeOrderAuditEntityExample.Criteria criteria = example.createCriteria();
+	    
+	    criteria.andIAuditTypeEqualTo(tradeConstants.SYS_AUDIT_TYPE_FLAG);
+	    criteria.andIAuditResultEqualTo(tradeConstants.AUDIT_NOT_PASS_FLAG);
+	    
+	    if(requirement.get("iOrderTypeId") != null) {
+			criteria.andIOrderTypeIdEqualTo((Integer) requirement.get("iOrderTypeId"));
+	    }
+	    orderNumber = fmTradeOrderAuditEntityMapper.countByExample(example);
+	    
+		return orderNumber;
 	}
 }

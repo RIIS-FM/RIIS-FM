@@ -249,6 +249,17 @@
       <version>7.0</version>
       <scope>provided</scope>  
     </dependency> 
+    <!-- 导入cors-filter-1.7.jar 包 -->
+    <dependency>
+		<groupId>com.thetransactioncompany</groupId>
+		<artifactId>cors-filter</artifactId>
+		<version>1.7.1</version>
+	</dependency>
+	<dependency>
+		<groupId>com.thetransactioncompany</groupId>
+		<artifactId>java-property-utils</artifactId>
+		<version>1.9</version>
+	</dependency> 
      
   </dependencies>
   <build>

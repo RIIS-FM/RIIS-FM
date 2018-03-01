@@ -94,11 +94,40 @@ public interface FmTradeGoodsEntityMapper {
     })
     FmTradeGoodsEntity selectByPrimaryKey(Integer id);
     
-    /* *
+    /**
+     * 查找所有货物
+     * @return 货物的有关信息列表
+     **/
+    @Select({
+        "select",
+        "ID, C_GOODS_NAME_SPELL_ALL, C_GOODS_NAME_SPELL_SHORTH, C_GOODS_NAME, C_GOODS_CATEGORY_CODE, ",
+        "C_GOODS_TYPE_ID, I_GOODS_DANGER, F_GOODS_INSURED_RATE, F_GOODS_INSURANCE_VALUE, ",
+        "F_GOODS_LOAD_AND_UNLOAD_RATE, C_GOODS_WHOLE_VEGICLE_RATE, C_GOODS_FAST_FREIGHT_RATE, ",
+        "C_GOODS_BOX_FREIGHT_RATE",
+        "from fm_trade_goods",
+    })
+    @Results({
+        @Result(column="ID", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="C_GOODS_NAME_SPELL_ALL", property="cGoodsNameSpellAll", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_GOODS_NAME_SPELL_SHORTH", property="cGoodsNameSpellShorth", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_GOODS_NAME", property="cGoodsName", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_GOODS_CATEGORY_CODE", property="cGoodsCategoryCode", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_GOODS_TYPE_ID", property="cGoodsTypeId", jdbcType=JdbcType.INTEGER),
+        @Result(column="I_GOODS_DANGER", property="iGoodsDanger", jdbcType=JdbcType.INTEGER),
+        @Result(column="F_GOODS_INSURED_RATE", property="fGoodsInsuredRate", jdbcType=JdbcType.REAL),
+        @Result(column="F_GOODS_INSURANCE_VALUE", property="fGoodsInsuranceValue", jdbcType=JdbcType.REAL),
+        @Result(column="F_GOODS_LOAD_AND_UNLOAD_RATE", property="fGoodsLoadAndUnloadRate", jdbcType=JdbcType.REAL),
+        @Result(column="C_GOODS_WHOLE_VEGICLE_RATE", property="cGoodsWholeVegicleRate", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_GOODS_FAST_FREIGHT_RATE", property="cGoodsFastFreightRate", jdbcType=JdbcType.VARCHAR),
+        @Result(column="C_GOODS_BOX_FREIGHT_RATE", property="cGoodsBoxFreightRate", jdbcType=JdbcType.VARCHAR)
+    })
+    List<FmTradeGoodsEntity> selectAllGoods();
+    
+    /**
      * 根据货物名称查找货物的信息
      * @param 货物名称
      * @return 货物的有关信息
-     * */
+     **/
     @Select({
         "select",
         "ID, C_GOODS_NAME_SPELL_ALL, C_GOODS_NAME_SPELL_SHORTH, C_GOODS_NAME, C_GOODS_CATEGORY_CODE, ",

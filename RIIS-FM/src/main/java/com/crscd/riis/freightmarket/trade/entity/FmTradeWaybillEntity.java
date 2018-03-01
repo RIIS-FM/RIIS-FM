@@ -6,7 +6,7 @@ public class FmTradeWaybillEntity {
     private Integer id;
 
     private Integer iOrderId;
-
+    
     private Integer iOrderTypeId;
 
     private Integer iOrderTypeNum;

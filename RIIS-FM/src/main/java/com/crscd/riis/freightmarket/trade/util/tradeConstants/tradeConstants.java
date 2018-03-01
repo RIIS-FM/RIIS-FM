@@ -100,5 +100,14 @@ public class tradeConstants {
 	/** 阶段运输标识位 1*/
 	public static int   STAGE_PLAN_ORDER = 1;
 	
+	/** 托运人标识位 1*/
+	public static int  SENDER_FLAG  = 1;
+	
+	/** 托运人标识位 2*/
+	public static int  RECEIVER_FLAG  = 2; 
+	
+	/** 托运人标识位 3*/
+	public static int  OPERATOR_FLAG  = 3;
+	
 
 }

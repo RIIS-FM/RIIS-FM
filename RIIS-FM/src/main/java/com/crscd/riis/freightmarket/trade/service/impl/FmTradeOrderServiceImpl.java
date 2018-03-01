@@ -12,9 +12,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.crscd.riis.freightmarket.trade.dao.FmTradeContactEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeFeeEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeGoodsEntityMapper;
 import com.crscd.riis.freightmarket.trade.dao.FmTradeOrderAuditEntityMapper;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeContactEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeFeeEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeGoodsEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderAuditEntity;
@@ -73,6 +75,9 @@ public class FmTradeOrderServiceImpl implements IFmTradeOrderService {
 	
 	@Resource
 	private FmTradeOrderTypeEntityMapper fmTradeOrderTypeEntityMapper;
+	
+	@Resource
+	private FmTradeContactEntityMapper fmTradeContactEntityMapper;
 	
 	/**
 	 * IFmTradeOrderInfoBaseService接口的countBaseOrderNumber方法实现 
@@ -800,15 +805,14 @@ public class FmTradeOrderServiceImpl implements IFmTradeOrderService {
 			}
 			List<FmTradeOrderInfoBaseEntity> orderBaseList = fmTradeOrderInfoBaseEntityMapper.selectByPage(params);
 			
-			/** 
-			 * 插入订单的详情信息  
-			 */
+			/** 获取订单的详情信息 */
 			len = orderBaseList.size();
 			for ( int i = 0; i < len; i++) {
 				orderId = orderBaseList.get(i).getId();
 				orderType = orderBaseList.get(i).getiOrderTypeId();
 				orderDto orderTemp = new orderDto();
 				orderTemp.setFmTradeOrderInfoBaseEntity(orderBaseList.get(i));
+				
 				/**
 				 * 3集装箱运输
 				 * 4-6快运
@@ -1196,5 +1200,22 @@ public class FmTradeOrderServiceImpl implements IFmTradeOrderService {
 		    orderNumber = fmTradeOrderAuditEntityMapper.countByExample(example);
 		    
 			return orderNumber;
+		}
+
+		@Override
+		public List<FmTradeGoodsEntity> getAllGoods() {
+			// TODO Auto-generated method stub
+			List<FmTradeGoodsEntity> goodsList = new ArrayList<FmTradeGoodsEntity>();
+			
+			goodsList = fmTradeGoodsEntityMapper.selectAllGoods();
+			return goodsList;
+		}
+
+		@Override
+		public List<FmTradeContactEntity> getContact(Integer accountId) {
+			// TODO Auto-generated method stub
+			List<FmTradeContactEntity> contactList = new ArrayList<FmTradeContactEntity>();
+			contactList = fmTradeContactEntityMapper.selectByAccountId(accountId);
+			return contactList;
 		}
 }

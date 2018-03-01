@@ -16,7 +16,10 @@ import com.crscd.riis.freightmarket.trade.util.page.PageModel;
 import com.crscd.riis.freightmarket.trade.dto.findOrderDtoIn;
 import com.crscd.riis.freightmarket.trade.dto.findOrderDtoOut;
 import com.crscd.riis.freightmarket.trade.dto.modifyOrderAuditInfoDtoIn;
+import com.crscd.riis.freightmarket.trade.dto.optionalOrderInfoDto;
 import com.crscd.riis.freightmarket.trade.dto.orderDto;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeContactEntity;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeGoodsEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderAuditEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoFastFreightEntity;
@@ -32,6 +35,48 @@ public class FmTradeOrderController {
 
 	@Resource
 	private IFmTradeOrderService fmTradeOrderService;
+	
+	@RequestMapping(value="/tradeOrder")
+	@ResponseBody
+	public optionalOrderInfoDto getTradeOrderInfo(@RequestBody FmAccountEntity user) {
+		
+		int accountId = user.getId();
+		optionalOrderInfoDto recordDto = new optionalOrderInfoDto();
+		List<FmTradeGoodsEntity> goodsList = new ArrayList<FmTradeGoodsEntity>();
+		List<FmTradeContactEntity> contactList = new ArrayList<FmTradeContactEntity>();
+		List<FmTradeContactEntity> recContactList = new ArrayList<FmTradeContactEntity>();
+		List<FmTradeContactEntity> senContactList = new ArrayList<FmTradeContactEntity>();
+		List<FmTradeContactEntity> operContactList = new ArrayList<FmTradeContactEntity>();
+       
+		/** 获取货物信息 */
+		goodsList = fmTradeOrderService.getAllGoods();
+		
+		/** 获取该客户的联系人列表信息 */
+		contactList = fmTradeOrderService.getContact(accountId);
+		for (int i = 0; i < contactList.size(); i++) {
+			
+			int flag = contactList.get(i).getiContactFlag();
+			if ( flag == tradeConstants.SENDER_FLAG) {
+				
+				senContactList.add(contactList.get(i));
+			}
+			if ( flag == tradeConstants.RECEIVER_FLAG ) {
+				
+				recContactList.add(contactList.get(i));
+			}
+			if ( flag == tradeConstants.OPERATOR_FLAG ) {
+				
+				operContactList.add(contactList.get(i));
+			}
+		}
+		
+		recordDto.setOperContactList(operContactList);
+		recordDto.setRecContactList(recContactList);
+		recordDto.setSenContactList(senContactList);
+		recordDto.setGoodsList(goodsList);
+		return recordDto;
+	}
+	
 	
 	/**
 	 * URL：http://localhost:8080/RIIS-FM/fmTradeOrder/insertTradeOrder

@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.crscd.riis.freightmarket.authority.entity.FmAccountEntity;
 import com.crscd.riis.freightmarket.trade.dto.orderDto;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeContactEntity;
+import com.crscd.riis.freightmarket.trade.entity.FmTradeGoodsEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderAuditEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBoxFreightEntity;
@@ -202,4 +204,17 @@ public interface IFmTradeOrderService {
 		 * @return 成功返回总审核实体个数
 		 */
 		long countAuditInfoNumber(Map<String, Object> requirement);
+		
+		/**
+		 * 获取所有货物信息
+		 * @return 货物信息列表
+		 */
+		List<FmTradeGoodsEntity> getAllGoods();
+		
+		/**
+	     * 通过account id 查找该用户的所有联系人
+	     * @param 用户的account id
+	     * @return 该用户的所有联系人
+	     **/
+		List<FmTradeContactEntity> getContact(Integer accountId);
 }

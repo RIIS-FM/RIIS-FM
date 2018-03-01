@@ -1,11 +1,14 @@
 package com.crscd.riis.freightmarket.trade.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.crscd.riis.freightmarket.authority.entity.FmAccountEntity;
+import com.crscd.riis.freightmarket.trade.dto.orderDto;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderAuditEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeOrderInfoBaseEntity;
 import com.crscd.riis.freightmarket.trade.entity.FmTradeTransportSchemeEntity;
+import com.crscd.riis.freightmarket.trade.util.page.PageModel;
 
 public interface IFmTradeOrderAudit {
    
@@ -41,7 +44,7 @@ public interface IFmTradeOrderAudit {
      * @param Integer id 主键id
      * @return 删除成功返回1， 插入失败返回0
      **/
-	List<FmTradeOrderAuditEntity> findAuditResult();
+	List<orderDto> findAuditResult(Map<String, Object> requirement, PageModel pageModel);
 	
 	/**
      * 插入提交的承运方案
@@ -50,5 +53,12 @@ public interface IFmTradeOrderAudit {
      * 	*/
 	int saveTransportScheme(List<FmTradeTransportSchemeEntity> record);
 	
+	
+	/**
+	 * 获取满足条件的审核信息记录总个数
+	 * @param 搜索要求
+	 * @return 成功返回总审核实体个数
+	 */
+	long countAuditInfoNumber(Map<String, Object> requirement);
 
 }
